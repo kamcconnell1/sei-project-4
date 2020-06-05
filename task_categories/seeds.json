@@ -1,0 +1,149 @@
+[
+{
+  "model": "task_categories.taskcategory",
+  "pk": 1,
+  "fields": {
+    "name": "Apply"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 2,
+  "fields": {
+    "name": "Follow Up"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 3,
+  "fields": {
+    "name": "Prep Cover Letter"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 4,
+  "fields": {
+    "name": "Prep CV"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 5,
+  "fields": {
+    "name": "Reach Out"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 6,
+  "fields": {
+    "name": "Prep for Interview"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 7,
+  "fields": {
+    "name": "Phone Screen"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 8,
+  "fields": {
+    "name": "Phone Interview"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 9,
+  "fields": {
+    "name": "On-site Interview"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 10,
+  "fields": {
+    "name": "Offer Recieved"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 11,
+  "fields": {
+    "name": "Accept Offer"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 12,
+  "fields": {
+    "name": "Decline Offer"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 13,
+  "fields": {
+    "name": "Rejected"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 14,
+  "fields": {
+    "name": "Send Thankyou"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 15,
+  "fields": {
+    "name": "Email"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 16,
+  "fields": {
+    "name": "Meeting"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 17,
+  "fields": {
+    "name": "Phone Call"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 18,
+  "fields": {
+    "name": "Send Availability"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 19,
+  "fields": {
+    "name": "Assignment"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 20,
+  "fields": {
+    "name": "Networking Event"
+  }
+},
+{
+  "model": "task_categories.taskcategory",
+  "pk": 21,
+  "fields": {
+    "name": "Other"
+  }
+}
+]

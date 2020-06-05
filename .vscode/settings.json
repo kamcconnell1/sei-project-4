@@ -1,3 +1,10 @@
 {
-  "python.pythonPath": "/Users/andy/.local/share/virtualenvs/sei-project-4-l3iQl9sG/bin/python"
+  "python.pythonPath": "/Users/andy/.local/share/virtualenvs/sei-project-4-l3iQl9sG/bin/python",
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#919ABF",
+    "titleBar.activeBackground": "#919ABF",
+    "titleBar.inactiveBackground": "#919ABF",
+  },
+  "window.title": "Back-End JOBR",
 }

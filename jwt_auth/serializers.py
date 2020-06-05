@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from resources.serializers import ResourceSerializer
+from tasks.serializers import TaskSerializer
+from contacts.serializers import ContactSerializer
 # import django.contrib.auth.password_validation as validations
 
 User = get_user_model()
@@ -32,3 +34,5 @@ class UserSerializer(serializers.ModelSerializer):
 
 class PopulatedUserSerializer(UserSerializer):
     created_resources = ResourceSerializer(many=True)
+    created_tasks = TaskSerializer(many=True)
+    created_contacts = ContactSerializer(many=True)

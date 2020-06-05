@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'resources',
     # 'job_status',
     # 'jobs',
-    # 'contacts',
-    # 'task_categories',
-    # 'tasks',
+    'contacts',
+    'task_categories',
+    'tasks',
 
 ]
 
