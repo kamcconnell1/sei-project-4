@@ -1,0 +1,37 @@
+[
+{
+  "model": "job_status.jobstatus",
+  "pk": 1,
+  "fields": {
+    "name": "Wishlist"
+  }
+},
+{
+  "model": "job_status.jobstatus",
+  "pk": 2,
+  "fields": {
+    "name": "Applied"
+  }
+},
+{
+  "model": "job_status.jobstatus",
+  "pk": 3,
+  "fields": {
+    "name": "Interview"
+  }
+},
+{
+  "model": "job_status.jobstatus",
+  "pk": 4,
+  "fields": {
+    "name": "Offer"
+  }
+},
+{
+  "model": "job_status.jobstatus",
+  "pk": 5,
+  "fields": {
+    "name": "Rejected"
+  }
+}
+]

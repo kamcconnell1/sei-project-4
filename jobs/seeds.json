@@ -1,0 +1,128 @@
+[
+{
+  "model": "jobs.job",
+  "pk": 1,
+  "fields": {
+    "job_title": "System Validation Engineer",
+    "company": "Google",
+    "deadline": "2020-06-10",
+    "job_url": "https://careers.google.com/jobs/results/112993601991910086/",
+    "salary": null,
+    "city": "Mountain View, CA",
+    "country": "United States",
+    "status": 2
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 2,
+  "fields": {
+    "job_title": "Junior Developer",
+    "company": "Picnic Media",
+    "deadline": null,
+    "job_url": "https://www.adzuna.co.uk/jobs/details/1562196890",
+    "salary": 23000,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 3,
+  "fields": {
+    "job_title": "Software Engineer - Scala and Microservices",
+    "company": "Sainsbury's",
+    "deadline": null,
+    "job_url": "https://sainsburys.taleo.net/careersection/mhr_prof_ext_cv/jobdetail.ftl?job=200007AM&tz=GMT-05:00&tzname=America/Chicago",
+    "salary": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 4,
+  "fields": {
+    "job_title": "Associate Engineering Manager",
+    "company": "The Guardian",
+    "deadline": null,
+    "job_url": "https://workforus.theguardian.com/jobs/kin0001w8",
+    "salary": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 5,
+  "fields": {
+    "job_title": "Full Stack Software Developer",
+    "company": "The Guardian",
+    "deadline": "2020-06-12",
+    "job_url": "https://workforus.theguardian.com/index.php/jobs/kin0001wk/",
+    "salary": 49600,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 6,
+  "fields": {
+    "job_title": "Junior Software Engineer",
+    "company": "Tractable",
+    "deadline": null,
+    "job_url": "https://tractable.ai/careers/?gh_jid=4733978002&gh_src=61bba8af2us",
+    "salary": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 7,
+  "fields": {
+    "job_title": "Remote Software Engineer",
+    "company": "GearSet",
+    "deadline": null,
+    "job_url": "https://hire.withgoogle.com/public/jobs/gearsetcom/view/P_AAAAABlAABxMeIZHAVF77S",
+    "salary": 32000,
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 8,
+  "fields": {
+    "job_title": "Junior Software Engineer",
+    "company": "Gousto",
+    "deadline": null,
+    "job_url": "https://apply.workable.com/gousto/j/3F214BA039/",
+    "salary": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+},
+{
+  "model": "jobs.job",
+  "pk": 9,
+  "fields": {
+    "job_title": "Front End Developer",
+    "company": "Nationwide Building Society",
+    "deadline": "2020-06-10",
+    "job_url": "https://www.nationwide-jobs.co.uk/jobs/r003000008-front-end-developer",
+    "salary": null,
+    "city": "London",
+    "country": "United Kingdom",
+    "status": 1
+  }
+}
+]

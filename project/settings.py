@@ -38,13 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'jwt_auth',
-    'resources',
+    # 'jwt_auth',
+    # 'resources',
     'job_status',
     'jobs',
-    'contacts',
-    'task_categories',
-    'tasks',
+    # 'contacts',
+    # 'task_categories',
+    # 'tasks',
 
 ]
 
@@ -129,12 +129,12 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'jwt_auth.authentication.JWTAuthentication'
-    ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'jwt_auth.authentication.JWTAuthentication'
+    # ],
 }
 
-AUTH_USER_MODEL = 'jwt_auth.User'
+# AUTH_USER_MODEL = 'jwt_auth.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

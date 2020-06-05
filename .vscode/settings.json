@@ -1,0 +1,10 @@
+{
+  "python.pythonPath": "/Users/emmaphillips/.local/share/virtualenvs/sei-project-4-vcasQGJg/bin/python",
+  "workbench.colorTheme": "Monokai",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#ca97f5",
+    "titleBar.activeBackground": "#ca97f5",
+    "titleBar.inactiveBackground": "#ca97f5",
+  },
+  "window.title": "Back-End",
+}
