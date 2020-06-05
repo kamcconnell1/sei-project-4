@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     # 'resources',
     'job_status',
     'jobs',
-    # 'contacts',
-    # 'task_categories',
-    # 'tasks',
+    'contacts',
+    'task_categories',
+    'tasks',
 
 ]
 
@@ -124,15 +124,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-REST_FRAMEWORK = { 
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    ],
-    # 'DEFAULT_AUTHENTICATION_CLASSES': [
-    #     'jwt_auth.authentication.JWTAuthentication'
-    # ],
-}
+# REST_FRAMEWORK = { 
+#     'DEFAULT_RENDERER_CLASSES': [
+#         'rest_framework.renderers.JSONRenderer',
+#         'rest_framework.renderers.BrowsableAPIRenderer',
+#     ],
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'jwt_auth.authentication.JWTAuthentication'
+#     ],
+# }
 
 # AUTH_USER_MODEL = 'jwt_auth.User'
 
