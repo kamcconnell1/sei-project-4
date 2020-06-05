@@ -10,6 +10,13 @@ class Contact(models.Model):
         related_name='created_contacts',
         on_delete=models.CASCADE
     )
+    job = models.ForeignKey(
+        'jobs.Job',
+        related_name='related_contacts',
+        on_delete=models.DO_NOTHING,
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return f'{self.name} - {self.job_title}'

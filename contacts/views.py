@@ -6,7 +6,7 @@ from rest_framework.exceptions import NotFound
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Contact
-from .serializers import ContactSerializer
+from .serializers import ContactSerializer, PopulatedContactSerializer
 
 #* List view for all contacts
 class ContactListView(APIView):
@@ -16,7 +16,7 @@ class ContactListView(APIView):
 #* GET all contacts
     def get(self, _request):
         contacts = Contact.objects.all()
-        serialized_contacts = ContactSerializer(contacts, many=True)
+        serialized_contacts = PopulatedContactSerializer(contacts, many=True)
         return Response(serialized_contacts.data, status=status.HTTP_200_OK)
 
 #* ADD a new contact

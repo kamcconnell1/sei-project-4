@@ -15,6 +15,13 @@ class Task(models.Model):
         related_name='created_tasks',
         on_delete=models.CASCADE
     )
+    job = models.ForeignKey(
+        'jobs.Job',
+        related_name='related_task',
+        on_delete=models.CASCADE,
+        blank=True,
+        null = True
+    )
     
     def __str__(self):
         return f'Task {self.id}'
