@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'rest_framework',
     'jwt_auth',
     'resources',
-    'job_status',
-    'jobs',
-    'contacts',
-    'task_categories',
-    'tasks',
+    # 'job_status',
+    # 'jobs',
+    # 'contacts',
+    # 'task_categories',
+    # 'tasks',
 
 ]
 
