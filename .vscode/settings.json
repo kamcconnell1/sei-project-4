@@ -1,0 +1,10 @@
+{
+  "python.pythonPath": "/Users/katiemcconnell/.local/share/virtualenvs/sei-project-4-C4HQJ6zO/bin/python",
+  "workbench.colorTheme": "Dracula Soft",
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#919ABF",
+    "titleBar.activeBackground": "#919ABF",
+    "titleBar.inactiveBackground": "#919ABF",
+  },
+  "window.title": "Back-End JOBR",
+}
