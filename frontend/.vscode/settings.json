@@ -1,9 +1,9 @@
 {
-  "workbench.colorTheme": "Quiet Light",
+  "workbench.colorTheme": "Dracula Soft",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#bf91b4",
-    "titleBar.activeBackground": "#bf91b4",
-    "titleBar.inactiveBackground": "#bf91b4",
+    "statusBar.background": "#139d78",
+    "titleBar.activeBackground": "#139d78",
+    "titleBar.inactiveBackground": "#139d78",
   },
   "window.title": "Front-end JOBR",
 }
