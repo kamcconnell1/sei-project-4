@@ -1,6 +1,7 @@
 import React from 'react'
+import { Button, Icon } from 'semantic-ui-react'
 
-class App extends React.Component{
+class App extends React.Component {
 
   async componentDidMount() {
     try {
@@ -9,14 +10,19 @@ class App extends React.Component{
       console.log(json)
     } catch (err) {
       console.log(err)
-    
+
     }
   }
 
 
-  render(){
+  render() {
     return (
-      <h1> Hello world </h1>
+      <Button animated>
+        <Button.Content visible>CHECKIng what happens if i put more words in</Button.Content>
+        <Button.Content hidden>
+          <Icon name='arrow right' />
+        </Button.Content>
+      </Button>
     )
   }
 }
