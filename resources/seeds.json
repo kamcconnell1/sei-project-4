@@ -1,0 +1,29 @@
+[
+{
+  "model": "resources.resource",
+  "pk": 1,
+  "fields": {
+    "url": "https://www.reed.co.uk/career-advice/how-to-write-a-cv/",
+    "title": "How to write a CV",
+    "owner": 2
+  }
+},
+{
+  "model": "resources.resource",
+  "pk": 2,
+  "fields": {
+    "url": "https://www.forbes.com/sites/dailymuse/2011/11/08/perfect-pitch-how-to-nail-your-elevator-speech/#6d62b30a7885",
+    "title": "How to nail your elevator pitch",
+    "owner": 3
+  }
+},
+{
+  "model": "resources.resource",
+  "pk": 3,
+  "fields": {
+    "url": "https://www.indeed.co.uk/career-advice/cvs-cover-letters/how-to-write-a-cover-letter",
+    "title": "How to write a cover letter",
+    "owner": 4
+  }
+}
+]
