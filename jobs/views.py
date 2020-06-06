@@ -11,11 +11,11 @@ from .serializers import JobSerializer, PopulatedJobSerializer
 
 class JobBoardView(APIView):
 
-    # permission_classes = (IsAuthenticated, )
+    permission_classes = (IsAuthenticated, )
 
     def get(self, request):
-        # jobs = Job.objects.filter(owner=request.user.id)
-        jobs = Job.objects.all()
+        jobs = Job.objects.filter(owner=request.user.id)
+        # jobs = Job.objects.all()
         serialized_jobs = PopulatedJobSerializer(jobs, many=True)
         return Response(serialized_jobs.data, status=status.HTTP_200_OK)
 
