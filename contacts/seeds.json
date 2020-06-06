@@ -8,7 +8,7 @@
     "phone": "07845979222",
     "email": "jenny@smith.co.uk",
     "owner": 2,
-    "job": 1
+    "job": null
   }
 },
 {
@@ -44,7 +44,7 @@
     "phone": "06783343567",
     "email": "jane@smith.com",
     "owner": 3,
-    "job": 1
+    "job": null
   }
 },
 {
@@ -56,7 +56,7 @@
     "phone": "04683 747 333",
     "email": "",
     "owner": 2,
-    "job": 2
+    "job": null
   }
 }
 ]
