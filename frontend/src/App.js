@@ -1,30 +1,18 @@
 import React from 'react'
-import { Button, Icon } from 'semantic-ui-react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-class App extends React.Component {
+import Home from './components/common/Home'
+import Login from './components/auth/Login'
 
-  async componentDidMount() {
-    try {
-      const res = await fetch('/api/jobs/')
-      const json = await res.json()
-      console.log(json)
-    } catch (err) {
-      console.log(err)
-
-    }
-  }
-
-
-  render() {
-    return (
-      <Button animated>
-        <Button.Content visible>CHECKIng what happens if i put more words in</Button.Content>
-        <Button.Content hidden>
-          <Icon name='arrow right' />
-        </Button.Content>
-      </Button>
-    )
-  }
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/login' component={Login} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App
