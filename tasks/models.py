@@ -17,7 +17,7 @@ class Task(models.Model):
     )
     job = models.ForeignKey(
         'jobs.Job',
-        related_name='related_task',
+        related_name='related_tasks',
         on_delete=models.CASCADE,
         blank=True,
         null = True

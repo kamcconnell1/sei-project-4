@@ -1,10 +1,10 @@
 {
-  "python.pythonPath": "/Users/katiemcconnell/.local/share/virtualenvs/sei-project-4-C4HQJ6zO/bin/python",
+  "python.pythonPath": "/Users/andy/.local/share/virtualenvs/sei-project-4-l3iQl9sG/bin/python",
   "workbench.colorTheme": "Default Dark+",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#ca97f5",
-    "titleBar.activeBackground": "#ca97f5",
-    "titleBar.inactiveBackground": "#ca97f5",
+    "statusBar.background": "#590f96",
+    "titleBar.activeBackground": "#590f96",
+    "titleBar.inactiveBackground": "#590f96",
   },
   "window.title": "Back-End",
 }
