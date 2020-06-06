@@ -8,7 +8,7 @@ class JobSerializer(serializers.ModelSerializer):
 
     class Meta: 
         model = Job
-        fields = ('job_title', 'company')
+        fields = ('job_title', 'company', 'owner')
 
 class JobStatusSerializer(serializers.ModelSerializer):
 

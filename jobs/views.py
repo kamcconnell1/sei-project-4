@@ -2,7 +2,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.exceptions import NotFound
+from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Job
@@ -14,7 +14,7 @@ class JobBoardView(APIView):
     permission_classes = (IsAuthenticated, )
 
     def get(self, request):
-        jobs = Job.objects.all()
+        jobs = Job.objects.filter(owner=request.user.id)
         serialized_jobs = PopulatedJobSerializer(jobs, many=True)
         return Response(serialized_jobs.data, status=status.HTTP_200_OK)
 
@@ -29,19 +29,28 @@ class JobBoardView(APIView):
 
 class JobDetailsView(APIView):
 
+    permission_classes = (IsAuthenticated, )
+
     def get_job(self, pk):
         try:
             return Job.objects.get(pk=pk)
         except Job.DoesNotExist:
             raise NotFound()
 
-    def get(self, requset, pk):
+    def is_job_owner(self, job, user):
+        if job.owner.id != user.id:
+            raise PermissionDenied()
+
+    def get(self, request, pk):
         job = self.get_job(pk)
+        self.is_job_owner(job, request.user)
         serialized_job = PopulatedJobSerializer(job)
         return Response(serialized_job.data, status=status.HTTP_200_OK)
 
     def put(self, request, pk):
         job_to_update = self.get_job(pk)
+        self.is_job_owner(job_to_update, request.user)
+        request.data['owner'] = request.user.id
         updated_job = JobSerializer(job_to_update, data=request.data)
         if updated_job.is_valid():
             updated_job.save()
@@ -50,5 +59,6 @@ class JobDetailsView(APIView):
 
     def delete(self, request, pk):
         job_to_delete = self.get_job(pk)
+        self.is_job_owner(job_to_delete, request.user)
         job_to_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

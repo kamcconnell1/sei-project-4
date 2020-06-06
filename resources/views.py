@@ -4,15 +4,16 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticated
-# from rest_framework.permissions import IsAuthenticated
 
 from .models import Resource
 from .serializers import ResourceSerializer
 
 class ResourceListView(APIView):
 
+    permission_classes = (IsAuthenticated, )
+
     def get(self, request):
-        resources = Resource.objects.all()
+        resources = Resource.objects.filter(owner=request.user.id)
         serialized_resources = ResourceSerializer(resources, many=True)
         return Response(serialized_resources.data, status=status.HTTP_200_OK)
 
