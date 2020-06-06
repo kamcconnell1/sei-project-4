@@ -15,8 +15,8 @@ class TaskListView(APIView):
     permission_classes = (IsAuthenticated, )
 
 #* GET all tasks
-    def get(self, _request):
-        tasks = Task.objects.all()
+    def get(self, request):
+        tasks = Task.objects.filter(owner=request.user.id)
         serialized_tasks = PopulatedTaskSerializer(tasks, many=True)
         return Response(serialized_tasks.data, status=status.HTTP_200_OK)
 
@@ -36,22 +36,31 @@ class TaskListView(APIView):
 #* Detail view of one task
 class TaskDetailView(APIView):
 
+    permission_classes = (IsAuthenticated, )
+
     def get_task(self,pk):
         try:
             return Task.objects.get(pk=pk)
         except Task.DoesNotExist:
             raise NotFound()
+
+    def is_task_owner(self, task, user):
+        if task.owner.id != user.id:
+            raise PermissionDenied()
         
 
 #* GET a single task
-    def get(self, _request, pk):
+    def get(self, request, pk):
         task = self.get_task(pk)
+        self.is_task_owner(task, request.user)
         serialized_task = PopulatedTaskSerializer(task)
         return Response(serialized_task.data)
 
 #* EDIT a task
     def put(self, request, pk):
         task_to_update = self.get_task(pk)
+        self.is_task_owner(task_to_update, request.user)
+        request.data['owner'] = request.user.id
         updated_task = TaskSerializer(task_to_update, data=request.data)
         if updated_task.is_valid():
             updated_task.save()
@@ -59,7 +68,8 @@ class TaskDetailView(APIView):
         return Response(updated_task.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 #* DELETE a task
-    def delete(self, _request, pk):
+    def delete(self, request, pk):
         task_to_delete = self.get_task(pk)
+        self.is_task_owner(task_to_delete, request.user)
         task_to_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

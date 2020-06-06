@@ -4,13 +4,20 @@ from job_status.serializers import JobStatusSerializer
 from .models import Job
 
 Task = apps.get_model('tasks', 'Task' )
+Contact = apps.get_model('contacts', 'Contact')
 
 class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('task_category', 'reminder_date', 'notes')
+        fields = ('id', 'task_category', 'reminder_date', 'notes')
 
+
+class ContactSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Contact
+        fields = ('id', 'name', 'job_title', 'phone', 'email')
 
 class JobSerializer(serializers.ModelSerializer):
 
@@ -20,5 +27,6 @@ class JobSerializer(serializers.ModelSerializer):
 
 class PopulatedJobSerializer(JobSerializer):
     status = JobStatusSerializer()
-    related_task = TaskSerializer(many=True)
+    related_tasks = TaskSerializer(many=True)
+    related_contacts = ContactSerializer(many=True)
     
