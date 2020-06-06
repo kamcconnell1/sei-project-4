@@ -1,0 +1,62 @@
+[
+{
+  "model": "contacts.contact",
+  "pk": 1,
+  "fields": {
+    "name": "Jenny Smith",
+    "job_title": "Software Engineer",
+    "phone": "07845979222",
+    "email": "jenny@smith.co.uk",
+    "owner": 2,
+    "job": 1
+  }
+},
+{
+  "model": "contacts.contact",
+  "pk": 2,
+  "fields": {
+    "name": "Jed Smith",
+    "job_title": "Senior Software Engineer",
+    "phone": "",
+    "email": "jed@smith.com",
+    "owner": 2,
+    "job": null
+  }
+},
+{
+  "model": "contacts.contact",
+  "pk": 3,
+  "fields": {
+    "name": "James Smith",
+    "job_title": "Software Engineer",
+    "phone": "07495 3636 22",
+    "email": "james@smith.com",
+    "owner": 4,
+    "job": null
+  }
+},
+{
+  "model": "contacts.contact",
+  "pk": 4,
+  "fields": {
+    "name": "Jane Smith",
+    "job_title": "Software Engineer",
+    "phone": "06783343567",
+    "email": "jane@smith.com",
+    "owner": 3,
+    "job": 1
+  }
+},
+{
+  "model": "contacts.contact",
+  "pk": 5,
+  "fields": {
+    "name": "John Smith",
+    "job_title": "Software Engineer",
+    "phone": "04683 747 333",
+    "email": "",
+    "owner": 2,
+    "job": 2
+  }
+}
+]

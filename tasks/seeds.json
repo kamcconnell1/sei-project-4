@@ -1,0 +1,38 @@
+[
+{
+  "model": "tasks.task",
+  "pk": 1,
+  "fields": {
+    "notes": "Add Task Categories",
+    "added_date": "2020-06-06",
+    "reminder_date": "2020-06-06",
+    "task_category": 2,
+    "owner": 3,
+    "job": 1
+  }
+},
+{
+  "model": "tasks.task",
+  "pk": 2,
+  "fields": {
+    "notes": "Create tasks",
+    "added_date": "2020-06-06",
+    "reminder_date": null,
+    "task_category": 6,
+    "owner": 2,
+    "job": 2
+  }
+},
+{
+  "model": "tasks.task",
+  "pk": 3,
+  "fields": {
+    "notes": "Add more tasks",
+    "added_date": "2020-06-06",
+    "reminder_date": "2020-06-06",
+    "task_category": 11,
+    "owner": 4,
+    "job": 3
+  }
+}
+]
