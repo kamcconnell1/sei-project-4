@@ -1,14 +1,22 @@
 import React from 'react'
-import { Form } from 'semantic-ui-react'
+import { Grid, Form, Header } from 'semantic-ui-react'
 
-function FormWrapper({ onSubmit, children }) {
+function FormWrapper({ textAlign, verticalAlign, titleSize, color, formTitle, onSubmit, children }) {
   return (
-    <Form
-      size='large' 
-      onSubmit={onSubmit}
-    >
-      {children}
-    </Form>
+
+    // !NOTE - if we want to change the height & maxWidth to props, have issues due to the double {{}} - I can always move the Grid & Grid.column back to the actual form pages if better 
+    <Grid textAlign={textAlign} style={{ height: '100vh' }} verticalAlign={verticalAlign}>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as={titleSize} color={color}>{formTitle}</Header>
+        <Form
+          size='large'
+          onSubmit={onSubmit}
+        >
+          {children}
+        </Form>
+      </Grid.Column>
+    </Grid>
+
   )
 }
 export default FormWrapper

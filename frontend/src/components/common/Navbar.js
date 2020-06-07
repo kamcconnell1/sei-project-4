@@ -26,6 +26,9 @@ class Navbar extends React.Component {
             <Menu.Item>
               <Link to="/login">Log In</Link>
             </Menu.Item>
+            <Menu.Item>
+              <Link to="/register">Register</Link>
+            </Menu.Item>
           </Container>
         </Menu>
       </div>

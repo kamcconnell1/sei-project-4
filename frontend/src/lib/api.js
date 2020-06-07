@@ -12,11 +12,15 @@ const withHeaders = () => {
 
 //* USER REQUESTS
 
-//? LOGIN  user
 export const loginUser = data => {
   return axios.post(`${baseUrl}/auth/login/`, data)
 }
 
+export const registerUser = data => {
+  console.log(data)
+  
+  return axios.post(`${baseUrl}/auth/register/`, data)
+}
 
 // * JOB REQUESTS
 

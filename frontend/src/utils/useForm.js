@@ -1,6 +1,6 @@
 import React from 'react'
 
-function useForm({ initialFormState = {}, submitFunction, submitParams = null, onSubmitSuccess = () => {} }) {
+function useForm( initialFormState = {}, submitFunction, submitParams = null, onSubmitSuccess = () => {} ) {
 
   // * Initial state 
   const [formData, setFormData] = React.useState(initialFormState)
@@ -18,12 +18,14 @@ function useForm({ initialFormState = {}, submitFunction, submitParams = null, o
 
   // * Handle submit function, on submitSuccess passed in as params 
   const handleSubmit = async event => {
-    event.preventDefault()
+    event.preventDefault()    
+    
     try {
       const response = await submitFunction(formData, submitParams)
       onSubmitSuccess(response)
     } catch (err) {
-      setFormErrors(err.response.data.errors)
+      console.log(err)
+      setFormErrors(err)
     }
   }
 
