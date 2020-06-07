@@ -17,8 +17,6 @@ export const loginUser = data => {
 }
 
 export const registerUser = data => {
-  console.log(data)
-  
   return axios.post(`${baseUrl}/auth/register/`, data)
 }
 

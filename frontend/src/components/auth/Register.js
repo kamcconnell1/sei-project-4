@@ -27,6 +27,8 @@ function Register() {
     passwordConfirmation: ''
   }, registerUser, null, onSubmitSuccess )
 
+  console.log(formErrors)
+
   return (
     <FormWrapper 
       textAlign='center'
@@ -38,7 +40,7 @@ function Register() {
       onSubmit={handleSubmit}
     >
       <FormInput 
-        error={formErrors.username}
+        error={!!formErrors}
         fluidIcon = 'user'
         iconPosition = 'left'
         placeholder= 'Username'
@@ -48,7 +50,7 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput 
-        error={formErrors.firstName}
+        // error={formErrors.firstName}
         fluidIcon = 'user'
         iconPosition = 'left'
         placeholder= 'First Name'
@@ -58,7 +60,7 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput 
-        error={formErrors.lastName}
+        // error={formErrors.lastName}
         fluidIcon = 'user'
         iconPosition = 'left'
         placeholder= 'Last Name'
@@ -68,7 +70,7 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput 
-        error={formErrors.email}
+        // error={formErrors.email}
         fluidIcon = 'user'
         iconPosition = 'left'
         placeholder= 'Email address'
@@ -78,7 +80,7 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput
-        error={formErrors.password}
+        // error={formErrors.password}
         fluidIcon ='lock'
         iconPosition ='left'
         placeholder='Password'
@@ -88,7 +90,7 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput
-        error={formErrors.passwordConfirmation}
+        // error={formErrors.passwordConfirmation}
         fluidIcon ='lock'
         iconPosition ='left'
         placeholder='Password Confirmation'

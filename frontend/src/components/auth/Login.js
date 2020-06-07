@@ -10,7 +10,7 @@ import { setToken } from '../../lib/auth'
 
 function Login() {
   //*State
-  const [formErrors, setError] = useState(null)
+  const [formError, setError] = useState(null)
 
   //* 'State' & props for useForm 
   const { formData, handleChange } = useForm({
@@ -44,7 +44,7 @@ function Login() {
       formTitle='Login Here'
       onSubmit={handleSubmit}>
       <FormInput 
-        formError={formErrors}
+        error={formError}
         fluidIcon = 'user'
         iconPosition = 'left'
         placeholder= 'Email address'
@@ -54,7 +54,7 @@ function Login() {
         onChange={handleChange}
       />
       <FormInput
-        error={formErrors}
+        error={formError}
         fluidIcon ='lock'
         iconPosition ='left'
         placeholder='Password'
