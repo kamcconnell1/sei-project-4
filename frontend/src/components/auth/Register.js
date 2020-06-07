@@ -14,7 +14,7 @@ function Register() {
   const onSubmitSuccess = response => {
     console.log(response, 'with token?') 
     setToken(response.data.token)
-    // history.push('/jobs')
+    history.push('/jobs')
   }
 
   //* initalFormState & props for useForm hook

@@ -126,8 +126,8 @@ USE_TZ = True
 
 REST_FRAMEWORK = { 
     'DEFAULT_RENDERER_CLASSES': [
-        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
-        'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'jwt_auth.authentication.JWTAuthentication'
