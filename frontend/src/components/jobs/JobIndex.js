@@ -35,7 +35,7 @@ class JobIndex extends React.Component {
               {this.state.jobs.map(job => {
                 if (job.status.id === 1) {
                   return (
-                    <h2 key={`jobindex${job.id}`}>{job.job_title}</h2>
+                    <JobIndexCard key={`jobindex${job.id}`} {...job}/>
                   )
                 }
               })}
