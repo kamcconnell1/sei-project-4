@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 const JobIndexCard = ({ job_title: jobTitle, company, city, country, id }) => {
   return (
     <Link to={`/jobs/${id}`}>
-      <div>
-        <h3>{jobTitle} - {company}</h3>
+      <div className="JobIndexCard">
+        <h3>{jobTitle}</h3>
+        <h3>{company}</h3>
         <h3>{city} - {country}</h3>
-        <hr />
       </div>
     </Link>
   )
