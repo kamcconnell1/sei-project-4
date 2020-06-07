@@ -12,7 +12,7 @@ class Navbar extends React.Component {
         <Menu >
           <Container>
             <Menu.Item>
-              <Link to="/jobs" className="button">Jobs</Link>
+              <Link to="/jobs">Jobs</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/tasks">Tasks</Link>
