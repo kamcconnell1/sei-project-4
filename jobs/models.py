@@ -39,7 +39,10 @@ class Job(models.Model):
     salary = models.IntegerField(null=True, blank=True)
     city = models.CharField(max_length=60)
     country = models.CharField(max_length=60)
-    description = models.TextField
+    description = models.TextField(
+        null=True,
+        blank=True
+    )
     last_modified = models.DateField(auto_now=True)
     status = models.ForeignKey(
         'job_status.JobStatus',
