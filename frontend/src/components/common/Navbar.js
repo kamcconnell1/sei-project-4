@@ -12,22 +12,22 @@ class Navbar extends React.Component {
         <Menu >
           <Container>
             <Menu.Item>
-              <Link to="/jobs">Jobs</Link>
+              <Link to="/jobs">J</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/tasks">Tasks</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/contacts">Contacts</Link>
+              <Link to="/contacts">Con</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/resources">Resources</Link>
+              <Link to="/resources">Res</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/login">Log In</Link>
+              <Link to="/login">Logn</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/register">Register</Link>
+              <Link to="/register">Reg</Link>
             </Menu.Item>
           </Container>
         </Menu>
