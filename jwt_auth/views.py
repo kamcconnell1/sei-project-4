@@ -17,6 +17,7 @@ class RegisterView(APIView):
         created_user = UserSerializer(data=request.data)
         if created_user.is_valid():
             created_user.save()
+            print(created_user.data)
             return Response({'message': 'Registration successful'}, status=status.HTTP_201_CREATED)
         return Response(created_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 

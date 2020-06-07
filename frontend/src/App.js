@@ -3,8 +3,9 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // Common imports
 import Home from './components/common/Home'
-import Login from './components/auth/Login'
 import Navbar from './components/common/Navbar'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 
 // Job imports
 import JobIndex from './components/jobs/JobIndex'
@@ -28,6 +29,7 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
         <Route path='/jobs/:id' component={JobShow} />
         <Route path='/jobs' component={JobIndex} />
         <Route path='/tasks/:id' component={TaskShow} />
