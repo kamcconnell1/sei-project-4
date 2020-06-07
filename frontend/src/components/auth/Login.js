@@ -59,7 +59,7 @@ function Login() {
             fluidIcon = 'user'
             iconPosition = 'left'
             placeholder= 'Email address'
-            value = {formData.email}
+            value = {formData.email || ''}
             type = 'text'
             name = 'email'
             onChange={handleChange}
@@ -69,7 +69,7 @@ function Login() {
             fluidIcon ='lock'
             iconPosition ='left'
             placeholder='Password'
-            value={formData.password}
+            value={formData.password || ''}
             type='password'
             name='password'
             onChange={handleChange}
