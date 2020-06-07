@@ -29,6 +29,8 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
     }
   }
 
+  console.log(formErrors)
+  
   return { formData, handleChange, setFormData, formErrors, setFormErrors, handleSubmit }
 }
 export default useForm
