@@ -4,12 +4,26 @@ import JobIndexCard from './JobIndexCard'
 
 class JobIndexBoard extends React.Component {
   render() {
-    const { jobData, status } = this.props
-    
+    const { jobData, status, handleBoardChangeMobile } = this.props
+
     return (
       <section className={`job-board ${status}`}>
         <div className="job-board-header">
-          <h1><small className="arrow-left">←</small>{status}<small className="arrow-right">→</small></h1>
+          <h1>
+            <button
+              onClick={handleBoardChangeMobile}
+              value='left'
+              name={status}
+              className="arrow-left"
+            >←</button>
+            {status}
+            <button
+              onClick={handleBoardChangeMobile}
+              value='right'
+              name={status}
+              className="arrow-right"
+            >→</button>
+          </h1>
         </div>
         <div className="job-board-content">
           {jobData.map(job => {

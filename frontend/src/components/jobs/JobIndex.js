@@ -4,10 +4,12 @@ import { getAllJobs } from '../../lib/api'
 // import JobIndexCard from './JobIndexCard'
 import JobIndexBoard from './JobIndexBoard'
 
+
+const statuses = ['wishlist', 'applied', 'interview', 'offer', 'rejected']
+
 class JobIndex extends React.Component {
   state = {
-    jobs: null,
-    statuses: ['wishlist', 'applied', 'interview', 'offer', 'rejected']
+    jobs: null
   }
 
   async componentDidMount() {
@@ -19,6 +21,21 @@ class JobIndex extends React.Component {
     }
   }
 
+  handleBoardChange = e => {
+    e.preventDefault()
+    console.log('I want to change board', e.target.value)
+  }
+
+  handleBoardChangeMobile = e => {
+    e.preventDefault()
+    if (e.target.value === 'left' && e.target.name === 'wishlist') {
+      console.log(e.target.value, 'TO:', statuses[statuses.length - 1])
+      
+    } else {
+      console.log(e.target.value, 'TO:', statuses[statuses.indexOf(e.target.name) + 1])
+    }
+    
+  }
   
 
   render() {
@@ -27,17 +44,30 @@ class JobIndex extends React.Component {
 
     return (
       <div className="JobIndex">
+        <div className="button-container">
+          <button
+            onClick={this.handleBoardChange}
+            value='Left'
+          >L</button>
+        </div>
+        <div className="button-container">
+          <button
+            onClick={this.handleBoardChange}
+          >R</button>
+        </div>
         <div className="job-boards">
-          {this.state.statuses.map((status => {
+          {statuses.map((status => {
             return (
               <JobIndexBoard
                 key={status}
                 jobData={this.state.jobs}
                 status={status}
+                handleBoardChangeMobile={this.handleBoardChangeMobile}
               />
             )
           }))}
         </div>
+
       </div>
     )
   }
