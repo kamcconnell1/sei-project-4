@@ -24,10 +24,10 @@ class Navbar extends React.Component {
               <Link to="/resources">R</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/login">Log In</Link>
+              <Link to="/login">Logn</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/register">Register</Link>
+              <Link to="/register">Reg</Link>
             </Menu.Item>
           </Container>
         </Menu>

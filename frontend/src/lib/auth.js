@@ -1,7 +1,15 @@
 //* Function to set users token when logged in local sotrage
 export const setToken = token => {
+  console.log(token)
+  console.log(snakeToCamel(token))
+  console.log(token)
   window.localStorage.setItem('token', token)
 }
+
+const snakeToCamel = (str) => str.replace(
+  /([-_][a-z])/g
+)
+
 
 export const getToken = () => {
   return window.localStorage.getItem('token')
@@ -15,7 +23,7 @@ export const getPayload = () => { // * returns the decoded data from the token o
   const token = getToken()
   if (!token) return false
   const parts = token.split('.')
-  if (parts.length < 3)  return false 
+  if (parts.length < 3) return false
   return JSON.parse(window.atob(parts[1]))
 }
 
