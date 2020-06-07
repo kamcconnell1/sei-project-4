@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { Header, Grid } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import useForm from '../../utils/useForm'
 import FormWrapper from '../common/FormWrapper'
@@ -32,46 +32,44 @@ function Login() {
   }
 
   return (
-    // <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-    //   <Grid.Column style={{ maxWidth: 450 }}>
-    //     <Header as='h2' color='pink'>Login Here</Header>
-    <FormWrapper 
-      textAlign='center'
-      verticalAlign='middle'
-      formWidth='450'
-      titleSize='h2'
-      color='pink'
-      formTitle='Login Here'
-      onSubmit={handleSubmit}>
-      <FormInput 
-        error={formError}
-        fluidIcon = 'user'
-        iconPosition = 'left'
-        placeholder= 'Email address'
-        value = {formData.email || ''}
-        type = 'text'
-        name = 'email'
-        onChange={handleChange}
-      />
-      <FormInput
-        error={formError}
-        fluidIcon ='lock'
-        iconPosition ='left'
-        placeholder='Password'
-        value={formData.password || ''}
-        type='password'
-        name='password'
-        onChange={handleChange}
-      />
-      <FormButton
-        fluidSize='large'
+    <div className='Login'>
+      <FormWrapper 
+        textAlign='center'
+        verticalAlign='middle'
+        formWidth='450'
+        titleSize='h2'
         color='pink'
-        buttonText='Login Now' 
-        type='submit'
-      ></FormButton>
-    </FormWrapper>
-    //   </Grid.Column>
-    // </Grid>
+        formTitle='Login Here'
+        onSubmit={handleSubmit}>
+        <FormInput 
+          error={formError}
+          fluidIcon = 'envelope'
+          iconPosition = 'left'
+          placeholder= 'Email address'
+          value = {formData.email || ''}
+          type = 'text'
+          name = 'email'
+          onChange={handleChange}
+        />
+        <FormInput
+          error={formError}
+          fluidIcon ='lock'
+          iconPosition ='left'
+          placeholder='Password'
+          value={formData.password || ''}
+          type='password'
+          name='password'
+          onChange={handleChange}
+        />
+        <FormButton
+          fluidSize='large'
+          color='pink'
+          buttonText='Login Now' 
+          type='submit'
+        ></FormButton>
+        <p>Dont have an account?<Link to="/register"> Sign Up</Link></p>
+      </FormWrapper>
+    </div>
   )
 }
 export default Login
