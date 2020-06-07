@@ -12,16 +12,16 @@ class Navbar extends React.Component {
         <Menu >
           <Container>
             <Menu.Item>
-              <Link to="/jobs">Jobs</Link>
+              <Link to="/jobs">J</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/tasks">Tasks</Link>
+              <Link to="/tasks">T</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/contacts">Contacts</Link>
+              <Link to="/contacts">C</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/resources">Resources</Link>
+              <Link to="/resources">R</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/login">Log In</Link>

@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const JobIndexCard = ({ job_title: jobTitle, company, city, country, id  }) => {
+const JobIndexCard = ({ job_title: jobTitle, company, city, country, id }) => {
   return (
     <Link to={`/jobs/${id}`}>
-      <h1>{jobTitle} - {company}</h1>
-      <h2>{city} - {country}</h2>
-      <hr/>
+      <div className="JobIndexCard">
+        <h3>{jobTitle}</h3>
+        <h3>{company}</h3>
+        <h3>{city} - {country}</h3>
+      </div>
     </Link>
   )
 }
