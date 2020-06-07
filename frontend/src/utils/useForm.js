@@ -4,7 +4,7 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
 
   // * Initial state 
   const [formData, setFormData] = React.useState(initialFormState)
-  const [formErrors, setFormErrors] = React.useState({})
+  const [formErrors, setFormErrors] = React.useState(initialFormState)
 
 
   //* HandleChange event for inputting values on form & sets them and the errors to state 
@@ -24,12 +24,10 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
       const response = await submitFunction(formData, submitParams)
       onSubmitSuccess(response)
     } catch (err) {
-      console.log(err)
-      setFormErrors(err)
+      console.log('response err', err)
+      setFormErrors(err.response.data.errors)
     }
   }
-
-  console.log(formErrors)
   
   return { formData, handleChange, setFormData, formErrors, setFormErrors, handleSubmit }
 }

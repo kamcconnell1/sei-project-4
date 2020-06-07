@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import useForm from '../../utils/useForm'
 import FormWrapper from '../common/FormWrapper'
@@ -12,22 +13,41 @@ function Register() {
   const history = useHistory()
 
   const onSubmitSuccess = response => {
-    console.log(response, 'with token?') 
     setToken(response.data.token)
     history.push('/jobs')
   }
 
-  //* initalFormState & props for useForm hook
-  const { formData, formErrors, handleChange, handleSubmit } = useForm({
+  //*State
+  const [formErrors, setError] = useState({
     username: '',
-    firstName: '', 
-    lastName: '', 
+    first_name: '', 
+    last_name: '', 
     email: '',
     password: '',
-    passwordConfirmation: ''
+    password_confirmation: ''
+  })
+
+  //* initalFormState & props for useForm hook
+  const { formData,  handleChange } = useForm({
+    username: '',
+    first_name: '', 
+    last_name: '', 
+    email: '',
+    password: '',
+    password_confirmation: ''
   }, registerUser, null, onSubmitSuccess )
 
-  console.log(formErrors)
+  //* HandleSubmit event for submitting the login form
+  const handleSubmit = async event => {
+    event.preventDefault()
+    try {
+      const res = await registerUser(formData)
+      setToken(res.data.token)
+      console.log(res, 'register success')
+    } catch (err) {
+      setError(err.response.data )
+    }
+  }
 
   return (
     <FormWrapper 
@@ -40,7 +60,7 @@ function Register() {
       onSubmit={handleSubmit}
     >
       <FormInput 
-        error={!!formErrors}
+        error={formErrors.username}
         fluidIcon = 'user'
         iconPosition = 'left'
         placeholder= 'Username'
@@ -50,28 +70,28 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput 
-        // error={formErrors.firstName}
-        fluidIcon = 'user'
+        error={formErrors.first_name}
+        fluidIcon = 'address card outline'
         iconPosition = 'left'
         placeholder= 'First Name'
-        value = {formData.firstName || ''}
+        value = {formData.first_name || ''}
         type = 'text'
-        name = 'firstName'
+        name = 'first_name'
         onChange={handleChange}
       />
       <FormInput 
-        // error={formErrors.lastName}
-        fluidIcon = 'user'
+        error={formErrors.last_name}
+        fluidIcon = 'address card'
         iconPosition = 'left'
         placeholder= 'Last Name'
-        value = {formData.lastName || ''}
+        value = {formData.last_name || ''}
         type = 'text'
-        name = 'lastName'
+        name = 'last_name'
         onChange={handleChange}
       />
       <FormInput 
-        // error={formErrors.email}
-        fluidIcon = 'user'
+        error={formErrors.email}
+        fluidIcon = 'envelope'
         iconPosition = 'left'
         placeholder= 'Email address'
         value = {formData.email || ''}
@@ -80,7 +100,7 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput
-        // error={formErrors.password}
+        error={formErrors.password}
         fluidIcon ='lock'
         iconPosition ='left'
         placeholder='Password'
@@ -90,13 +110,13 @@ function Register() {
         onChange={handleChange}
       />
       <FormInput
-        // error={formErrors.passwordConfirmation}
+        error={formErrors.password_confirmation}
         fluidIcon ='lock'
         iconPosition ='left'
         placeholder='Password Confirmation'
-        value={formData.passwordConfirmation || ''}
+        value={formData.password_confirmation || ''}
         type='password'
-        name='passwordConfirmation'
+        name='password_confirmation'
         onChange={handleChange}
       />
       <FormButton
@@ -105,6 +125,7 @@ function Register() {
         buttonText='Register Now' 
         type='submit'
       ></FormButton>
+      <p>Already have an account?<Link to="/login"> Log In</Link></p>
     </FormWrapper>
   )
 }
