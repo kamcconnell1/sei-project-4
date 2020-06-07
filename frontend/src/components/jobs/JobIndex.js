@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { getAllJobs } from '../../lib/api'
-// import JobIndexCard from './JobIndexCard'
+import JobIndexCard from './JobIndexCard'
 
 class JobIndex extends React.Component {
   state = {
@@ -23,6 +23,7 @@ class JobIndex extends React.Component {
 
     console.log(this.state.jobs)
 
+
     return (
       <div className="JobIndex">
         <div className="job-boards">
@@ -31,7 +32,13 @@ class JobIndex extends React.Component {
               <h1>Wishlist</h1>
             </div>
             <div className="job-board-content">
-              
+              {this.state.jobs.map(job => {
+                if (job.status.id === 1) {
+                  return (
+                    <h2 key={`jobindex${job.id}`}>{job.job_title}</h2>
+                  )
+                }
+              })}
             </div>
           </section>
           <section className="job-board applied">
@@ -39,6 +46,13 @@ class JobIndex extends React.Component {
               <h1>Applied</h1>
             </div>
             <div className="job-board-content">
+              {this.state.jobs.map(job => {
+                if (job.status.id === 2) {
+                  return (
+                    <h2 key={`jobindex${job.id}`}>{job.job_title}</h2>
+                  )
+                }
+              })}
             </div>
           </section>
           <section className="job-board interview">
@@ -46,6 +60,13 @@ class JobIndex extends React.Component {
               <h1>Interview</h1>
             </div>
             <div className="job-board-content">
+              {this.state.jobs.map(job => {
+                if (job.status.id === 3) {
+                  return (
+                    <h2 key={`jobindex${job.id}`}>{job.job_title}</h2>
+                  )
+                }
+              })}
             </div>
           </section>
           <section className="job-board offer">
@@ -53,6 +74,13 @@ class JobIndex extends React.Component {
               <h1>Offer</h1>
             </div>
             <div className="job-board-content">
+              {this.state.jobs.map(job => {
+                if (job.status.id === 4) {
+                  return (
+                    <h2 key={`jobindex${job.id}`}>{job.job_title}</h2>
+                  )
+                }
+              })}
             </div>
           </section>
           <section className="job-board rejected">
@@ -60,6 +88,13 @@ class JobIndex extends React.Component {
               <h1>Rejected</h1>
             </div>
             <div className="job-board-content">
+              {this.state.jobs.map(job => {
+                if (job.status.id === 5) {
+                  return (
+                    <h2 key={`jobindex${job.id}`}>{job.job_title}</h2>
+                  )
+                }
+              })}
             </div>
           </section>
         </div>
