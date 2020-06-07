@@ -13,6 +13,7 @@ psycopg2-binary = "*"
 pylint = "*"
 pyjwt = "*"
 djangorestframework = "*"
+djangorestframework-camel-case = "*"
 
 [requires]
 python_version = "3.7"
