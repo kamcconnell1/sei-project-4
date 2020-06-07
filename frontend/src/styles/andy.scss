@@ -1,3 +1,151 @@
-.test {
-  border: medium;
+$color1: #107d7e;
+$color2: #e25068;
+$color3: #ee5996;
+$color4: #ec6a32;
+$color5: #e2bca1;
+
+$font-title: "Permanent Marker", cursive;
+$font-content: "IBM Plex Mono", monospace;
+
+@media screen and (min-width: 260px) {
+  .JobIndex {
+    .job-boards {
+      display: flex;
+      flex-direction: row;
+      margin: 5vh 5vw;
+      width: 90vw;
+      height: 80vh;
+      .job-board {
+        width: 95vw;
+        margin: 0 0.5vw;
+        border-radius: 10px;
+        .job-board-header {
+          display: flex;
+          justify-content: center;
+          padding: 1vh;
+          h1 {
+            font-family: $font-title;
+            color: white;
+            text-shadow: 0 0 3px #888888;
+            font-size: 30px;
+          }
+        }
+      }
+      .wishlist {
+        background-color: $color1;
+      }
+      .applied {
+        background-color: $color2;
+        display: none;
+      }
+      .interview {
+        background-color: $color3;
+        display: none;
+      }
+      .offer {
+        background-color: $color4;
+        display: none;
+      }
+      .rejected {
+        background-color: $color5;
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .JobIndex {
+    .job-boards {
+      .job-board {
+        .job-board-header {
+          h1 {
+            font-size: 25px;
+          }
+        }
+      }
+      .wishlist {
+        display: block;
+      }
+      .applied {
+        display: block;
+      }
+      .interview {
+        display: none;
+      }
+      .offer {
+        display: none;
+      }
+      .rejected {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .JobIndex {
+    .job-boards {
+      .job-board {
+        .job-board-header {
+          h1 {
+            font-size: 25px;
+          }
+        }
+      }
+      .wishlist {
+        display: block;
+      }
+      .applied {
+        display: block;
+      }
+      .interview {
+        display: block;
+      }
+      .offer {
+        display: none;
+      }
+      .rejected {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .JobIndex {
+    .job-boards {
+      display: flex;
+      flex-direction: row;
+      margin: 5vh auto;
+      width: 95vw;
+      height: 80vh;
+      .job-board {
+        width: 18vw;
+        margin: 0 0.5vw;
+        height: 80vh;
+        border-radius: 10px;
+        .job-board-header {
+          h1 {
+            font-size: 25px;
+          }
+        }
+      }
+      .wishlist {
+        display: block;
+      }
+      .applied {
+        display: block;
+      }
+      .interview {
+        display: block;
+      }
+      .offer {
+        display: block;
+      }
+      .rejected {
+        display: block;
+      }
+    }
+  }
 }
