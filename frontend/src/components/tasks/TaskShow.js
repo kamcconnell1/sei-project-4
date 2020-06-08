@@ -20,15 +20,9 @@ class TaskShow extends React.Component {
 
   render() {
 
-    console.log(taskCategories)
-
-    this.getDate()
-    const { added_date, notes, reminder_date } = this.props
+    const { added_date, notes } = this.props
     const task_category = this.props.task_category.name
     const { company, job_title } = this.props.job
-    console.log(reminder_date)
-
-
     const daysDiff = this.getDate()
 
     return (
