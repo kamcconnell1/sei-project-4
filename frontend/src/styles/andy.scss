@@ -209,3 +209,30 @@ $font-content: "IBM Plex Mono", monospace;
 #navbar-logo {
   padding: 5px;
 }
+#navbar-btn1:hover {
+  background-color: $color1;
+  color: white;
+}
+#navbar-btn2:hover {
+  background-color: $color2;
+  color: white;
+}
+#navbar-btn3:hover {
+  background-color: $color3;
+  color: white;
+}
+#navbar-btn4:hover {
+  background-color: $color4;
+  color: white;
+}
+#navbar-btn5:hover {
+  background-color: $color1;
+  color: white;
+}
+#navbar-btn6:hover {
+  background-color: $color2;
+  color: white;
+}
+#navbar-account {
+  color: $color2;
+}
