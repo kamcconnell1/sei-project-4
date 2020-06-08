@@ -25,46 +25,62 @@ $font-content: "IBM Plex Mono", monospace;
         border-radius: 10px;
         .job-board-header {
           display: flex;
-          justify-content: center;
-          margin-top: 2vh;
+          justify-content: space-between;
+          margin: 5vw;
           padding: 1vh;
           h1 {
             font-family: $font-title;
             color: white;
             text-shadow: 0 0 3px #888888;
             font-size: 30px;
+            margin: 0;
           }
           .arrow-left {
-            margin-right: 20px;
+            font-size: 38px;
+            color: white;
+            background-color: transparent;
+            border: none;
           }
           .arrow-right {
-            margin-left: 20px;
+            font-size: 38px;
+            color: white;
+            background-color: transparent;
+            border: none;
+          }
+        }
+        .job-add-btn {
+          display: flex;
+          justify-content: center;
+          margin: 3vw 5vw;
+          padding: 5px;
+          background-color: white;
+          border-radius: 10px;
+          box-shadow: 0 0 5px #999999;
+          .add-btn {
+            font-family: $font-content;
+            font-size: 20px;
+            color: black;
           }
         }
         .job-board-content {
-          height: 67vh;
+          height: 57vh;
           overflow: auto;
         }
       }
       .wishlist {
         background-color: $color1;
-        display: none;
       }
       .applied {
         background-color: $color2;
-        display: none;
       }
       .interview {
         background-color: $color3;
-        display: none;
       }
       .offer {
         background-color: $color4;
-        display: none;
       }
       .rejected {
         background-color: $color5;
-        display: block;
       }
       .is-hidden {
         display: none;
@@ -94,6 +110,8 @@ $font-content: "IBM Plex Mono", monospace;
     .job-boards {
       .job-board {
         .job-board-header {
+          margin: 1vw;
+          justify-content: center;
           h1 {
             font-size: 25px;
           }
@@ -104,21 +122,9 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-      }
-      .wishlist {
-        display: block;
-      }
-      .applied {
-        display: block;
-      }
-      .interview {
-        display: none;
-      }
-      .offer {
-        display: none;
-      }
-      .rejected {
-        display: none;
+        .job-add-btn {
+          margin: 1vh 3vw;
+        }
       }
     }
     .JobIndexCard {
@@ -143,21 +149,9 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-      }
-      .wishlist {
-        display: block;
-      }
-      .applied {
-        display: block;
-      }
-      .interview {
-        display: block;
-      }
-      .offer {
-        display: none;
-      }
-      .rejected {
-        display: none;
+        .job-add-btn {
+          margin: 1vh 2vw;
+        }
       }
     }
     .JobIndexCard {
@@ -194,21 +188,9 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-      }
-      .wishlist {
-        display: block;
-      }
-      .applied {
-        display: block;
-      }
-      .interview {
-        display: block;
-      }
-      .offer {
-        display: block;
-      }
-      .rejected {
-        display: block;
+        .job-add-btn {
+          margin: 0.5vh 1vw;
+        }
       }
     }
     .JobIndexCard {

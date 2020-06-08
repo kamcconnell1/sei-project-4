@@ -1,83 +1,105 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import { getAllJobs } from '../../lib/api'
-// import JobIndexCard from './JobIndexCard'
+import useFetch from '../../utils/useFetch'
+import useWindowSize from '../../utils/useWindowSize'
 import JobIndexBoard from './JobIndexBoard'
+import { mobileView, smallTabletView, largeTabletView, desktopView } from '../../lib/boardViews'
+import { wishlistView, appliedView, interviewView, offerView, rejectedView } from '../../lib/mobileViews'
 
 
-const statuses = ['wishlist', 'applied', 'interview', 'offer', 'rejected']
 
-class JobIndex extends React.Component {
-  state = {
-    jobs: null,
-    width: null
-  }
+function JobIndex() {
+  const { data: jobs, loading, error } = useFetch(getAllJobs)
+  const { width } = useWindowSize()
+  const [statuses, setStatuses] = useState(desktopView)
 
-  async componentDidMount() {
-    try {
-      const res = await getAllJobs()
-      this.setState({ jobs: res.data, width: window.innerWidth })
-    } catch (err) {
-      console.log(err)
+  useEffect(() => {
+    if (width <= 480) {
+      setStatuses(mobileView)
+    } else if (width <= 768) {
+      setStatuses(smallTabletView)
+    } else if (width <= 1200) {
+      setStatuses(largeTabletView)
+    } else {
+      setStatuses(desktopView)
     }
-  }
+  }, [width])
 
-  handleBoardChange = e => {
-    e.preventDefault()
-    console.log('I want to change board', e.target.value)
-  }
+  // const handleBoardChange = e => {
+  //   e.preventDefault()
+  //   console.log('I want to change board', e.target.value)
+  // }
 
-  handleBoardChangeMobile = e => {
+  const handleBoardChangeMobile = e => {
     e.preventDefault()
     if (e.target.value === 'left' && e.target.name === 'wishlist') {
-      console.log(e.target.value, 'TO:', statuses[statuses.length - 1])
-    } else if (e.target.value === 'right' && e.target.name === 'rejected') {
-      console.log(e.target.value, 'TO:', statuses[0])
-    } else if (e.target.value === 'left') {
-      console.log(e.target.value, 'TO:', statuses[statuses.indexOf(e.target.name) - 1])
+      setStatuses(rejectedView)
+    } else if (e.target.value === 'right' && e.target.name === 'wishlist') {
+      setStatuses(appliedView)
+    } else if (e.target.value === 'left' && e.target.name === 'applied') {
+      setStatuses(wishlistView)
+    } else if (e.target.value === 'right' && e.target.name === 'applied') {
+      setStatuses(interviewView)
+    } else if (e.target.value === 'left' && e.target.name === 'interview') {
+      setStatuses(appliedView)
+    } else if (e.target.value === 'right' && e.target.name === 'interview') {
+      setStatuses(offerView)
+    } else if (e.target.value === 'left' && e.target.name === 'offer') {
+      setStatuses(interviewView)
+    } else if (e.target.value === 'right' && e.target.name === 'offer') {
+      setStatuses(rejectedView)
+    } else if (e.target.value === 'left' && e.target.name === 'rejected') {
+      setStatuses(offerView)
     } else {
-      console.log(e.target.value, 'TO:', statuses[statuses.indexOf(e.target.name) + 1])
+      setStatuses(wishlistView)
     }
-    
   }
-  
 
-  render() {
-
-    if (!this.state.jobs) return null
-
-    console.log(this.state.width)
-    
-
-    return (
-      <div className="JobIndex">
-        <div className="button-container">
-          <button
-            onClick={this.handleBoardChange}
-            value='Left'
-          >L</button>
-        </div>
-        <div className="button-container">
-          <button
-            onClick={this.handleBoardChange}
-          >R</button>
-        </div>
-        <div className="job-boards">
-          {statuses.map((status => {
-            return (
-              <JobIndexBoard
-                key={status}
-                jobData={this.state.jobs}
-                status={status}
-                handleBoardChangeMobile={this.handleBoardChangeMobile}
-              />
-            )
-          }))}
-        </div>
-
-      </div>
-    )
+  if (error) {
+    return <Redirect to="/notfound" />
   }
+
+  if (!jobs) return null
+
+  return (
+
+    <>
+      {loading ?
+        <h1>LOADING</h1>
+        :
+        <div className="JobIndex">
+
+
+          {/* <div className="button-container">
+            <button
+              onClick={handleBoardChange}
+              value='Left'
+            >L</button>
+          </div>
+          <div className="button-container">
+            <button
+              onClick={handleBoardChange}
+            >R</button>
+          </div> */}
+          <div className="job-boards">
+            {statuses.map((status => {
+              return (
+                <JobIndexBoard
+                  key={status.name}
+                  jobData={jobs}
+                  status={status}
+                  handleBoardChangeMobile={handleBoardChangeMobile}
+                />
+              )
+            }))}
+          </div>
+        </div>
+      }
+    </>
+  )
+
 }
 
 export default JobIndex
