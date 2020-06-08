@@ -40,3 +40,11 @@ export const editJob = (id, data) => {
 export const getAllTasks = () => {
   return axios.get(`${baseUrl}/tasks/`, withHeaders())
 }
+
+export const getSingleTask = id => {
+  return axios.get(`${baseUrl}/tasks/${id}`, withHeaders())
+}
+
+export const editTask = (id, data) => {
+  return axios.put(`${baseUrl}/tasks/${id}/`, data, withHeaders())
+}

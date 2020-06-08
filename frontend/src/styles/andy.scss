@@ -10,6 +10,9 @@ $font-content: "IBM Plex Mono", monospace;
 @media screen and (min-width: 260px) {
   .JobIndex {
     width: 100%;
+    .button-container {
+      display: none;
+    }
     .job-boards {
       display: flex;
       flex-direction: row;
@@ -22,24 +25,45 @@ $font-content: "IBM Plex Mono", monospace;
         border-radius: 10px;
         .job-board-header {
           display: flex;
-          justify-content: center;
-          margin-top: 2vh;
+          justify-content: space-between;
+          margin: 5vw;
           padding: 1vh;
           h1 {
             font-family: $font-title;
             color: white;
             text-shadow: 0 0 3px #888888;
             font-size: 30px;
+            margin: 0;
           }
           .arrow-left {
-            margin-right: 20px;
+            font-size: 38px;
+            color: white;
+            background-color: transparent;
+            border: none;
           }
           .arrow-right {
-            margin-left: 20px;
+            font-size: 38px;
+            color: white;
+            background-color: transparent;
+            border: none;
+          }
+        }
+        .job-add-btn {
+          display: flex;
+          justify-content: center;
+          margin: 3vw 5vw;
+          padding: 5px;
+          background-color: white;
+          border-radius: 10px;
+          box-shadow: 0 0 5px #999999;
+          .add-btn {
+            font-family: $font-content;
+            font-size: 20px;
+            color: black;
           }
         }
         .job-board-content {
-          height: 70vh;
+          height: 57vh;
           overflow: auto;
         }
       }
@@ -48,18 +72,17 @@ $font-content: "IBM Plex Mono", monospace;
       }
       .applied {
         background-color: $color2;
-        display: none;
       }
       .interview {
         background-color: $color3;
-        display: none;
       }
       .offer {
         background-color: $color4;
-        display: none;
       }
       .rejected {
         background-color: $color5;
+      }
+      .is-hidden {
         display: none;
       }
     }
@@ -72,7 +95,7 @@ $font-content: "IBM Plex Mono", monospace;
       h3 {
         color: black;
         font-family: $font-content;
-        font-size: 14px;
+        font-size: 12px;
         margin: 0;
       }
     }
@@ -81,34 +104,27 @@ $font-content: "IBM Plex Mono", monospace;
 
 @media screen and (min-width: 480px) {
   .JobIndex {
+    .button-container {
+      display: block;
+    }
     .job-boards {
       .job-board {
         .job-board-header {
+          margin: 1vw;
+          justify-content: center;
           h1 {
             font-size: 25px;
           }
           .arrow-left {
-            margin-right: 10px;
+            display: none;
           }
           .arrow-right {
-            margin-left: 10px;
+            display: none;
           }
         }
-      }
-      .wishlist {
-        display: block;
-      }
-      .applied {
-        display: block;
-      }
-      .interview {
-        display: none;
-      }
-      .offer {
-        display: none;
-      }
-      .rejected {
-        display: none;
+        .job-add-btn {
+          margin: 1vh 3vw;
+        }
       }
     }
     .JobIndexCard {
@@ -127,27 +143,15 @@ $font-content: "IBM Plex Mono", monospace;
             font-size: 25px;
           }
           .arrow-left {
-            margin-right: 20px;
+            display: none;
           }
           .arrow-right {
-            margin-left: 20px;
+            display: none;
           }
         }
-      }
-      .wishlist {
-        display: block;
-      }
-      .applied {
-        display: block;
-      }
-      .interview {
-        display: block;
-      }
-      .offer {
-        display: none;
-      }
-      .rejected {
-        display: none;
+        .job-add-btn {
+          margin: 1vh 2vw;
+        }
       }
     }
     .JobIndexCard {
@@ -159,6 +163,9 @@ $font-content: "IBM Plex Mono", monospace;
 
 @media screen and (min-width: 1200px) {
   .JobIndex {
+    .button-container {
+      display: none;
+    }
     .job-boards {
       display: flex;
       flex-direction: row;
@@ -181,21 +188,9 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-      }
-      .wishlist {
-        display: block;
-      }
-      .applied {
-        display: block;
-      }
-      .interview {
-        display: block;
-      }
-      .offer {
-        display: block;
-      }
-      .rejected {
-        display: block;
+        .job-add-btn {
+          margin: 0.5vh 1vw;
+        }
       }
     }
     .JobIndexCard {
