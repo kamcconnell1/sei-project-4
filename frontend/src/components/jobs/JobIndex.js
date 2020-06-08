@@ -30,7 +30,10 @@ class JobIndex extends React.Component {
     e.preventDefault()
     if (e.target.value === 'left' && e.target.name === 'wishlist') {
       console.log(e.target.value, 'TO:', statuses[statuses.length - 1])
-      
+    } else if (e.target.value === 'right' && e.target.name === 'rejected') {
+      console.log(e.target.value, 'TO:', statuses[0])
+    } else if (e.target.value === 'left') {
+      console.log(e.target.value, 'TO:', statuses[statuses.indexOf(e.target.name) - 1])
     } else {
       console.log(e.target.value, 'TO:', statuses[statuses.indexOf(e.target.name) + 1])
     }

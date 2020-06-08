@@ -48,7 +48,7 @@ $font-content: "IBM Plex Mono", monospace;
       }
       .wishlist {
         background-color: $color1;
-        display: block;
+        display: none;
       }
       .applied {
         background-color: $color2;
@@ -64,7 +64,7 @@ $font-content: "IBM Plex Mono", monospace;
       }
       .rejected {
         background-color: $color5;
-        display: none;
+        display: block;
       }
       .is-hidden {
         display: none;
