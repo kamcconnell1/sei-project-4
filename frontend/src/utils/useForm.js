@@ -8,8 +8,9 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
 
 
   //* HandleChange event for inputting values on form & sets them and the errors to state 
-  const handleChange = ({ target: { name, value } }) => {
-    const updatedFormData = { ...formData, [name]: value }
+  const handleChange = ({ target: { name, value, type, checked } }) => {
+    const newValue = type === 'checkbox' ? checked : value
+    const updatedFormData = { ...formData, [name]: newValue }
     const updatedErrors = { ...formErrors, [name]: '' }
   
     setFormData(updatedFormData)

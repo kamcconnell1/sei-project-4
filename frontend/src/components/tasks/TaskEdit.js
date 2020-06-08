@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import React, { useState } from 'react'
 import { Link, Redirect, useHistory, useParams } from 'react-router-dom'
-import { Grid, Icon, Label, Checkbox, Form } from 'semantic-ui-react'
+import { Grid, Icon, Label, Checkbox, Form  } from 'semantic-ui-react'
 
 import useFetch from '../../utils/useFetch'
 import useForm from '../../utils/useForm'
@@ -50,7 +50,7 @@ function TaskEdit() {
   }
 
   const { company, job_title } = formData.job
-  const { added_date, notes, reminder_date } = formData
+  const { added_date, notes, reminder_date, completed } = formData
   const task_category = formData.task_category.name
   const date = GetDate(reminder_date)
   console.log(formErrors)
@@ -72,10 +72,13 @@ function TaskEdit() {
               <Label color='pink'>{task_category}</Label>
             </Grid.Column>
             <Grid.Column width={1}>
-              <Checkbox />
+              <Checkbox 
+                checked={completed}
+              />
             </Grid.Column>
             <Grid.Column width={11} textAlign='right'>
-              {company}: {job_title}
+              <p className={completed === true ? 'taskCompleted' : ''}>
+                {company}: {job_title}</p>
             </Grid.Column>
             <Grid.Column width={2} textAlign='right'>
               {date}

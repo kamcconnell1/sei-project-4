@@ -1,6 +1,6 @@
 {
   "python.pythonPath": "/Users/andy/.local/share/virtualenvs/sei-project-4-l3iQl9sG/bin/python",
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Dracula Soft",
   "workbench.colorCustomizations": {
     "statusBar.background": "#590f96",
     "titleBar.activeBackground": "#590f96",

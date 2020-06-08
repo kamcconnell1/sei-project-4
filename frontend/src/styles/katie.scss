@@ -7,3 +7,6 @@ $font-content: "IBM Plex Mono", monospace;
 #form-button {
   font-family: $font-content;
 }
+.taskCompleted {
+  text-decoration: line-through;
+}
