@@ -37,7 +37,7 @@ function Login() {
         textAlign='center'
         verticalAlign='middle'
         formWidth='450'
-        titleSize='h2'
+        titleSize='h1'
         color='pink'
         formTitle='Login Here'
         onSubmit={handleSubmit}>

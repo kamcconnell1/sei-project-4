@@ -33,3 +33,9 @@ export const getSingleJob = id => {
 export const editJob = (id, formData) => {
   return axios.put(`${baseUrl}/jobs/${id}`, formData, withHeaders())
 }
+
+// * TASK REQUESTS
+
+export const getAllTasks = () => {
+  return axios.get(`${baseUrl}/tasks/`, withHeaders())
+}

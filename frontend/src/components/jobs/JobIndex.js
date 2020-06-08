@@ -9,13 +9,14 @@ const statuses = ['wishlist', 'applied', 'interview', 'offer', 'rejected']
 
 class JobIndex extends React.Component {
   state = {
-    jobs: null
+    jobs: null,
+    width: null
   }
 
   async componentDidMount() {
     try {
       const res = await getAllJobs()
-      this.setState({ jobs: res.data })
+      this.setState({ jobs: res.data, width: window.innerWidth })
     } catch (err) {
       console.log(err)
     }
@@ -44,6 +45,9 @@ class JobIndex extends React.Component {
   render() {
 
     if (!this.state.jobs) return null
+
+    console.log(this.state.width)
+    
 
     return (
       <div className="JobIndex">

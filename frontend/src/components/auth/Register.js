@@ -54,7 +54,7 @@ function Register() {
       textAlign='center'
       verticalAlign='middle'
       formWidth='450'
-      titleSize='h2'
+      titleSize='h1'
       color='pink'
       formTitle='Register Here'
       onSubmit={handleSubmit}
