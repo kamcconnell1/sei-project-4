@@ -5,6 +5,7 @@ class Task(models.Model):
     notes = models.CharField(max_length=1000)
     added_date = models.DateField(auto_now_add=True)
     reminder_date = models.DateField(null=True, blank=True)
+    completed = models.BooleanField()
     task_category = models.ForeignKey(
         'task_categories.TaskCategory',
         related_name='tasks',
