@@ -1,10 +1,10 @@
 import React from 'react'
 
-function useForm( initialFormState = {}, submitFunction, submitParams = null, onSubmitSuccess = () => {} ) {
+function useForm(initialFormState = {}, submitFunction, submitParams = null, onSubmitSuccess = () => {}) {
 
   // * Initial state 
   const [formData, setFormData] = React.useState(initialFormState)
-  const [formErrors, setFormErrors] = React.useState(initialFormState)
+  const [formErrors, setFormErrors] = React.useState({})
 
 
   //* HandleChange event for inputting values on form & sets them and the errors to state 
@@ -17,15 +17,13 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
     setFormErrors(updatedErrors)
   }
 
-  console.log(formData)
-
 
   // * Handle submit function, on submitSuccess passed in as params 
   const handleSubmit = async event => {
     event.preventDefault()    
     
     try {
-      const response = await submitFunction(formData, submitParams)
+      const response = await submitFunction(submitParams, formData)
       onSubmitSuccess(response)
     } catch (err) {
       console.log('response err', err)

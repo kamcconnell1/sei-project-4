@@ -2,6 +2,7 @@ import React from 'react'
 import { Form } from 'semantic-ui-react'
 
 function FormInput( {  error, fluidIcon, iconPosition, type, name, value, placeholder, onChange }) {
+  
   return (
     <Form.Input 
       error={ error ? error : null }

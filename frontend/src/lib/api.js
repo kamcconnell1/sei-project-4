@@ -27,11 +27,11 @@ export const getAllJobs = () => {
 }
 
 export const getSingleJob = id => {
-  return axios.get(`${baseUrl}/jobs/${id}`, withHeaders())
+  return axios.get(`${baseUrl}/jobs/${id}/`, withHeaders())
 }
 
-export const editJob = (id, formData) => {
-  return axios.put(`${baseUrl}/jobs/${id}`, formData, withHeaders())
+export const editJob = (id, data) => {
+  return axios.put(`${baseUrl}/jobs/${id}/`, data, withHeaders())
 }
 
 // * TASK REQUESTS

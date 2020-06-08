@@ -29,4 +29,7 @@ class PopulatedJobSerializer(JobSerializer):
     status = JobStatusSerializer()
     related_tasks = TaskSerializer(many=True)
     related_contacts = ContactSerializer(many=True)
+
+class PopulatedJobSerializerWithStatusDictionary(JobSerializer):
+    status = JobStatusSerializer()
     
