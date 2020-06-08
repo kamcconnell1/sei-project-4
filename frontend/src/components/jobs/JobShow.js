@@ -7,14 +7,13 @@ import useForm from '../../utils/useForm'
 import PageContainer from '../common/PageContainer'
 import FormWrapper from '../common/FormWrapper'
 import FormInput from '../common/FormInput'
+import FormButton from '../common/FormButton'
 
 function JobShow() {
   const { id: jobId } = useParams()
   const history = useHistory()
 
   const { data: job, loading, error } = useFetch(getSingleJob, jobId)
-
-  console.log(job)
 
   const onSubmitSuccess = () => {
     history.push(`/jobs/${jobId}`)
@@ -32,7 +31,10 @@ function JobShow() {
     salary: null,
     city: '',
     country: '',
-    status: null
+    status: {
+      id: null,
+      name: ''
+    }
   }, editJob, jobId, onSubmitSuccess)
 
   React.useEffect(() => {
@@ -45,38 +47,153 @@ function JobShow() {
     console.log(error)
   }
 
+  console.log(job)
+
   return (
     <PageContainer>
       {loading ?
         'LOADING'
         :
         <FormWrapper
-          textAlign='center'
+          textAlign='left'
           verticalAlign='middle'
           formWidth='300'
           color='orange'
           onSubmit={handleSubmit}
         >
           <h1>{job.job_title}</h1>
-          <FormInput 
-            error={formErrors.job_title}
-            placeholder='Job title'
-            value={formData.job_title || ''}
-            type='text'
-            name='job_title'
-            onChange={handleChange}
-          />
-          <FormInput 
-            error={formErrors.company}
-            placeholder='Company'
-            value={formData.company || ''}
-            type='text'
-            name='company' 
-            onChange={handleChange}
-          />
+          <div className='field'>
+            <label>Job title</label>
+            <FormInput
+              error={formErrors.job_title}
+              placeholder='Job title'
+              value={formData.job_title || ''}
+              type='text'
+              name='job_title'
+              onChange={handleChange}
+              className='fluid'
+            />
+          </div>
+          <div className='field'>
+            <label>Company</label>
+            <FormInput
+              error={formErrors.company}
+              placeholder='Company'
+              value={formData.company || ''}
+              type='text'
+              name='company'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Application deadline</label>
+            <FormInput
+              error={formErrors.application_deadline}
+              placeholder='Date'
+              value={formData.application_deadline || ''}
+              type='date'
+              name='application_deadline'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Application submitted</label>
+            <FormInput
+              error={formErrors.application_submitted}
+              placeholder='Date'
+              value={formData.application_submitted || ''}
+              type='date'
+              name='application_submitted'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Interview date</label>
+            <FormInput
+              error={formErrors.interview_date}
+              placeholder='Date'
+              value={formData.interview_date || ''}
+              type='date'
+              name='interview_date'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Offer accepted</label>
+            <FormInput
+              error={formErrors.offer_acceptance_date}
+              placeholder='Date'
+              value={formData.offer_acceptance_date || ''}
+              type='date'
+              name='offer_acceptance_date'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Job URL</label>
+            <FormInput
+              error={formErrors.job_url}
+              placeholder='Enter link'
+              value={formData.job_url || ''}
+              type='text'
+              name='job_url'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Salary</label>
+            <FormInput
+              error={formErrors.salary}
+              placeholder='Salary'
+              value={formData.salary || ''}
+              type='text'
+              name='salary'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>City</label>
+            <FormInput
+              error={formErrors.city}
+              placeholder='City'
+              value={formData.city || ''}
+              type='text'
+              name='city'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Country</label>
+            <FormInput
+              error={formErrors.country}
+              placeholder='Country'
+              value={formData.country || ''}
+              type='text'
+              name='country'
+              onChange={handleChange}
+            />
+          </div>
+          <div className='field'>
+            <label>Status</label>
+            <select 
+              className='selection dropdown'
+              name='status'
+              value={formData.status.name}
+              onChange={handleChange}
+            >
+              <option value={formData.status.name}>{formData.status.name}</option>
+              <option value='Applied'>Applied</option>
+            </select>
+          </div>
+          <FormButton
+            fluidSize='large'
+            color='orange'
+            buttonText='Update'
+            type='submit'
+          ></FormButton>
         </FormWrapper>
       }
-    </PageContainer>
+    </PageContainer >
   )
 
 }
