@@ -23,7 +23,7 @@ function JobShow() {
   const { formData, handleChange, setFormData, formErrors, handleSubmit } = useForm({
     job_title: '',
     company: '',
-    application_deadline: '',
+    application_deadline: null,
     application_submitted: null,
     interview_date: null,
     job_offer_date: null,

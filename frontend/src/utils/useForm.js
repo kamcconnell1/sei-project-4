@@ -9,7 +9,6 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
 
   //* HandleChange event for inputting values on form & sets them and the errors to state 
   const handleChange = ({ target: { name, value } }) => {
-    console.log(value)
     const updatedFormData = { ...formData, [name]: value }
     const updatedErrors = { ...formErrors, [name]: '' }
   
@@ -17,11 +16,8 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
     setFormErrors(updatedErrors)
   }
 
-  console.log(formData)
-
 
   // * Handle submit function, on submitSuccess passed in as params 
-  // ! BUG
   const handleSubmit = async event => {
     event.preventDefault()    
     

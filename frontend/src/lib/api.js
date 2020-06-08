@@ -31,7 +31,6 @@ export const getSingleJob = id => {
 }
 
 export const editJob = (id, data) => {
-  console.log(id, data)
   return axios.put(`${baseUrl}/jobs/${id}/`, data, withHeaders())
 }
 
