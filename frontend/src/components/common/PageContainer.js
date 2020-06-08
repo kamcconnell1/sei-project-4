@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react'
 function PageContainer({ children }) {
   return (
     <div>
-      <Container fluid textAlign='center'>
+      <Container as='section' className='section' textAlign='center'>
         {children}
       </Container>
     </div>

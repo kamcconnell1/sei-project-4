@@ -7,6 +7,11 @@ $color5: #e2bca1;
 $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
-.button.orange-button {
-  background-color: $color4;
+h1,
+  .ui.header {
+    font-family: $font-title;
+}
+
+section.ui.section {
+  width: 600px;
 }

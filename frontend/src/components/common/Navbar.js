@@ -65,7 +65,7 @@ class Navbar extends React.Component {
                       </Dropdown.Item>
                     </Link>
                   </>}
-                {isAuthenticated() && <Dropdown.Item i onClick={this.handleLogout} >
+                {isAuthenticated() && <Dropdown.Item onClick={this.handleLogout} >
                   Log Out
                 </Dropdown.Item>}
               </Dropdown.Menu>

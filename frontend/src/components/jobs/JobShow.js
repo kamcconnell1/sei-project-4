@@ -26,26 +26,34 @@ function JobShow() {
   return (
     <PageContainer>
       <Segment.Group>
-        <Segment textAlign='left' color='orange'>
+        <Segment textAlign='left'>
           <Header as='h1' textAlign='center'>{job.job_title}</Header>
           <Grid stackable columns={3}>
             <GridRow stretched>
-              <GridColumn width={6}>
+              <GridColumn width={12}>
                 <Header size='small'>Job title</Header>
                 <Segment>
                   <p>{job.job_title}</p>
-                </Segment>
-              </GridColumn>
-              <GridColumn width={6}>
-                <Header size='small'>Company</Header>
-                <Segment>
-                  <p>{job.company}</p>
                 </Segment>
               </GridColumn>
               <GridColumn width={4}>
                 <Header size='small'>Application deadline</Header>
                 <Segment>
                   <p>{job.application_deadline ? job.application_deadline : 'No date'}</p>
+                </Segment>
+              </GridColumn>
+            </GridRow>
+            <GridRow>
+              <GridColumn width={12}>
+                <Header size='small'>Company</Header>
+                <Segment>
+                  <p>{job.company}</p>
+                </Segment>
+              </GridColumn>
+              <GridColumn width={4}>
+                <Header size='small'>Application submitted</Header>
+                <Segment>
+                  <p>{job.application_submitted ? job.application_submitted : 'No date'}</p>
                 </Segment>
               </GridColumn>
             </GridRow>
@@ -63,9 +71,9 @@ function JobShow() {
                 </Segment>
               </GridColumn>
               <GridColumn width={4}>
-                <Header size='small'>Application submitted</Header>
+                <Header size='small'>Interview date</Header>
                 <Segment>
-                  <p>{job.application_submitted ? job.application_submitted : 'No date'}</p>
+                  <p>{job.interview_date ? job.interview_date : 'No date'}</p>
                 </Segment>
               </GridColumn>
             </GridRow>
@@ -77,29 +85,29 @@ function JobShow() {
                 </Segment>
               </GridColumn>
               <GridColumn width={4}>
-                <Header size='small'>Interview date</Header>
+                <Header size='small'>Job offer date</Header>
                 <Segment>
-                  <p>{job.interview_date ? job.interview_date : 'No date'}</p>
+                  <p>{job.job_offer_date ? job.application_submitted : 'No date'}</p>
                 </Segment>
               </GridColumn>
             </GridRow>
             <GridRow stretched>
-              <GridColumn width={4}>
-                <Header size='small'>City</Header>
+              <GridColumn width={6}>
+                <Header size='small'>Salary</Header>
                 <Segment>
-                  <p>{job.city}</p>
+                  <p>{job.salary}</p>
                 </Segment>
               </GridColumn>
-              <GridColumn width={8}>
-                <Header size='small'>Country</Header>
+              <GridColumn width={6}>
+                <Header size='small'>Status</Header>
                 <Segment>
-                  <p>{job.country}</p>
+                  <p>{job.status.name}</p>
                 </Segment>
               </GridColumn>
               <GridColumn width={4}>
-                <Header size='small'>Application submitted</Header>
+                <Header size='small'>Offer accepted</Header>
                 <Segment>
-                  <p>{job.application_submitted ? job.application_submitted : 'No date'}</p>
+                  <p>{job.offer_accepted ? job.application_submitted : 'No date'}</p>
                 </Segment>
               </GridColumn>
             </GridRow>
