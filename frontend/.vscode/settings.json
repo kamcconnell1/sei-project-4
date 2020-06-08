@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "workbench.colorTheme": "Quiet Light",
-=======
-  "workbench.colorTheme": "Dracula Soft",
->>>>>>> development
   "workbench.colorCustomizations": {
     "statusBar.background": "#139d78",
     "titleBar.activeBackground": "#139d78",

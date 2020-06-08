@@ -1,0 +1,9 @@
+$font-title: "Permanent Marker", cursive;
+$font-content: "IBM Plex Mono", monospace;
+
+#header-font {
+  font-family: $font-title;
+}  
+#form-button {
+  font-family: $font-content;
+}

@@ -7,7 +7,7 @@ function FormWrapper({ textAlign, verticalAlign, titleSize, color, formTitle, on
     // !NOTE - if we want to change the height & maxWidth to props, have issues due to the double {{}} - I can always move the Grid & Grid.column back to the actual form pages if better 
     <Grid textAlign={textAlign} style={{ height: '100vh' }} verticalAlign={verticalAlign}>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as={titleSize} color={color}>{formTitle}</Header>
+        <Header id="header-font" as={titleSize} color={color}>{formTitle}</Header>
         <Form
           size='large'
           onSubmit={onSubmit}
