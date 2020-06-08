@@ -15,14 +15,14 @@ class JobIndexBoard extends React.Component {
             value='left'
             name={status.name}
             className="arrow-left"
-          >←</button>
+          >&lt;</button>
           <h1>{status.name}</h1>
           <button
             onClick={handleBoardChangeMobile}
             value='right'
             name={status.name}
             className="arrow-right"
-          >→</button>
+          >&gt;</button>
         </div>
         <div className='job-add-btn'>
           <Link to='/jobs/new/' className='add-btn'>+</Link>
