@@ -47,3 +47,7 @@ export const getSingleTask = id => {
 export const editTask = (id, data) => {
   return axios.put(`${baseUrl}/tasks/${id}/`, data, withHeaders())
 }
+
+export const deleteTask = id => {
+  return axios.delete(`${baseUrl}/tasks/${id}/`, withHeaders())
+}
