@@ -13,7 +13,7 @@ import JobShow from './components/jobs/JobShow'
 
 // Task imports
 import TaskIndex from './components/tasks/TaskIndex'
-import TaskShow from './components/tasks/TaskShow'
+import TaskEdit from './components/tasks/TaskEdit'
 
 // Contact imports
 import ContactIndex from './components/contacts/ContactIndex'
@@ -32,7 +32,7 @@ const App = () => {
         <Route path='/register' component={Register} />
         <Route path='/jobs/:id' component={JobShow} />
         <Route path='/jobs' component={JobIndex} />
-        <Route path='/tasks/:id' component={TaskShow} />
+        <Route path='/tasks/:id' component={TaskEdit} />
         <Route path='/tasks' component={TaskIndex} />
         <Route path='/contacts/:id' component={ContactShow} />
         <Route path='/contacts' component={ContactIndex} />

@@ -16,6 +16,9 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
     setFormErrors(updatedErrors)
   }
 
+  console.log(formData)
+
+
   // * Handle submit function, on submitSuccess passed in as params 
   const handleSubmit = async event => {
     event.preventDefault()    
@@ -25,7 +28,7 @@ function useForm( initialFormState = {}, submitFunction, submitParams = null, on
       onSubmitSuccess(response)
     } catch (err) {
       console.log('response err', err)
-      setFormErrors(err.response.data.errors)
+      // setFormErrors(err.response.data.errors)
     }
   }
   
