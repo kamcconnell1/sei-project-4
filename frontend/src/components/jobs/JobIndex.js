@@ -70,8 +70,6 @@ function JobIndex() {
         <h1>LOADING</h1>
         :
         <div className="JobIndex">
-
-
           {/* <div className="button-container">
             <button
               onClick={handleBoardChange}

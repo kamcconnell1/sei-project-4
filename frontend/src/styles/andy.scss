@@ -36,13 +36,13 @@ $font-content: "IBM Plex Mono", monospace;
             margin: 0;
           }
           .arrow-left {
-            font-size: 38px;
+            font-size: 28px;
             color: white;
             background-color: transparent;
             border: none;
           }
           .arrow-right {
-            font-size: 38px;
+            font-size: 28px;
             color: white;
             background-color: transparent;
             border: none;
@@ -51,7 +51,7 @@ $font-content: "IBM Plex Mono", monospace;
         .job-add-btn {
           display: flex;
           justify-content: center;
-          margin: 3vw 5vw;
+          margin: 4vw 5vw;
           padding: 5px;
           background-color: white;
           border-radius: 10px;
@@ -191,6 +191,9 @@ $font-content: "IBM Plex Mono", monospace;
         .job-add-btn {
           margin: 0.5vh 1vw;
         }
+        .job-board-content {
+          height: 60vh;
+        }
       }
     }
     .JobIndexCard {
@@ -201,4 +204,8 @@ $font-content: "IBM Plex Mono", monospace;
       }
     }
   }
+}
+
+#navbar-logo {
+  padding: 5px;
 }
