@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+// import { DateInput } from 'semantic-ui-calendar-react'
 import { getSingleJob, editJob } from '../../lib/api'
 import useFetch from '../../utils/useFetch'
 import useForm from '../../utils/useForm'
@@ -16,13 +17,13 @@ function JobShow() {
   const { data: job, loading, error } = useFetch(getSingleJob, jobId)
 
   const onSubmitSuccess = () => {
-    history.push(`/jobs/${jobId}`)
+    history.push(`/jobs/${jobId}/`)
   }
 
   const { formData, handleChange, setFormData, formErrors, handleSubmit } = useForm({
     job_title: '',
     company: '',
-    application_deadline: null,
+    application_deadline: '',
     application_submitted: null,
     interview_date: null,
     job_offer_date: null,
@@ -31,15 +32,12 @@ function JobShow() {
     salary: null,
     city: '',
     country: '',
-    status: {
-      id: null,
-      name: ''
-    }
+    status: null
   }, editJob, jobId, onSubmitSuccess)
 
   React.useEffect(() => {
     if (job) {
-      setFormData(job)
+      setFormData({ ...job, status: job.status.id })
     }
   }, [job, setFormData])
 
@@ -47,17 +45,15 @@ function JobShow() {
     console.log(error)
   }
 
-  console.log(job)
-
   return (
     <PageContainer>
       {loading ?
         'LOADING'
         :
         <FormWrapper
-          textAlign='left'
+          textAlign='center'
           verticalAlign='middle'
-          formWidth='300'
+          formWidth='450'
           color='orange'
           onSubmit={handleSubmit}
         >
@@ -85,21 +81,21 @@ function JobShow() {
               onChange={handleChange}
             />
           </div>
-          <div className='field'>
+          {/* <div className='field'>
             <label>Application deadline</label>
-            <FormInput
+            <DateInput
               error={formErrors.application_deadline}
               placeholder='Date'
               value={formData.application_deadline || ''}
-              type='date'
+              type='text'
               name='application_deadline'
               onChange={handleChange}
             />
-          </div>
+          </div> */}
+          {/* 
           <div className='field'>
             <label>Application submitted</label>
-            <FormInput
-              error={formErrors.application_submitted}
+            <DateInput
               placeholder='Date'
               value={formData.application_submitted || ''}
               type='date'
@@ -184,7 +180,7 @@ function JobShow() {
               <option value={formData.status.name}>{formData.status.name}</option>
               <option value='Applied'>Applied</option>
             </select>
-          </div>
+          </div> */}
           <FormButton
             fluidSize='large'
             color='orange'
