@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import useForm from '../../utils/useForm'
 import FormWrapper from '../common/FormWrapper'
@@ -43,7 +42,7 @@ function Register() {
     try {
       const res = await registerUser(formData)
       setToken(res.data.token)
-      console.log(res, 'register success')
+      history.push('/jobs')
     } catch (err) {
       setError(err.response.data )
     }

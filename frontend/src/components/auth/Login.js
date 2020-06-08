@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import useForm from '../../utils/useForm'
 import FormWrapper from '../common/FormWrapper'
@@ -11,7 +11,8 @@ import { setToken } from '../../lib/auth'
 function Login() {
   //*State
   const [formError, setError] = useState(null)
-
+  const history = useHistory()
+  
   //* 'State' & props for useForm 
   const { formData, handleChange } = useForm({
     email: '',
@@ -25,7 +26,7 @@ function Login() {
     try {
       const res = await loginUser(formData)
       setToken(res.data.token)
-      console.log(res, 'logged in success')
+      history.push('/jobs')
     } catch (err) {
       setError('Invalid Credentials' )
     }
