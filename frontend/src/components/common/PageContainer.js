@@ -1,12 +1,13 @@
 import React from 'react'
+import { Container } from 'semantic-ui-react'
 
 function PageContainer({ children }) {
   return (
-    <section className="section">
-      <div className="container">
+    <div>
+      <Container fluid textAlign='center'>
         {children}
-      </div>
-    </section>
+      </Container>
+    </div>
   )
 }
 
