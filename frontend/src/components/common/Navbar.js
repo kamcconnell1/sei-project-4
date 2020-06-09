@@ -23,7 +23,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <Menu size='small' position='right' borderless secondary>
+        <Menu size='small' position='right' borderless >
           <Container >
             <Dropdown item simple text='Menu' >
               <Dropdown.Menu>
