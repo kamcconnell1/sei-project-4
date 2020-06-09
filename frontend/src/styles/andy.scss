@@ -7,7 +7,47 @@ $color5: #e2bca1;
 $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
-@media screen and (min-width: 260px) {
+
+// !GLOBAL STYLE
+
+// * Navbar
+#navbar-logo {
+  padding: 5px;
+}
+#navbar-btn1:hover {
+  background-color: $color1;
+  color: white;
+}
+#navbar-btn2:hover {
+  background-color: $color2;
+  color: white;
+}
+#navbar-btn3:hover {
+  background-color: $color3;
+  color: white;
+}
+#navbar-btn4:hover {
+  background-color: $color4;
+  color: white;
+}
+#navbar-btn5:hover {
+  background-color: $color1;
+  color: white;
+}
+#navbar-btn6:hover {
+  background-color: $color2;
+  color: white;
+}
+#navbar-account {
+  color: $color2;
+}
+
+
+
+@media screen and (min-width: 160px) {
+
+  // * Job Index
+
   .JobIndex {
     width: 100%;
     .button-container {
@@ -100,9 +140,52 @@ $font-content: "IBM Plex Mono", monospace;
       }
     }
   }
+
+  // * Contact Index
+
+  .search-box {
+    margin: 3vh 7vw;
+  }
+  .contact-add-btn {
+    margin: 3vh 7vw;
+  }
+
+  .ContactIndex {
+    margin: 5vh 3vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .contact-card {
+      font-family: $font-content;
+      font-size: 11px;
+      width: 85vw;
+      height: 30vh;
+      margin: 3vw;
+      padding: 1.5vw;
+      // border: 1px solid black;
+      box-shadow: 1px 1px 5px #999999;
+      border-radius: 10px;
+      p {
+        margin: 0;
+      }
+      .contact-card-header {
+        background-color: $color2;
+        padding: 3vw;
+        border-radius: 10px;
+        color: white;
+      }
+      .contact-card-content {
+        padding: 3vw;
+      }
+    }
+  }
+
+
 }
 
 @media screen and (min-width: 480px) {
+
+
   .JobIndex {
     .button-container {
       display: block;
@@ -132,9 +215,29 @@ $font-content: "IBM Plex Mono", monospace;
       padding: 3vw;
     }
   }
+
+
+  .ContactIndex {
+    .contact-card {
+      width: 40vw;
+      height: 30vh;
+      margin: 2vw;
+      .contact-card-header {
+        background-color: $color2;
+        padding: 1.5vw;
+        border-radius: 10px;
+        color: white;
+      }
+      .contact-card-content {
+        padding: 1.5vw;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 768px) {
+
+
   .JobIndex {
     .job-boards {
       .job-board {
@@ -157,6 +260,25 @@ $font-content: "IBM Plex Mono", monospace;
     .JobIndexCard {
       margin: 2vw;
       padding: 2vw;
+    }
+  }
+
+
+  .ContactIndex {
+    .contact-card {
+      width: 25vw;
+      height: 30vh;
+      margin: 2vw;
+      padding: 1vw;
+      .contact-card-header {
+        background-color: $color2;
+        padding: 1vw;
+        border-radius: 10px;
+        color: white;
+      }
+      .contact-card-content {
+        padding: 1vw;
+      }
     }
   }
 }
@@ -204,35 +326,15 @@ $font-content: "IBM Plex Mono", monospace;
       }
     }
   }
+
+  .ContactIndex {
+    .contact-card {
+      width: 18vw;
+      height: 30vh;
+      margin: 1vw;
+      padding: .5vw;
+    }
+  }
 }
 
-#navbar-logo {
-  padding: 5px;
-}
-#navbar-btn1:hover {
-  background-color: $color1;
-  color: white;
-}
-#navbar-btn2:hover {
-  background-color: $color2;
-  color: white;
-}
-#navbar-btn3:hover {
-  background-color: $color3;
-  color: white;
-}
-#navbar-btn4:hover {
-  background-color: $color4;
-  color: white;
-}
-#navbar-btn5:hover {
-  background-color: $color1;
-  color: white;
-}
-#navbar-btn6:hover {
-  background-color: $color2;
-  color: white;
-}
-#navbar-account {
-  color: $color2;
-}
+
