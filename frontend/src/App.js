@@ -11,6 +11,7 @@ import Register from './components/auth/Register'
 import JobIndex from './components/jobs/JobIndex'
 import JobShow from './components/jobs/JobShow'
 import JobNew from './components/jobs/JobNew'
+import JobEdit from './components/jobs/JobEdit'
 
 // Task imports
 import TaskIndex from './components/tasks/TaskIndex'
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/jobs/new' component={JobNew} />
+        <Route path='/jobs/:id/edit' component={JobEdit} />
         <Route path='/jobs/:id' component={JobShow} />
         <Route path='/jobs' component={JobIndex} />
         <Route path='/tasks/:id' component={TaskEdit} />

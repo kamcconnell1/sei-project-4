@@ -1,0 +1,17 @@
+$color1: #107d7e;
+$color2: #e25068;
+$color3: #ee5996;
+$color4: #ec6a32;
+$color5: #e2bca1;
+
+$font-title: "Permanent Marker", cursive;
+$font-content: "IBM Plex Mono", monospace;
+
+h1,
+  .ui.header {
+    font-family: $font-title;
+}
+
+section.ui.section {
+  width: 600px;
+}
