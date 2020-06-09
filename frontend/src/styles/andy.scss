@@ -214,11 +214,25 @@ $font-content: "IBM Plex Mono", monospace;
         margin: 0;
       }
       .resource-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         background-color: $color4;
         padding: 3vw;
         border-radius: 10px;
         color: white;
         font-weight: bold;
+        .delete-resource-btn {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          margin: 0;
+          color: white;
+        }
+        .delete-resource-btn:active, .delete-resource-btn:focus {
+          border: none;
+          outline: 0;
+        }
       }
       .resource-card-content {
         padding: 3vw;

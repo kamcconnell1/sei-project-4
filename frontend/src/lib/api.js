@@ -65,3 +65,11 @@ export const getAllContacts = () => {
 export const getAllResources = () => {
   return axios.get(`${baseUrl}/resources`, withHeaders())
 }
+
+export const addNewResource = data => {
+  return axios.post(`${baseUrl}/resources/`, data, withHeaders())
+}
+
+export const deleteResource = id => {
+  return axios.delete(`${baseUrl}/resources/${id}/`, withHeaders())
+}
