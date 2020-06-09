@@ -7,6 +7,16 @@ $font-content: "IBM Plex Mono", monospace;
 #form-button {
   font-family: $font-content;
 }
-.taskCompleted {
+.overdue {
+  color: red;
+}
+.due {
+  color: green;
+}
+.uncompleted-tasks {
+
+}
+.completed-tasks{
+  color: grey;
   text-decoration: line-through;
 }
