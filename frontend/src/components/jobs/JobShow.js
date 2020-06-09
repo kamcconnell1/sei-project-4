@@ -81,7 +81,7 @@ function JobShow() {
               <Grid.Column width={12}>
                 <Header size='small'>URL</Header>
                 <Segment>
-                  <p>{job.job_url}</p>
+                  <a href={job.job_url} target='_blank' rel='opener noreferrer'><p>{job.job_url}</p></a>
                 </Segment>
               </Grid.Column>
               <Grid.Column width={4} only='computer tablet'>
