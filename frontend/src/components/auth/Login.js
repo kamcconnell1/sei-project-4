@@ -9,9 +9,8 @@ import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 
 function Login() {
-  //*State
-  const [formError, setError] = useState(null)
   const history = useHistory()
+  const [formError, setError] = useState(null)
   
   //* 'State' & props for useForm 
   const { formData, handleChange } = useForm({

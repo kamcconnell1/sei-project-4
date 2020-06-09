@@ -105,7 +105,7 @@ function TaskEdit() {
               </Grid.Column>
               <Grid.Column width={11} textAlign='right'>
                 <Segment vertical>
-                  <p className={completed === true ? 'taskCompleted' : ''}>
+                  <p className={completed === true ? 'completed-tasks' : ''}>
                     {company}: {job_title}</p>
                 </Segment>
               </Grid.Column>
