@@ -1,8 +1,5 @@
 //* Function to set users token when logged in local sotrage
 export const setToken = token => {
-  console.log(token)
-  console.log(snakeToCamel(token))
-  console.log(token)
   window.localStorage.setItem('token', token)
 }
 

@@ -13,7 +13,7 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
     const newValue = (type === 'checkbox' ? completed : value)   
     const updatedFormData = { ...formData, [name]: newValue }
     const updatedErrors = { ...formErrors, [name]: '' }
-  
+    
     setFormData(updatedFormData)
     setFormErrors(updatedErrors)
   }
@@ -36,7 +36,7 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
   const handleSubmit = async event => {
     event.preventDefault()    
     try {
-      const response = await submitFunction(formData, submitParams)
+      const response = await submitFunction(formData,submitParams)
       onSubmitSuccess(response)
     } catch (err) {
       setFormErrors(err.response.data)
