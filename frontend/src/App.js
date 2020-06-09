@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // Common imports
 import Home from './components/common/Home'
 import Navbar from './components/common/Navbar'
+import ErrorPage from './components/common/ErrorPage'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 
@@ -41,6 +42,7 @@ const App = () => {
         <Route path='/contacts/:id' component={ContactShow} />
         <Route path='/contacts' component={ContactIndex} />
         <Route path='/resources' component={ResourcesIndex} />
+        <Route path="/*" component={ErrorPage} />
       </Switch>
     </BrowserRouter>
   )
