@@ -16,8 +16,8 @@ export const loginUser = data => {
   return axios.post(`${baseUrl}/auth/login/`, data)
 }
 
-export const registerUser = data => {
-  return axios.post(`${baseUrl}/auth/register/`, data)
+export const registerUser = (_, data) => {
+  return axios.post(`${baseUrl}/auth/register/`,_,  data)
 }
 
 // * JOB REQUESTS

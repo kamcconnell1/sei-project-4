@@ -1,11 +1,14 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { Grid, Icon, Checkbox, Form, Button  } from 'semantic-ui-react'
+import { Grid, Icon, Checkbox, Form, Button, Segment } from 'semantic-ui-react'
+import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import useFetch from '../../utils/useFetch'
 import useForm from '../../utils/useForm'
+import useDelete from '../../utils/useDelete'
 import { getSingleTask, editTask, deleteTask } from '../../lib/api'
+import PageContainer from '../common/PageContainer'
 import GetDate from '../common/GetDate'
 import FormInput from '../common/FormInput'
 import FormButton from '../common/FormButton'
@@ -14,14 +17,19 @@ import { taskCategories } from './TaskCategories'
 
 
 function TaskEdit() {
-  const { id: taskId } = useParams()
   const history = useHistory()
-
-  // const [state, setState] = React.useState(initialState)
-  // const [formErrors, setError] = useState('')
+  const { id: taskId } = useParams()
   const { data: task } = useFetch(getSingleTask, taskId)
+  const { deleteItem } = useDelete(deleteTask, taskId, 'tasks')
 
-  const { formData, handleChange, setFormData } = useForm({
+  
+  // * Function to occur if the page edit has gone through 
+  const onSubmitSuccess = () => {
+    history.push('/tasks/')
+  }
+
+  // * Values & functions taken from useForm & props passed to useForm
+  const { formData, handleChange, setFormData, selectDropdown, handleDateChange, handleSubmit } = useForm({
     id: '',
     notes: '',
     added_date: '',
@@ -31,62 +39,25 @@ function TaskEdit() {
       company: '',
       job_title: ''
     }
-  })
+  }, editTask, taskId, onSubmitSuccess)
 
+  //* Funtion to get the information on page load 
   React.useEffect(() => {
     if (task) {
       setFormData({
-        ...task, 
+        ...task,
         job: task.job.id,
-        task_category: task.task_category.id })
+        task_category: task.task_category.id
+      })
     }
   }, [task, setFormData])
 
-  // const getPageData = async(id) => {
-  //   try {
-  //     const res = await getSingleTask(id)
-  //     console.log(res)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
-
-  
-  
-  const toggleCheckbox = async() => {
+  //* Toggle form checkbox (doesn't update state until submit button pressed)
+  const toggleCheckbox = async () => {
     setFormData({ ...formData, completed: !formData.completed })
   }
-  
-  const selectDopdown = (event, result ) => {
-    const { name, value } = result || event.target
-    setFormData({ ...formData, [name]: value })
-  }
 
-  const deleteItem = async () => {
-    try {
-      await deleteTask(taskId)
-      history.push('/tasks')
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  const handleSubmit = async event => {
-    event.preventDefault()
-    try {
-      const res = await editTask(formData.id, formData)
-      console.log(res, 'edit success')
-
-    } catch (err) {
-      // setError(err.response.data )
-      console.log(err)
-    }
-  }
-
-
-
-
-  if (!task) return null 
+  if (!task) return null
   if (!task.job) return null
   const { company, job_title } = task.job
   const { added_date, notes, reminder_date, completed } = formData
@@ -94,85 +65,126 @@ function TaskEdit() {
   const date = GetDate(reminder_date)
 
   return (
+    <PageContainer>
+      <Form size='large' onSubmit={handleSubmit}>
+        <Segment.Group >
+          {/* TASK - HEADER */}
+          <Grid stackable textAlign='left' verticalAlign='middle'  >
 
-    <div className="TaskEdit">
-      <Form
-        size='large'
-        onSubmit={handleSubmit}
-      >
-        {/* TASK - HEADER */}
-        <Grid celled textAlign='left' verticalAlign='middle' style={{ maxWidth: 900 }} >
-          <Grid.Row >
-            <Grid.Column width={2}>
-              <TaskLabel 
-                category={task_category} />
-            </Grid.Column>
-            <Grid.Column width={1}>
-              <Checkbox 
-                checked={completed}
-                onChange={toggleCheckbox}
-              />
-            </Grid.Column>
-            <Grid.Column width={11} textAlign='right'>
-              <p className={completed === true ? 'taskCompleted' : ''}>
-                {company}: {job_title}</p>
-            </Grid.Column>
-            <Grid.Column width={2} textAlign='right'>
-              {date}
-            </Grid.Column>
-          </Grid.Row>
+            {/* <Grid.Row  only='mobile'>
+              <Segment.Group horizontal>
+                <Grid.Column>
+                  <Segment ><TaskLabel
+                    category={task_category} /></Segment>
+                </Grid.Column>
+                <Grid.Column>
+                  <Segment>
+                    <Checkbox
+                      checked={completed}
+                      onChange={toggleCheckbox}
+                    />
+                  </Segment>
+                </Grid.Column>
+              </Segment.Group>
+            </Grid.Row> */}
+          
+            <Grid.Row >
+              <Grid.Column width={2}>
+                <Segment vertical>
+                  <TaskLabel
+                    category={task_category} />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={1}>
+                <Segment vertical>
+                  <Checkbox
+                    checked={completed}
+                    onChange={toggleCheckbox}
+                  />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={11} textAlign='right'>
+                <Segment vertical>
+                  <p className={completed === true ? 'taskCompleted' : ''}>
+                    {company}: {job_title}</p>
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={2} textAlign='right'>
+                <Segment vertical>
+                  {date}
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
 
-          {/* TASK-CONTENT */}
-          <Grid.Row >
-            <Grid.Column width={14}>
-              <FormInput
-                // error={formErrors.first_name}
-                fluidIcon='pencil alternate'
-                iconPosition='left'
-                placeholder='Notes'
-                value={notes || ''}
-                type='text'
-                name='notes'
-                onChange={handleChange}
-              />
-            </Grid.Column>
-            <Grid.Column width={2}>
-              <FormButton
-                // fluidSize='large'
-                color='pink'
-                buttonText='Update' 
-                type='submit'
-              ></FormButton>
-            </Grid.Column>
-          </Grid.Row>
+            {/* TASK-CONTENT */}
+            <Grid.Row >
+              <Grid.Column width={14}>
+                <Segment>
+                  <FormInput
+                    // error={formErrors.first_name}
+                    fluidIcon='pencil alternate'
+                    iconPosition='left'
+                    placeholder='Notes'
+                    value={notes || ''}
+                    type='text'
+                    name='notes'
+                    onChange={handleChange}
+                  />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={2}>
+                <Segment>
+                  <FormButton
+                    // fluidSize='large'
+                    color='pink'
+                    buttonText='Update'
+                    type='submit'
+                  ></FormButton>
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
 
-          {/* TASK-FOOTER */}
-          <Grid.Row>
-            <Grid.Column width={1}>
-              <Icon name='calendar alternate' size='large' />
-            </Grid.Column>
-            <Grid.Column width={7}>
-            Added: {added_date}
-            </Grid.Column>
-            <Grid.Column width={6}>
-              <Form.Dropdown
-                search
-                selection
-                placeholder='Update Task Type'
-                name='task_category'
-                options={taskCategories} 
-                onChange={selectDopdown}
-              />
-            </Grid.Column>
-            <Grid.Column width={2}>
-              <Button type='button' icon inverted color='red' onClick={deleteItem}>
-                <Icon  name='trash alternate' size='large' />
-              </Button>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+            {/* TASK-FOOTER */}
+            <Grid.Row>
+              <Grid.Column width={1}>
+                <Segment>
+                  <Icon name='calendar alternate' size='large' />
+                  
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={7}>
+                <Segment>
+                  {/* Added: {added_date} */}
+                  Reminder Date: <SemanticDatepicker onChange={handleDateChange}
+                    name='reminder_date'
+                    format='DD-MM-YYYY'
+                  />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={6}>
+                <Segment>
+                  <Form.Dropdown
+                    search
+                    selection
+                    placeholder='Update Task Type'
+                    name='task_category'
+                    options={taskCategories}
+                    onChange={selectDropdown}
+                  />
+                </Segment>
+              </Grid.Column>
+              <Grid.Column width={2}>
+                <Segment>
+                  <Button type='button' icon inverted color='red' onClick={deleteItem}>
+                    <Icon name='trash alternate' size='large' />
+                  </Button>
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment.Group>
       </Form>
-    </div>
+    </PageContainer>
   )
 }
 

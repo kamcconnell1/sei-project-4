@@ -5,7 +5,7 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
 
   // * Initial state 
   const [formData, setFormData] = React.useState(initialFormState)
-  const [formErrors, setFormErrors] = React.useState({})
+  const [formErrors, setFormErrors] = React.useState(initialFormState)
 
 
   //* HandleChange event for inputting values on form & sets them and the errors to state 
@@ -18,20 +18,31 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
     setFormErrors(updatedErrors)
   }
 
+  //* HandleChange event for inputting values on form & sets them to state 
+  const selectDropdown = (event, result ) => {
+    const { name, value } = result   
+    setFormData({ ...formData, [name]: value })
+  }
 
-  // * Handle submit function, on submitSuccess passed in as params 
+  const handleDateChange = (event, data) => {
+    const { name, value } = data 
+    if (!value) return 
+    const formattedDate = (new Date(value.getTime() - (value.getTimezoneOffset() * 60000))).toISOString().split('T')[0]
+
+    setFormData({ ...formData, [name]: formattedDate })
+  }
+
+
   const handleSubmit = async event => {
     event.preventDefault()    
-    
     try {
-      const response = await submitFunction(submitParams, formData)
+      const response = await submitFunction(formData, submitParams)
       onSubmitSuccess(response)
     } catch (err) {
-      console.log('response err', err)
-      // setFormErrors(err.response.data.errors)
+      setFormErrors(err.response.data)
     }
   }
   
-  return { formData, handleChange, setFormData, formErrors, setFormErrors, handleSubmit }
+  return { formData, handleChange, selectDropdown, handleDateChange, setFormData, formErrors, setFormErrors, handleSubmit }
 }
 export default useForm

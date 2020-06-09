@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import useForm from '../../utils/useForm'
@@ -16,18 +16,8 @@ function Register() {
     history.push('/jobs')
   }
 
-  //*State
-  const [formErrors, setError] = useState({
-    username: '',
-    first_name: '', 
-    last_name: '', 
-    email: '',
-    password: '',
-    password_confirmation: ''
-  })
-
   //* initalFormState & props for useForm hook
-  const { formData,  handleChange } = useForm({
+  const { formData,  handleChange, formErrors, handleSubmit } = useForm({
     username: '',
     first_name: '', 
     last_name: '', 
@@ -35,19 +25,7 @@ function Register() {
     password: '',
     password_confirmation: ''
   }, registerUser, null, onSubmitSuccess )
-
-  //* HandleSubmit event for submitting the login form
-  const handleSubmit = async event => {
-    event.preventDefault()
-    try {
-      const res = await registerUser(formData)
-      setToken(res.data.token)
-      history.push('/jobs')
-    } catch (err) {
-      setError(err.response.data )
-    }
-  }
-
+  
   return (
     <FormWrapper 
       textAlign='center'
