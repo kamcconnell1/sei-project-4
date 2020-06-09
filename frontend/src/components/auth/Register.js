@@ -24,7 +24,7 @@ function Register() {
     email: '',
     password: '',
     password_confirmation: ''
-  }, registerUser, null, onSubmitSuccess )
+  }, registerUser, null , onSubmitSuccess )
   
   return (
     <FormWrapper 

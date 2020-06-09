@@ -16,8 +16,8 @@ export const loginUser = data => {
   return axios.post(`${baseUrl}/auth/login/`, data)
 }
 
-export const registerUser = (_, data) => {
-  return axios.post(`${baseUrl}/auth/register/`,_,  data)
+export const registerUser = (data) => {
+  return axios.post(`${baseUrl}/auth/register/`, data)
 }
 
 // * JOB REQUESTS
@@ -30,7 +30,7 @@ export const getSingleJob = id => {
   return axios.get(`${baseUrl}/jobs/${id}/`, withHeaders())
 }
 
-export const editJob = (id, data) => {
+export const editJob = (data, id) => {
   return axios.put(`${baseUrl}/jobs/${id}/`, data, withHeaders())
 }
 
@@ -44,7 +44,7 @@ export const getSingleTask = id => {
   return axios.get(`${baseUrl}/tasks/${id}`, withHeaders())
 }
 
-export const editTask = (id, data) => {
+export const editTask =  (data, id) => {
   return axios.put(`${baseUrl}/tasks/${id}/`, data, withHeaders())
 }
 
