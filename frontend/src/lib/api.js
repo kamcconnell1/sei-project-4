@@ -58,3 +58,10 @@ export const deleteTask = id => {
 export const getAllContacts = () => {
   return axios.get(`${baseUrl}/contacts`, withHeaders())
 }
+
+
+// * RESOURCES REQUESTS
+
+export const getAllResources = () => {
+  return axios.get(`${baseUrl}/resources`, withHeaders())
+}

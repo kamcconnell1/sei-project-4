@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import { Button, Header } from 'semantic-ui-react'
 
 import useFetch from '../../utils/useFetch'
 import { getAllContacts } from '../../lib/api'
@@ -30,6 +30,7 @@ function ContactIndex() {
 
   return (
     <>
+      <Header id="header-font-contacts" as='h1' >Contacts</Header>
       <div className='search-box'>
         <div className='ui fluid icon input'>
           <input type='text' placeholder='Search contacts...' name='search' value={search} onChange={handleSearch} />
