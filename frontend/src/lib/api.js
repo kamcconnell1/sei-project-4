@@ -51,3 +51,10 @@ export const editTask = (id, data) => {
 export const deleteTask = id => {
   return axios.delete(`${baseUrl}/tasks/${id}/`, withHeaders())
 }
+
+
+// * CONTACTS REQUESTS
+
+export const getAllContacts = () => {
+  return axios.get(`${baseUrl}/contacts`, withHeaders())
+}
