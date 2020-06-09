@@ -23,7 +23,7 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <Menu size='small' position='right' borderless>
+        <Menu size='small' position='right' borderless secondary>
           <Container >
             <Dropdown item simple text='Menu' >
               <Dropdown.Menu>
@@ -65,7 +65,7 @@ class Navbar extends React.Component {
                       </Dropdown.Item>
                     </Link>
                   </>}
-                {isAuthenticated() && <Dropdown.Item i onClick={this.handleLogout} >
+                {isAuthenticated() && <Dropdown.Item onClick={this.handleLogout} >
                   Log Out
                 </Dropdown.Item>}
               </Dropdown.Menu>
