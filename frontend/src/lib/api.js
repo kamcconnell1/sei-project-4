@@ -26,6 +26,10 @@ export const getAllJobs = () => {
   return axios.get(`${baseUrl}/jobs/`, withHeaders())
 }
 
+export const addNewJob = data => {
+  return axios.post(`${baseUrl}/jobs/`, data, withHeaders())
+}
+
 export const getSingleJob = id => {
   return axios.get(`${baseUrl}/jobs/${id}/`, withHeaders())
 }
