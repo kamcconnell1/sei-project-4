@@ -16,7 +16,7 @@ function JobNew () {
     history.push('/jobs/')
   }
 
-  const { formData, handleChange, handleDateChange,selectDropdown, setFormData, formErrors, handleSubmit } = useForm({
+  const { formData, handleChange, handleDateChange, selectDropdown, formErrors, handleSubmit } = useForm({
     job_title: '',
     company: '',
     application_deadline: null,
