@@ -5,6 +5,7 @@ class Contact(models.Model):
     job_title = models.CharField(max_length=60, blank=True, default='')
     phone = models.CharField(max_length=14, blank=True, default='')
     email = models.EmailField(blank=True, default='')
+    company = models.CharField(max_length=60, blank=True, null=True)
     owner = models.ForeignKey(
         'jwt_auth.User',
         related_name='created_contacts',

@@ -1,31 +1,7 @@
-
-export const wishlistView = [
+export const largeTabletViewOne = [
   { 
     name: 'wishlist',
     isHidden: false 
-  }, 
-  { 
-    name: 'applied',
-    isHidden: true
-  }, 
-  { 
-    name: 'interview',
-    isHidden: true 
-  }, 
-  { 
-    name: 'offer',
-    isHidden: true
-  }, 
-  { 
-    name: 'rejected',
-    isHidden: true 
-  } 
-]
-
-export const appliedView = [
-  { 
-    name: 'wishlist',
-    isHidden: true
   }, 
   { 
     name: 'applied',
@@ -33,29 +9,6 @@ export const appliedView = [
   }, 
   { 
     name: 'interview',
-    isHidden: true 
-  }, 
-  { 
-    name: 'offer',
-    isHidden: true
-  }, 
-  { 
-    name: 'rejected',
-    isHidden: true 
-  } 
-]
-
-export const interviewView = [
-  { 
-    name: 'wishlist',
-    isHidden: true
-  }, 
-  { 
-    name: 'applied',
-    isHidden: true
-  }, 
-  { 
-    name: 'interview',
     isHidden: false 
   }, 
   { 
@@ -68,11 +21,53 @@ export const interviewView = [
   } 
 ]
 
-export const offerView = [
+export const largeTabletViewTwo = [
   { 
     name: 'wishlist',
+    isHidden: true 
+  }, 
+  { 
+    name: 'applied',
+    isHidden: false
+  }, 
+  { 
+    name: 'interview',
+    isHidden: false
+  }, 
+  { 
+    name: 'offer',
+    isHidden: false
+  }, 
+  { 
+    name: 'rejected',
+    isHidden: true 
+  } 
+]
+
+export const largeTabletViewThree = [
+  { 
+    name: 'wishlist',
+    isHidden: true 
+  }, 
+  { 
+    name: 'applied',
     isHidden: true
   }, 
+  { 
+    name: 'interview',
+    isHidden: false 
+  }, 
+  { 
+    name: 'offer',
+    isHidden: false
+  }, 
+  { 
+    name: 'rejected',
+    isHidden: false 
+  } 
+]
+
+export const largeTabletViewFour = [
   { 
     name: 'applied',
     isHidden: true
@@ -87,19 +82,15 @@ export const offerView = [
   }, 
   { 
     name: 'rejected',
-    isHidden: true 
-  } 
-]
-
-export const rejectedView = [
+    isHidden: false 
+  },
   { 
     name: 'wishlist',
-    isHidden: true
-  }, 
-  { 
-    name: 'applied',
-    isHidden: true
-  }, 
+    isHidden: false
+  }
+]
+
+export const largeTabletViewFive = [
   { 
     name: 'interview',
     isHidden: true 
@@ -111,5 +102,13 @@ export const rejectedView = [
   { 
     name: 'rejected',
     isHidden: false 
-  } 
+  },
+  { 
+    name: 'wishlist',
+    isHidden: false
+  },
+  { 
+    name: 'applied',
+    isHidden: false
+  }
 ]

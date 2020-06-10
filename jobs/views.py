@@ -6,7 +6,7 @@ from rest_framework.exceptions import NotFound, PermissionDenied
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Job
-from .serializers import JobSerializer, PopulatedJobSerializer, PopulatedJobSerializerWithStatusDictionary
+from .serializers import JobSerializer, PopulatedJobSerializer
 
 
 class JobBoardView(APIView):
