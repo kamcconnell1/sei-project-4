@@ -60,14 +60,22 @@ export const deleteTask = id => {
 // * CONTACTS REQUESTS
 
 export const getAllContacts = () => {
-  return axios.get(`${baseUrl}/contacts`, withHeaders())
+  return axios.get(`${baseUrl}/contacts/`, withHeaders())
+}
+
+export const addNewContact = data => {
+  return axios.post(`${baseUrl}/contacts/`, data,  withHeaders())
+}
+
+export const deleteContact = id => {
+  return axios.delete(`${baseUrl}/contacts/${id}/`, withHeaders())
 }
 
 
 // * RESOURCES REQUESTS
 
 export const getAllResources = () => {
-  return axios.get(`${baseUrl}/resources`, withHeaders())
+  return axios.get(`${baseUrl}/resources/`, withHeaders())
 }
 
 export const addNewResource = data => {

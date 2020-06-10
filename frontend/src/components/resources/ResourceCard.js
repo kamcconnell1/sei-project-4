@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react'
 
 function ResourceCard({ id, title, url, handleDeleteResource }) {
@@ -13,7 +12,7 @@ function ResourceCard({ id, title, url, handleDeleteResource }) {
         </button>
       </div>
       <div className='resource-card-content'>
-        <a href={url} target='_blank' rel='noreferrer'>{url}</a>
+        <a href={url} target='_blank' rel="noopener noreferrer" >{url}</a>
       </div>
     </div>
   )
