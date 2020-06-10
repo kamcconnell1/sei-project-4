@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { Grid, Header, Segment, Form, Dropdown } from 'semantic-ui-react'
+import { Grid, Header, Segment, Form, Dropdown, TextArea } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 import { getSingleJob, editJob } from '../../lib/api'
 import useFetch from '../../utils/useFetch'
@@ -20,7 +20,7 @@ function JobEdit() {
     history.push(`/jobs/${jobId}/`)
   }
 
-  const { formData, handleChange, handleDateChange, setFormData, formErrors, handleSubmit } = useForm({
+  const { formData, handleChange, handleDateChange,selectDropdown, setFormData, formErrors, handleSubmit } = useForm({
     job_title: '',
     company: '',
     application_deadline: null,
@@ -32,7 +32,7 @@ function JobEdit() {
     salary: null,
     city: '',
     country: '',
-    status: null
+    status: ''
   }, editJob, jobId, onSubmitSuccess)
 
   React.useEffect(() => {
@@ -41,33 +41,33 @@ function JobEdit() {
     }
   }, [job, setFormData])
 
-  // console.log(job)
+  // console.log(formData)
 
   const statusOptions = [
     {
       key: 'Wishlist',
       text: 'Wishlist',
-      value: 'Wishlist'
+      value: 1
     },
     {
       key: 'Applied',
       text: 'Applied',
-      value: 'Applied'
+      value: 2
     },
     {
       key: 'Interview',
       text: 'Interview',
-      value: 'Interview'
+      value: 3
     },
     {
       key: 'Offer',
       text: 'Offer',
-      value: 'Offer'
+      value: 4
     },
     {
       key: 'Rejected',
       text: 'Rejected',
-      value: 'Rejected'
+      value: 4
     }
   ]
 
@@ -230,14 +230,14 @@ function JobEdit() {
                   <Grid.Column width={5}>
                     <Form.Field>
                       <Header size='small'>Status</Header>
-                      <Dropdown
+                      <Dropdown // ! BUG
                         fluid
                         selection
                         error={formErrors.status}
                         name='status'
-                        value='hey'
+                        value={formData.status}
                         options={statusOptions}
-                        onChange={handleChange}
+                        onChange={selectDropdown}
                       />
                     </Form.Field>
                   </Grid.Column>
@@ -255,35 +255,86 @@ function JobEdit() {
                     </Form.Field>
                   </Grid.Column>
                 </Grid.Row>
-                <Grid.Column width={4} only='mobile'>
-                  <Header size='small'>Application deadline</Header>
-                  <Segment>
-                    <p>{job.application_deadline ? job.application_deadline : 'No date'}</p>
-                  </Segment>
+                <Grid.Row stretched>
+                  <Grid.Column width={16}>
+                    <Form.Field>
+                      <Header size='small'>Description/notes</Header>
+                      <TextArea
+                        error={formErrors.salary}
+                        type='text'
+                        placeholder='No description'
+                        name='description'
+                        value={formData.description}
+                        onChange={handleChange}
+                      />
+                    </Form.Field>
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Column width={16} only='mobile'>
+                  <Form.Field>
+                    <Header size='small'>Application deadline</Header>
+                    <SemanticDatepicker
+                      datePickerOnly
+                      clearable
+                      format='DD MMMM YYYY'
+                      name='application_deadline'
+                      value={formData.application_deadline ? new Date(formData.application_deadline) : null}
+                      onChange={handleDateChange}
+                    />
+                  </Form.Field>
                 </Grid.Column>
-                <Grid.Column width={4} only='mobile'>
-                  <Header size='small'>Application submitted</Header>
-                  <Segment>
-                    <p>{job.application_submitted ? job.application_submitted : 'No date'}</p>
-                  </Segment>
+                <Grid.Column only='mobile'>
+                  <Form.Field>
+                    <Header size='small'>Application submitted</Header>
+                    <SemanticDatepicker
+                      fluid
+                      datePickerOnly
+                      clearable
+                      format='DD MMMM YYYY'
+                      name='application_submitted'
+                      value={formData.application_submitted !== null ? new Date(formData.application_submitted) : null}
+                      onChange={handleDateChange}
+                    />
+                  </Form.Field>
                 </Grid.Column>
-                <Grid.Column width={4} only='mobile'>
-                  <Header size='small'>Interview date</Header>
-                  <Segment>
-                    <p>{job.interview_date ? job.interview_date : 'No date'}</p>
-                  </Segment>
+                <Grid.Column width={16} only='mobile'>
+                  <Form.Field>
+                    <Header size='small'>Interview date</Header>
+                    <SemanticDatepicker
+                      datePickerOnly
+                      clearable
+                      format='DD MMMM YYYY'
+                      name='interview_date'
+                      value={formData.interview_date ? new Date(formData.interview_date) : null}
+                      onChange={handleDateChange}
+                    />
+                  </Form.Field>
                 </Grid.Column>
-                <Grid.Column width={4} only='mobile'>
-                  <Header size='small'>Job offer date</Header>
-                  <Segment>
-                    <p>{job.job_offer_date ? job.job_offer_date : 'No date'}</p>
-                  </Segment>
+                <Grid.Column width={16} only='mobile'>
+                  <Form.Field>
+                    <Header size='small'>Job offer date</Header>
+                    <SemanticDatepicker
+                      datePickerOnly
+                      clearable
+                      format='DD MMMM YYYY'
+                      name='job_offer_date'
+                      value={formData.job_offer_date ? new Date(formData.job_offer_date) : ''}
+                      onChange={handleDateChange}
+                    />
+                  </Form.Field>
                 </Grid.Column>
-                <Grid.Column width={4} only='mobile'>
-                  <Header size='small'>Offer accepted</Header>
-                  <Segment>
-                    <p>{job.offer_accepted ? job.offer_accepted : 'No date'}</p>
-                  </Segment>
+                <Grid.Column width={16} only='mobile'>
+                  <Form.Field>
+                    <Header size='small'>Offer accepted</Header>
+                    <SemanticDatepicker
+                      datePickerOnly
+                      clearable
+                      format='DD MMMM YYYY'
+                      name='offer_accepted'
+                      value={formData.offer_accepted ? new Date(formData.offer_accepted) : null}
+                      onChange={handleDateChange}
+                    />
+                  </Form.Field>
                 </Grid.Column>
                 <Grid.Column>
                 </Grid.Column>

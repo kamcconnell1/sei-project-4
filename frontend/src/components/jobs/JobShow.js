@@ -111,6 +111,14 @@ function JobShow() {
                 </Segment>
               </Grid.Column>
             </Grid.Row>
+            <Grid.Row stretched>
+              <Grid.Column width={16}>
+                <Header size='small'>Description/notes</Header>
+                <Segment>
+                  <p>{job.description ? job.description : 'No description'}</p>
+                </Segment>
+              </Grid.Column>
+            </Grid.Row>
             <Grid.Column width={4} only='mobile'>
               <Header size='small'>Application deadline</Header>
               <Segment>

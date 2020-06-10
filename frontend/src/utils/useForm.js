@@ -13,7 +13,7 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
     const newValue = (type === 'checkbox' ? completed : value)   
     const updatedFormData = { ...formData, [name]: newValue }
     const updatedErrors = { ...formErrors, [name]: '' }
-    console.log(name, value)
+
     setFormData(updatedFormData)
     setFormErrors(updatedErrors)
   }
@@ -21,18 +21,24 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
   //* HandleChange event for inputting values on form & sets them to state 
   const selectDropdown = (event, result ) => {
     const { name, value } = result   
+    console.log(name, value)
     setFormData({ ...formData, [name]: value })
   }
 
   const handleDateChange = (event, data) => {
     const { name, value } = data 
-    // console.log(name, value)
-    
-    if (!value) return 
 
-    const formattedDate = (new Date(value.getTime() - (value.getTimezoneOffset() * 60000))).toISOString().split('T')[0]
+    const formattedDate = (value) => {
+      if (!value) {
+        return null
+      } else {
+        return (new Date(value.getTime() - (value.getTimezoneOffset() * 60000))).toISOString().split('T')[0]
+      }
+    }
 
-    setFormData({ ...formData, [name]: (formattedDate ? formattedDate : null) })
+    const date = formattedDate(value)
+
+    setFormData({ ...formData, [name]: date })
   }
 
 
