@@ -15,7 +15,7 @@ function GetDate(date) {
     return <p className='due'>{Math.floor(microSecondsDiff / (1000 * 60 * 60 * 24))} days</p>
   
   if (formatted_date < today_date) 
-    return <p className='overdue'>{Math.floor(microSecondsDiff / (1000 * 60 * 60 * 24))} days</p>
+    return <p className='overdue'>{Math.floor(microSecondsDiff / (1000 * 60 * 60 * 24))} days ago</p>
 
 }
 

@@ -4,21 +4,24 @@ import { Label } from 'semantic-ui-react'
 import { taskCategories } from '../tasks/TaskCategories'
 
 function TaskLabel(category) {
-  const str = category.category
-  const jobCategory = str.replace(/ /g,'_').toLowerCase()
+  const string = category.category
+  
+  // const jobCategory = str.replace(/ /g,'_').toLowerCase()
+  // console.log(jobCategory)
 
   const filterCategories = (array, string) => {
     return array.filter(item => {
-      if (item.key === string) {
+      if (item.value === string) {
         return item
-      }  
+      }
     })
   }
-  const filteredCategory = filterCategories(taskCategories, jobCategory)
+  const filteredCategory = filterCategories(taskCategories, string)
+  const text = filteredCategory[0].text
   const color = filteredCategory[0].label.color
-  
+
   return (
-    <Label color={color}>{jobCategory}</Label>
+    <Label color={color}>{text}</Label>
   )
 }
 
