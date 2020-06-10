@@ -22,6 +22,6 @@ export const statusOptions = [
   {
     key: 'Rejected',
     text: 'Rejected',
-    value: 4
+    value: 5
   }
 ]
