@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import { Grid, Card, Checkbox } from 'semantic-ui-react'
 
 import TaskLabel from '../common/TaskLabel'
 
-function TaskShowMobile({ id, completed, toggleCheckbox, taskCategory, job, date }) {
+function TaskShowMobile({ id, completed, toggleCheckbox, task_category, job, date, title }) {
+  
   return (
     <Grid.Row only='mobile' >
       <Card  href={`/tasks/${id}`} fluid>
@@ -17,8 +19,11 @@ function TaskShowMobile({ id, completed, toggleCheckbox, taskCategory, job, date
                     checked={completed}
                     onClick={toggleCheckbox} />
                 </div>
+                <div className='task-title'>
+                  { title ? title : task_category.name }
+                </div>
                 <div className='task-category'>
-                  <TaskLabel category={taskCategory} />
+                  <TaskLabel category={task_category.id} />
                 </div>
               </div>
             </Card.Header>
