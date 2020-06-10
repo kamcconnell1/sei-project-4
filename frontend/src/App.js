@@ -23,7 +23,7 @@ import ContactIndex from './components/contacts/ContactIndex'
 import ContactShow from './components/contacts/ContactShow'
 
 // Resources imports
-import ResourcesIndex from './components/resources/ResourcesIndex'
+import ResourceIndex from './components/resources/ResourceIndex'
 
 const App = () => {
   return (
@@ -41,7 +41,7 @@ const App = () => {
         <Route path='/tasks' component={TaskIndex} />
         <Route path='/contacts/:id' component={ContactShow} />
         <Route path='/contacts' component={ContactIndex} />
-        <Route path='/resources' component={ResourcesIndex} />
+        <Route path='/resources' component={ResourceIndex} />
         <Route path="/*" component={ErrorPage} />
       </Switch>
     </BrowserRouter>

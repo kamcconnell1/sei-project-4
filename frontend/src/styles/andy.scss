@@ -143,6 +143,13 @@ $font-content: "IBM Plex Mono", monospace;
 
   // * Contact Index
 
+  #header-font-contacts {
+    font-family: $font-title;
+    color: $color3;
+    margin: 1vh auto;
+    text-align: center;
+  }
+
   .search-box {
     margin: 3vh 7vw;
   }
@@ -151,28 +158,28 @@ $font-content: "IBM Plex Mono", monospace;
   }
 
   .ContactIndex {
-    margin: 5vh 3vw;
+    margin: 3vh 6vw;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     .contact-card {
       font-family: $font-content;
       font-size: 11px;
       width: 85vw;
-      height: 30vh;
+      height: 20vh;
       margin: 3vw;
       padding: 1.5vw;
-      // border: 1px solid black;
       box-shadow: 1px 1px 5px #999999;
       border-radius: 10px;
       p {
         margin: 0;
       }
       .contact-card-header {
-        background-color: $color2;
+        background-color: $color3;
         padding: 3vw;
         border-radius: 10px;
         color: white;
+        font-weight: bold;
       }
       .contact-card-content {
         padding: 3vw;
@@ -180,6 +187,61 @@ $font-content: "IBM Plex Mono", monospace;
     }
   }
 
+  // * Resources Index
+
+  #header-font-resources {
+    font-family: $font-title;
+    color: $color4;
+    margin: 1vh auto;
+    text-align: center;
+  }
+
+  .ResourceIndex {
+    margin: 3vh 6vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .resource-card {
+      font-family: $font-content;
+      font-size: 11px;
+      width: 85vw;
+      // height: 14vh;
+      margin: 3vw;
+      padding: 1.5vw;
+      box-shadow: 1px 1px 5px #999999;
+      border-radius: 10px;
+      p {
+        margin: 0;
+      }
+      .resource-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $color4;
+        padding: 3vw;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        .delete-resource-btn {
+          background-color: transparent;
+          border: none;
+          padding: 0;
+          margin: 0;
+          color: white;
+        }
+        .delete-resource-btn:active, .delete-resource-btn:focus {
+          border: none;
+          outline: 0;
+        }
+      }
+      .resource-card-content {
+        padding: 3vw;
+        a {
+          color: black;
+        }
+      }
+    }
+  }
 
 }
 
@@ -220,15 +282,28 @@ $font-content: "IBM Plex Mono", monospace;
   .ContactIndex {
     .contact-card {
       width: 40vw;
-      height: 30vh;
       margin: 2vw;
       .contact-card-header {
-        background-color: $color2;
         padding: 1.5vw;
         border-radius: 10px;
         color: white;
       }
       .contact-card-content {
+        padding: 1.5vw;
+      }
+    }
+  }
+
+  .ResourceIndex {
+    .resource-card {
+      width: 40vw;
+      margin: 2vw;
+      .resource-card-header {
+        padding: 1.5vw;
+        border-radius: 10px;
+        color: white;
+      }
+      .resource-card-content {
         padding: 1.5vw;
       }
     }
@@ -267,16 +342,30 @@ $font-content: "IBM Plex Mono", monospace;
   .ContactIndex {
     .contact-card {
       width: 25vw;
-      height: 30vh;
       margin: 2vw;
       padding: 1vw;
       .contact-card-header {
-        background-color: $color2;
-        padding: 1vw;
+        padding: .8vw;
         border-radius: 10px;
         color: white;
       }
       .contact-card-content {
+        padding: 1vw;
+      }
+    }
+  }
+
+  .ResourceIndex {
+    .resource-card {
+      width: 25vw;
+      margin: 2vw;
+      padding: 1vw;
+      .resource-card-header {
+        padding: .8vw;
+        border-radius: 10px;
+        color: white;
+      }
+      .resource-card-content {
         padding: 1vw;
       }
     }
@@ -330,9 +419,15 @@ $font-content: "IBM Plex Mono", monospace;
   .ContactIndex {
     .contact-card {
       width: 18vw;
-      height: 30vh;
       margin: 1vw;
-      padding: .5vw;
+      padding: 0.5vw;
+    }
+  }
+  .ResourceIndex {
+    .resource-card {
+      width: 18vw;
+      margin: 1vw;
+      padding: 0.5vw;
     }
   }
 }
