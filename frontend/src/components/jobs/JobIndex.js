@@ -101,7 +101,6 @@ function JobIndex() {
     }
   }
 
-
   const handleBoardChangeLargeTablet = e => {
     if (currentLargeTabletView === largeTabletView && e.target.value === 'right') {
       setCurrentLargeTabletView(largeTabletViewTwo)
@@ -172,16 +171,16 @@ function JobIndex() {
               value='right'
             >&gt;</button>
           </div>
-          <div className="button-container-large-tablet">
+          <div className="button-container-large-tablet left">
             <button
-              className='tablet-btn'
+              className='tablet-btn left'
               onClick={handleBoardChangeLargeTablet}
               value='left'
             >&lt;</button>
           </div>
-          <div className="button-container-large-tablet">
+          <div className="button-container-large-tablet right">
             <button
-              className='tablet-btn'
+              className='tablet-btn right'
               onClick={handleBoardChangeLargeTablet}
               value='right'
             >&gt;</button>
