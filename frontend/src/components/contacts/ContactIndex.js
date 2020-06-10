@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Header } from 'semantic-ui-react'
 
-import { getAllContacts, addNewContact, deleteContact } from '../../lib/api'
+import { getAllContacts, addNewContact, deleteContact, getAllJobs } from '../../lib/api'
 import useForm from '../../utils/useForm'
 import ContactCard from './ContactCard'
 import ContactNewModal from './ContactNewModal'
@@ -10,6 +10,7 @@ import ContactNewModal from './ContactNewModal'
 
 function ContactIndex() {
   const [contacts, setContacts] = useState(null)
+  const [jobs, setJobs] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
   const [search, setSearch] = useState('')
   const history = useHistory()
@@ -18,7 +19,9 @@ function ContactIndex() {
   const getData = async () => {
     try {
       const res = await getAllContacts()
+      const jobsRes = await getAllJobs()
       setContacts(res.data)
+      setJobs(jobsRes.data)
     } catch (err) {
       history.push('/notfound')
     }
@@ -29,13 +32,16 @@ function ContactIndex() {
   }, [])
 
   const onSubmitSuccess = () => {
-    formData.title = ''
-    formData.url = ''
+    formData.name = ''
+    formData.job_title = ''
+    formData.email = ''
+    formData.phone = ''
+    formData.job = ''
     setModalOpen(false)
     getData()
   }
 
-  const { formData, handleChange, handleSubmit } = useForm({
+  const { formData, handleChange, handleSubmit, selectDropdown } = useForm({
     name: '',
     job_title: '',
     email: '',
@@ -80,10 +86,11 @@ function ContactIndex() {
   return (
     <>
       <Header id="header-font-contacts" as='h1' >Contacts</Header>
-     
       <ContactNewModal
+        jobs={jobs}
         modalOpen={modalOpen}
         formData={formData}
+        selectDropdown={selectDropdown}
         handleModalOpen={handleModalOpen}
         handleModalClose={handleModalClose}
         handleChange={handleChange}

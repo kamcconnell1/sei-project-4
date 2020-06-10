@@ -50,7 +50,7 @@ $font-content: "IBM Plex Mono", monospace;
 
   .JobIndex {
     width: 100%;
-    .button-container {
+    .button-container-small-tablet, .button-container-large-tablet {
       display: none;
     }
     .job-boards {
@@ -96,11 +96,7 @@ $font-content: "IBM Plex Mono", monospace;
           background-color: white;
           border-radius: 10px;
           box-shadow: 0 0 5px #999999;
-          .add-btn {
-            font-family: $font-content;
-            font-size: 20px;
-            color: black;
-          }
+          font-family: $font-content;
         }
         .job-board-content {
           height: 57vh;
@@ -183,6 +179,7 @@ $font-content: "IBM Plex Mono", monospace;
         border-radius: 10px;
         color: white;
         font-weight: bold;
+        font-size: 12px;
         .delete-contact-btn {
           background-color: transparent;
           border: none;
@@ -196,6 +193,7 @@ $font-content: "IBM Plex Mono", monospace;
         }
       }
       .contact-card-content {
+        word-wrap: break-word;
         padding: 3vw;
       }
     }
@@ -240,6 +238,7 @@ $font-content: "IBM Plex Mono", monospace;
         border-radius: 10px;
         color: white;
         font-weight: bold;
+        font-size: 12px;
         .delete-resource-btn {
           background-color: transparent;
           border: none;
@@ -253,6 +252,7 @@ $font-content: "IBM Plex Mono", monospace;
         }
       }
       .resource-card-content {
+        word-wrap: break-word;
         padding: 3vw;
         a {
           color: black;
@@ -267,7 +267,7 @@ $font-content: "IBM Plex Mono", monospace;
 
 
   .JobIndex {
-    .button-container {
+    .button-container-small-tablet {
       display: block;
     }
     .job-boards {
@@ -332,6 +332,12 @@ $font-content: "IBM Plex Mono", monospace;
 
 
   .JobIndex {
+    .button-container-small-tablet {
+      display: none;
+    }
+    .button-container-large-tablet {
+      display: block;
+    }
     .job-boards {
       .job-board {
         .job-board-header {
@@ -392,7 +398,7 @@ $font-content: "IBM Plex Mono", monospace;
 
 @media screen and (min-width: 1200px) {
   .JobIndex {
-    .button-container {
+    .button-container-small-tablet, .button-container-large-tablet {
       display: none;
     }
     .job-boards {

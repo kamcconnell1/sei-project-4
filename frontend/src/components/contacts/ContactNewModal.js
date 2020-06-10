@@ -1,15 +1,30 @@
 import React from 'react'
-import { Button, Modal, Header, Form, Icon } from 'semantic-ui-react'
+import { Button, Modal, Header, Form, Icon, Dropdown } from 'semantic-ui-react'
 import FormInput from '../common/FormInput'
 
 function ContactNewModal({
+  jobs,
   modalOpen,
   formData,
+  selectDropdown,
   handleModalOpen,
   handleModalClose,
   handleChange,
   handleSubmit
 }) {
+
+  if (!jobs) return null
+
+  const jobOptions = jobs.map((job => {
+    return (
+      {
+        key: `${job.job_title} - ${job.company}`,
+        text: `${job.job_title} - ${job.company}`,
+        value: job.id
+      }
+    )
+  }))
+  
   return (
     <div>
       <Modal open={modalOpen} onClose={handleModalClose} trigger={
@@ -65,15 +80,17 @@ function ContactNewModal({
               name='phone'
               onChange={handleChange}
             />
-            <FormInput
-              className='fluid'
-              focus
-              placeholder='Job...'
+            <Dropdown
+              search
+              placeholder='Select applicable job...'
               value={formData.job || ''}
-              type='text'
               name='job'
-              onChange={handleChange}
+              className='fluid'
+              selection
+              options={jobOptions}
+              onChange={selectDropdown}
             />
+            <br/>
             <Button
               fluid
               basic
