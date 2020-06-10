@@ -49,21 +49,33 @@ $font-content: "IBM Plex Mono", monospace;
 
 
 
-// ? Task Show Index (feeds into Task Show below)
-.uncompleted-tasks {
-  margin-top:  5% ;
+// ? Task Index Page
+.TaskIndex {
+  .uncompleted-tasks {
+    margin-top:  5% ;
+  }
+  .completed-tasks{
+    margin-top:  5% ;
+    color: grey;
+    text-decoration: line-through;
 }
-.completed-tasks{
-  margin-top:  5% ;
-  color: grey;
-  text-decoration: line-through;
+.task-index-header{
+  margin-bottom: 5%;
+}
+.edit-task-computer-tablet{
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin-top: 10%;
+}
 }
 
 // ? Task Show Page 
 .TaskShow {
 
-  //*  TASK SHOW MOBILE VIEW 
-  .card-header{
+  //?  TASK SHOW MOBILE VIEW 
+  .taskshow-mobile{
+      padding: 3vw;
+      border-radius: 10px;
     .task-header {
       display: flex;
       margin-bottom: .833em;
@@ -126,12 +138,7 @@ $font-content: "IBM Plex Mono", monospace;
     }
   }
 }
-.card-header {
-  padding: 3vw;
-  border-radius: 10px;
-  // background-color: $color2;
-  // color: white;
-}
+
 
 // ? Task Edit Page 
 .TaskEdit {
@@ -173,8 +180,3 @@ $font-content: "IBM Plex Mono", monospace;
   }
 }
 
-.edit-task-computer-tablet{
-  border: 1px solid grey;
-  border-radius: 10px;
-
-}
