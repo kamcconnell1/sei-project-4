@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.apps import apps
 from job_status.serializers import JobStatusSerializer
+from task_categories.serializers import TaskCategorySerializer
 from .models import Job
 
 Task = apps.get_model('tasks', 'Task' )
@@ -12,6 +13,8 @@ class TaskSerializer(serializers.ModelSerializer):
         model = Task
         fields = '__all__'
 
+class PopulatedTaskSerializer(TaskSerializer):
+    task_category = TaskCategorySerializer()
 
 class ContactSerializer(serializers.ModelSerializer):
 
@@ -27,9 +30,6 @@ class JobSerializer(serializers.ModelSerializer):
 
 class PopulatedJobSerializer(JobSerializer):
     status = JobStatusSerializer()
-    related_tasks = TaskSerializer(many=True)
+    related_tasks = PopulatedTaskSerializer(many=True)
     related_contacts = ContactSerializer(many=True)
 
-class PopulatedJobSerializerWithStatusDictionary(JobSerializer):
-    status = JobStatusSerializer()
-    
