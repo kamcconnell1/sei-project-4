@@ -344,8 +344,18 @@ $font-content: "IBM Plex Mono", monospace;
   }
 }
 
+@media screen and (min-width: 540px) {
+  .tablet-btn {
+    font-size: 25px;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .JobIndex {
+    .tablet-btn {
+      font-size: 30px;
+      margin: 0 .5vw;
+    }
     .button-container-large-tablet .left {
       float: left;
     }
