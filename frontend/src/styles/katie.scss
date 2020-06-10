@@ -58,19 +58,21 @@ $font-content: "IBM Plex Mono", monospace;
   color: grey;
   text-decoration: line-through;
 }
-.is-hidden{
-  display: none;
-}
 
 // ? Task Show Page 
 .TaskShow {
 
-  //  FOR MOBILE VIEW 
+  //*  TASK SHOW MOBILE VIEW 
   .card-header{
     .task-header {
       display: flex;
-      justify-content: space-between;
       margin-bottom: .833em;
+      .task-title {
+        margin-left: 2%;
+      }
+      .task-category {
+        margin-left: auto;
+      }
     }
     .task-content {
       display: flex;
@@ -81,9 +83,47 @@ $font-content: "IBM Plex Mono", monospace;
     }
   }
 
-  // FOR COMPUTER TABLET VIEW 
-  .task-edit-show{
-    display: none;
+  //? TASK SHOW COMPUTER TABLET VIEW 
+  .is-show {
+    margin-top: 1rem ;
+  }
+  .is-edit {
+    margin-top: 1rem ;
+    // outline: grey 1px solid;
+  }
+  .btn-not-displayed {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    width:100%;
+    display: flex;
+    // justify-content: flex-end;
+    align-items: center;
+    .task-label {
+      width: 18%;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .task-checkbox {
+      margin-right: 5%;
+    }
+    .task-title {
+      width: 25%;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .tak-job {
+      width: 25%;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .task-date{
+      margin-left: auto;
+    }
   }
 }
 .card-header {
@@ -131,4 +171,10 @@ $font-content: "IBM Plex Mono", monospace;
     width: 80%;
     }
   }
+}
+
+.edit-task-computer-tablet{
+  border: 1px solid grey;
+  border-radius: 10px;
+
 }
