@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 import { getAllJobs } from '../../lib/api'
-import useFetch from '../../utils/useFetch'
-import useWindowSize from '../../utils/useWindowSize'
-import JobIndexBoard from './JobIndexBoard'
 import { mobileView, smallTabletView, largeTabletView, desktopView } from '../../lib/boardViews'
 import { wishlistView, appliedView, interviewView, offerView, rejectedView } from '../../lib/mobileViews'
 import { smallTabletViewTwo, smallTabletViewThree, smallTabletViewFour, smallTabletViewFive } from '../../lib/smallTabletViews'
+import { largeTabletViewTwo, largeTabletViewThree, largeTabletViewFour, largeTabletViewFive } from '../../lib/largeTabletViews'
+import useFetch from '../../utils/useFetch'
+import useWindowSize from '../../utils/useWindowSize'
+import JobIndexBoard from './JobIndexBoard'
 
 
 
@@ -16,6 +18,7 @@ function JobIndex() {
   const { width } = useWindowSize()
   const [statuses, setStatuses] = useState(desktopView)
   const [currentSmallTabletView, setCurrentSmallTabletView] = useState(smallTabletView)
+  const [currentLargeTabletView, setCurrentLargeTabletView] = useState(largeTabletView)
 
   useEffect(() => {
     if (width <= 480) {
@@ -98,9 +101,48 @@ function JobIndex() {
     }
   }
 
+
   const handleBoardChangeLargeTablet = e => {
-    e.preventDefault()
-    console.log('I want to change board', e.target.value)
+    if (currentLargeTabletView === largeTabletView && e.target.value === 'right') {
+      setCurrentLargeTabletView(largeTabletViewTwo)
+      setStatuses(largeTabletViewTwo)
+    }
+    if (currentLargeTabletView === largeTabletViewTwo && e.target.value === 'right') {
+      setCurrentLargeTabletView(largeTabletViewThree)
+      setStatuses(largeTabletViewThree)
+    }
+    if (currentLargeTabletView === largeTabletViewThree && e.target.value === 'right') {
+      setCurrentLargeTabletView(largeTabletViewFour)
+      setStatuses(largeTabletViewFour)
+    }
+    if (currentLargeTabletView === largeTabletViewFour && e.target.value === 'right') {
+      setCurrentLargeTabletView(largeTabletViewFive)
+      setStatuses(largeTabletViewFive)
+    }
+    if (currentLargeTabletView === largeTabletViewFive && e.target.value === 'right') {
+      setCurrentLargeTabletView(largeTabletView)
+      setStatuses(largeTabletView)
+    }
+    if (currentLargeTabletView === largeTabletView && e.target.value === 'left') {
+      setCurrentLargeTabletView(largeTabletViewFive)
+      setStatuses(largeTabletViewFive)
+    }
+    if (currentLargeTabletView === largeTabletViewTwo && e.target.value === 'left') {
+      setCurrentLargeTabletView(largeTabletView)
+      setStatuses(largeTabletView)
+    }
+    if (currentLargeTabletView === largeTabletViewThree && e.target.value === 'left') {
+      setCurrentLargeTabletView(largeTabletViewTwo)
+      setStatuses(largeTabletViewTwo)
+    }
+    if (currentLargeTabletView === largeTabletViewFour && e.target.value === 'left') {
+      setCurrentLargeTabletView(largeTabletViewThree)
+      setStatuses(largeTabletViewThree)
+    }
+    if (currentLargeTabletView === largeTabletViewFive && e.target.value === 'left') {
+      setCurrentLargeTabletView(largeTabletViewFour)
+      setStatuses(largeTabletViewFour)
+    }
   }
 
   if (error) {
@@ -116,29 +158,33 @@ function JobIndex() {
         <h1>LOADING</h1>
         :
         <div className="JobIndex">
-          <div className="button-container-small-tablet">
+          <div className="button-container-small-tablet right">
             <button
+              className='tablet-btn left'
               onClick={handleBoardChangeSmallTablet}
               value='left'
-            >L-smalltab</button>
+            >&lt;</button>
           </div>
-          <div className="button-container-small-tablet">
+          <div className="button-container-small-tablet right">
             <button
+              className='tablet-btn right'
               onClick={handleBoardChangeSmallTablet}
               value='right'
-            >R-smalltab</button>
+            >&gt;</button>
           </div>
           <div className="button-container-large-tablet">
             <button
+              className='tablet-btn'
               onClick={handleBoardChangeLargeTablet}
               value='left'
-            >L-largetab</button>
+            >&lt;</button>
           </div>
           <div className="button-container-large-tablet">
             <button
+              className='tablet-btn'
               onClick={handleBoardChangeLargeTablet}
               value='right'
-            >R-largetab</button>
+            >&gt;</button>
           </div>
           <div className="job-boards">
             {statuses.map((status => {

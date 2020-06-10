@@ -7,7 +7,6 @@ $color5: #e2bca1;
 $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
-
 // !GLOBAL STYLE
 
 // * Navbar
@@ -42,15 +41,28 @@ $font-content: "IBM Plex Mono", monospace;
   color: $color2;
 }
 
+.tablet-btn {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  height: 70vh;
+  // margin: 0 2px;
+}
+.tablet-btn:active,
+.tablet-btn:focus {
+  border: none;
+  outline: 0;
+  color: $color2;
+}
 
 
 @media screen and (min-width: 160px) {
-
   // * Job Index
 
   .JobIndex {
     width: 100%;
-    .button-container-small-tablet, .button-container-large-tablet {
+    .button-container-small-tablet,
+    .button-container-large-tablet {
       display: none;
     }
     .job-boards {
@@ -187,7 +199,8 @@ $font-content: "IBM Plex Mono", monospace;
           margin: 0;
           color: white;
         }
-        .delete-contact-btn:active, .delete-contact-btn:focus {
+        .delete-contact-btn:active,
+        .delete-contact-btn:focus {
           border: none;
           outline: 0;
         }
@@ -246,7 +259,8 @@ $font-content: "IBM Plex Mono", monospace;
           margin: 0;
           color: white;
         }
-        .delete-resource-btn:active, .delete-resource-btn:focus {
+        .delete-resource-btn:active,
+        .delete-resource-btn:focus {
           border: none;
           outline: 0;
         }
@@ -260,15 +274,18 @@ $font-content: "IBM Plex Mono", monospace;
       }
     }
   }
-
 }
 
 @media screen and (min-width: 480px) {
-
-
   .JobIndex {
     .button-container-small-tablet {
-      display: block;
+      display: initial;
+    }
+    .button-container-small-tablet .left {
+      float: left;
+    }
+    .button-container-small-tablet .right {
+      float: right;
     }
     .job-boards {
       .job-board {
@@ -295,7 +312,6 @@ $font-content: "IBM Plex Mono", monospace;
       padding: 3vw;
     }
   }
-
 
   .ContactIndex {
     .contact-card {
@@ -329,14 +345,12 @@ $font-content: "IBM Plex Mono", monospace;
 }
 
 @media screen and (min-width: 768px) {
-
-
   .JobIndex {
-    .button-container-small-tablet {
-      display: none;
+    .button-container-large-tablet .left {
+      float: left;
     }
-    .button-container-large-tablet {
-      display: block;
+    .button-container-large-tablet .right {
+      float: right;
     }
     .job-boards {
       .job-board {
@@ -362,14 +376,13 @@ $font-content: "IBM Plex Mono", monospace;
     }
   }
 
-
   .ContactIndex {
     .contact-card {
       width: 25vw;
       margin: 2vw;
       padding: 1vw;
       .contact-card-header {
-        padding: .8vw;
+        padding: 0.8vw;
         border-radius: 10px;
         color: white;
       }
@@ -385,7 +398,7 @@ $font-content: "IBM Plex Mono", monospace;
       margin: 2vw;
       padding: 1vw;
       .resource-card-header {
-        padding: .8vw;
+        padding: 0.8vw;
         border-radius: 10px;
         color: white;
       }
@@ -398,7 +411,8 @@ $font-content: "IBM Plex Mono", monospace;
 
 @media screen and (min-width: 1200px) {
   .JobIndex {
-    .button-container-small-tablet, .button-container-large-tablet {
+    .button-container-small-tablet,
+    .button-container-large-tablet {
       display: none;
     }
     .job-boards {
@@ -446,7 +460,7 @@ $font-content: "IBM Plex Mono", monospace;
       margin: 1vw;
       padding: 0.5vw;
       .contact-card-content {
-        padding: .7vw;
+        padding: 0.7vw;
       }
     }
   }
@@ -458,5 +472,3 @@ $font-content: "IBM Plex Mono", monospace;
     }
   }
 }
-
-
