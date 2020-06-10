@@ -6,6 +6,7 @@ import { getAllTasks, getSingleTask, editTask } from '../../lib/api'
 import PageContainer from '../common/PageContainer'
 import AddButton from '../common/AddButton'
 import TaskShow from '../tasks/TaskShow'
+import TaskEdit2 from '../tasks/TaskEdit2'
 
 
 function TaskIndex() {
@@ -65,7 +66,6 @@ function TaskIndex() {
       history.push('/notfound')
     }
   }
-
   
   //* Separate the tasks between completed & not completed
   if (!tasks) return null
@@ -85,6 +85,11 @@ function TaskIndex() {
           <Header id="header-font" as='h1' color='pink'>Tasks</Header>
           <AddButton color='red' buttonText='Add a new Task' />
 
+          <div className='task-edit-add'>
+            <TaskEdit2 />
+          </div>
+
+
           <Header textAlign='left' as='h5'>Still To Complete</Header>
           <hr />
           <div className='uncompleted-tasks'>
@@ -93,7 +98,7 @@ function TaskIndex() {
                 <TaskShow
                   key={task.id}
                   toggleCheckbox={toggleCheckbox}
-                  {...task} />
+                  task={task} />
               ))
               :
               ''
@@ -108,7 +113,7 @@ function TaskIndex() {
                 <TaskShow
                   key={task.id}
                   toggleCheckbox={toggleCheckbox}
-                  {...task} />
+                  task={task} />
               ))
               :
               ''

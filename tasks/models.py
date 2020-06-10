@@ -2,7 +2,8 @@
 from django.db import models
 
 class Task(models.Model):
-    notes = models.CharField(max_length=1000)
+    title = models.CharField(max_length=100, null=True, blank=True)
+    notes = models.CharField(max_length=400, null=True, blank=True)
     added_date = models.DateField(auto_now_add=True)
     reminder_date = models.DateField(null=True, blank=True)
     completed = models.BooleanField()
