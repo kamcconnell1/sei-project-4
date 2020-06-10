@@ -7,11 +7,28 @@ $color5: #e2bca1;
 $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
-h1,
-  .ui.header {
-    font-family: $font-title;
-}
-
-section.ui.section {
-  width: 600px;
+// ? Home page
+section.section {
+  margin: 0;
+  div.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 65vh;
+    background-color: $color3;
+    h1.header {
+      padding-left: 5%; 
+      font-family: $font-title;
+      font-size: 3rem;
+      text-align: left;
+      color: #FFF;
+    }
+    img {
+      
+    }
+  }
+  p {
+    font-family: $font-content;
+    margin: 1rem auto;
+  }
 }
