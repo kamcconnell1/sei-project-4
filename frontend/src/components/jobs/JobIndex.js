@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Icon } from 'semantic-ui-react'
 
-import { getAllJobs } from '../../lib/api'
+import { getAllJobs, getSingleJob, editJob } from '../../lib/api'
 import { mobileView, smallTabletView, largeTabletView, desktopView } from '../../lib/boardViews'
 import { wishlistView, appliedView, interviewView, offerView, rejectedView } from '../../lib/mobileViews'
 import { smallTabletViewTwo, smallTabletViewThree, smallTabletViewFour, smallTabletViewFive } from '../../lib/smallTabletViews'
 import { largeTabletViewTwo, largeTabletViewThree, largeTabletViewFour, largeTabletViewFive } from '../../lib/largeTabletViews'
-import useFetch from '../../utils/useFetch'
 import useWindowSize from '../../utils/useWindowSize'
 import JobIndexBoard from './JobIndexBoard'
 
 
 
 function JobIndex() {
-  const { data: jobs, loading, error } = useFetch(getAllJobs)
+  const [jobs, setJobs] = useState(null)
   const { width } = useWindowSize()
   const [statuses, setStatuses] = useState(desktopView)
   const [currentSmallTabletView, setCurrentSmallTabletView] = useState(smallTabletView)
   const [currentLargeTabletView, setCurrentLargeTabletView] = useState(largeTabletView)
+
+
+  const getData = async () => {
+    try {
+      const res = await getAllJobs()
+      setJobs(res.data)
+    } catch (err) {
+      console.log(err)
+      
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   useEffect(() => {
     if (width <= 480) {
@@ -144,8 +156,16 @@ function JobIndex() {
     }
   }
 
-  if (error) {
-    return <Redirect to="/notfound" />
+
+  const drop = async dropEvent => {
+    dropEvent.persist()
+    dropEvent.preventDefault()
+    const jobId = dropEvent.dataTransfer.getData('jobId')
+    const jobToUpdate = await getSingleJob(jobId)
+    const newStatus = dropEvent.target.id
+    if (!newStatus) return
+    await editJob({ ...jobToUpdate.data, status: newStatus }, jobId)
+    getData()
   }
 
   if (!jobs) return null
@@ -153,52 +173,51 @@ function JobIndex() {
   return (
 
     <>
-      {loading ?
-        <h1>LOADING</h1>
-        :
-        <div className="JobIndex">
-          <div className="button-container-small-tablet right">
-            <button
-              className='tablet-btn left'
-              onClick={handleBoardChangeSmallTablet}
-              value='left'
-            >&lt;</button>
-          </div>
-          <div className="button-container-small-tablet right">
-            <button
-              className='tablet-btn right'
-              onClick={handleBoardChangeSmallTablet}
-              value='right'
-            >&gt;</button>
-          </div>
-          <div className="button-container-large-tablet left">
-            <button
-              className='tablet-btn left'
-              onClick={handleBoardChangeLargeTablet}
-              value='left'
-            >&lt;</button>
-          </div>
-          <div className="button-container-large-tablet right">
-            <button
-              className='tablet-btn right'
-              onClick={handleBoardChangeLargeTablet}
-              value='right'
-            >&gt;</button>
-          </div>
-          <div className="job-boards">
-            {statuses.map((status => {
-              return (
-                <JobIndexBoard
-                  key={status.name}
-                  jobData={jobs}
-                  status={status}
-                  handleBoardChangeMobile={handleBoardChangeMobile}
-                />
-              )
-            }))}
-          </div>
+
+      <div className="JobIndex">
+        <div className="button-container-small-tablet right">
+          <button
+            className='tablet-btn left'
+            onClick={handleBoardChangeSmallTablet}
+            value='left'
+          >&lt;</button>
         </div>
-      }
+        <div className="button-container-small-tablet right">
+          <button
+            className='tablet-btn right'
+            onClick={handleBoardChangeSmallTablet}
+            value='right'
+          >&gt;</button>
+        </div>
+        <div className="button-container-large-tablet left">
+          <button
+            className='tablet-btn left'
+            onClick={handleBoardChangeLargeTablet}
+            value='left'
+          >&lt;</button>
+        </div>
+        <div className="button-container-large-tablet right">
+          <button
+            className='tablet-btn right'
+            onClick={handleBoardChangeLargeTablet}
+            value='right'
+          >&gt;</button>
+        </div>
+        <div className="job-boards">
+          {statuses.map((status => {
+            return (
+              <JobIndexBoard
+                key={status.name}
+                jobData={jobs}
+                status={status}
+                handleBoardChangeMobile={handleBoardChangeMobile}
+                drop={drop}
+              />
+            )
+          }))}
+        </div>
+      </div>
+
     </>
   )
 

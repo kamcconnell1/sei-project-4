@@ -5,8 +5,17 @@ import { Button } from 'semantic-ui-react'
 import JobIndexCard from './JobIndexCard'
 
 class JobIndexBoard extends React.Component {
+
+  allowDrop = e => {
+    e.preventDefault()
+  }
+  
+  drag = dragEvent => {
+    dragEvent.dataTransfer.setData('jobId', dragEvent.target.id)
+  }
+
   render() {
-    const { jobData, status, handleBoardChangeMobile } = this.props
+    const { jobData, status, handleBoardChangeMobile, drop } = this.props
 
     return (
       
@@ -41,11 +50,11 @@ class JobIndexBoard extends React.Component {
           </Button>
         </Link>
 
-        <div className="job-board-content">
+        <div className="job-board-content" onDrop={drop} onDragOver={this.allowDrop} id={status.id}>
           {jobData.map(job => {
             if (job.status.name.toUpperCase() === status.name.toUpperCase()) {
               return (
-                <JobIndexCard key={`jobindex${job.id}`} {...job} />
+                <JobIndexCard key={`jobindex${job.id}`} {...job} drag={this.drag}/>
               )
             } else {
               return null
