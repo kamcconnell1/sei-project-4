@@ -1,22 +1,134 @@
+$color1: #107d7e;
+$color2: #e25068;
+$color3: #ee5996;
+$color4: #ec6a32;
+$color5: #e2bca1;
+
 $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
+//? Universal styling 
 #header-font {
   font-family: $font-title;
 }  
 #form-button {
   font-family: $font-content;
 }
+
+// ? TaskLabel Page 
 .overdue {
-  color: red;
+  background-color: #f94144;
+  opacity: 90%;
+  color: #ffffff;
+  padding: .5833em .833em;
+  border-radius: .28571429rem;
+  font-weight: 700;
+  font-size: .85714286rem;
+  text-align: center;
 }
 .due {
-  color: green;
+  background-color: #16db65;
+  opacity: 80%;
+  color: #ffffff;
+  padding: .5833em .833em;
+  border-radius: .28571429rem;
+  font-weight: 700;
+  font-size: .85714286rem;
+  text-align: center;
 }
-.uncompleted-tasks {
 
+.due-today{
+  background-color: #9b5de5;
+  opacity: 90%;
+  color: #ffffff;
+  padding: .5833em .833em;
+  border-radius: .28571429rem;
+  font-weight: 700;
+  font-size: .85714286rem;
+}
+
+
+
+// ? Task Show Index (feeds into Task Show below)
+.uncompleted-tasks {
+  margin-top:  5% ;
 }
 .completed-tasks{
+  margin-top:  5% ;
   color: grey;
   text-decoration: line-through;
+}
+.hidden{
+  display: none;
+}
+
+// ? Task Show Page 
+.TaskShow {
+
+  //  FOR MOBILE VIEW 
+  .card-header{
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .833em;
+    }
+    .task-content {
+      display: flex;
+      justify-content: space-between;
+      .task-job {
+        text-align: left;
+      }
+    }
+  }
+
+  // FOR COMPUTER TABLET VIEW 
+  .task-edit-show{
+    display: none;
+  }
+}
+.card-header {
+  padding: 3vw;
+  border-radius: 10px;
+  // background-color: $color2;
+  // color: white;
+}
+
+// ? Task Edit Page 
+.TaskEdit {
+  .row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .row2{
+    p {
+      font-size: 1rem;
+    }
+  }
+  .row3{
+    font-size: 1rem;
+  }
+  .row4 {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    align-items: center;
+    .date {
+      max-width: 40%;
+    }
+    .date-picker {
+      max-width: 40%;
+      padding-left: 20%;
+    }
+  }
+  .row5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .update-btn {
+    width: 80%;
+    }
+  }
 }
