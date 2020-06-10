@@ -1,17 +1,25 @@
 /* eslint-disable camelcase */
 import React from 'react'
+import { Icon } from 'semantic-ui-react'
 
-function ContactCard({ email, job, job_title, name, phone }) {
+function ContactCard({ id, email, job, job_title, name, phone, handleDeleteContact }) {
 
   return (
     <div className='contact-card'>
       <div className='contact-card-header'>
-        {!job ? <p>{name}</p> : <p>{name} - {job.company}</p>}
-        <p>{job_title}</p>
+        <div>
+          <p>{name}</p>
+          {!job ? '' : <p>{job.company}</p>}
+
+        </div>
+        <button value={id} onClick={handleDeleteContact} className='delete-contact-btn'>
+          <Icon size='large' name='delete' />
+        </button>
       </div>
       <div className='contact-card-content'>
-        <p>{email}</p>
-        <p>{phone}</p>
+        <p>job title: {job_title}</p>
+        <p>email: {email}</p>
+        <p>phone: {phone}</p>
       </div>
     </div>
   )
