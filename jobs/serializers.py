@@ -10,14 +10,14 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ('id', 'task_category', 'reminder_date', 'notes')
+        fields = '__all__'
 
 
 class ContactSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Contact
-        fields = ('id', 'name', 'job_title', 'phone', 'email')
+        fields = '__all__'
 
 class JobSerializer(serializers.ModelSerializer):
 

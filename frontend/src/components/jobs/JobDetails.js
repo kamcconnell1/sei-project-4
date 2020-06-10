@@ -4,7 +4,6 @@ import { Header, Grid, Segment, Button } from 'semantic-ui-react'
 
 function JobDetails ({ job }) {
   return (
-    
     <Grid stackable columns={2}>
       <Grid.Row stretched>
         <Grid.Column width={12}>
@@ -126,7 +125,7 @@ function JobDetails ({ job }) {
           <p>{job.offer_accepted ? job.offer_accepted : 'No date'}</p>
         </Segment>
       </Grid.Column>
-      <Grid.Column>
+      <Grid.Column width={16}>
         <Link to={`/jobs/${job.id}/edit`}>
           <Button content='Update' className='button orange-button' fluid />
         </Link>
