@@ -18,7 +18,7 @@ function ResourceNewModal({
             basic
             color='orange'
             animated='fade'
-            className='fluid'
+            className='fluid add-btn'
             onClick={handleModalOpen}
           >
             <Button.Content visible>+</Button.Content>

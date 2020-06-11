@@ -6,18 +6,18 @@ import FormInput from '../common/FormInput'
 
 function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown, handleSubmit, formHeaderText, options, newJobStatus, buttonText }) {
 
-  console.log(newJobStatus)
+  // console.log(newJobStatus)
 
-  const jobStatus = (options, newJobStatus) => {
-    options.find(option => {
-      console.log(option.value === parseInt(newJobStatus))
-      if (option.value === parseInt(newJobStatus)) {
-        return option.text
-      }
-    })
-  }
+  // const jobStatus = (options, newJobStatus) => {
+  //   options.find(option => {
+  //     console.log(option.value === parseInt(newJobStatus))
+  //     if (option.value === parseInt(newJobStatus)) {
+  //       return option.text
+  //     }
+  //   })
+  // }
 
-  console.log(jobStatus(options, newJobStatus))
+  // console.log(jobStatus(options, newJobStatus))
 
   return (
     <Segment.Group as='div' className='job-form'>
@@ -177,7 +177,7 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
                     error={errors.status}
                     name='status'
                     value={data.status}
-                    placeholder={newJobStatus}
+                    // placeholder={newJobStatus}
                     options={options}
                     onChange={selectDropdown}
                   />
