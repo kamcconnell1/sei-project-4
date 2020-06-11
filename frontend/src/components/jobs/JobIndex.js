@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
-import { getAllJobs, getSingleJob, editJob } from '../../lib/api'
+import { getAllJobs, getSingleJob, editJob, deleteJob } from '../../lib/api'
 import { mobileView, smallTabletView, largeTabletView, desktopView } from '../../lib/boardViews'
 import { wishlistView, appliedView, interviewView, offerView, rejectedView } from '../../lib/mobileViews'
 import { smallTabletViewTwo, smallTabletViewThree, smallTabletViewFour, smallTabletViewFive } from '../../lib/smallTabletViews'
 import { largeTabletViewTwo, largeTabletViewThree, largeTabletViewFour, largeTabletViewFive } from '../../lib/largeTabletViews'
 import useWindowSize from '../../utils/useWindowSize'
 import JobIndexBoard from './JobIndexBoard'
+import DeleteConfirmModal from '../common/DeleteConfirmModal'
 
 
 
@@ -16,6 +17,8 @@ function JobIndex() {
   const [statuses, setStatuses] = useState(desktopView)
   const [currentSmallTabletView, setCurrentSmallTabletView] = useState(smallTabletView)
   const [currentLargeTabletView, setCurrentLargeTabletView] = useState(largeTabletView)
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+  const [jobToDelete, setJobToDelete] = useState(null)
 
 
   const getData = async () => {
@@ -24,7 +27,7 @@ function JobIndex() {
       setJobs(res.data)
     } catch (err) {
       console.log(err)
-      
+
     }
   }
 
@@ -43,6 +46,27 @@ function JobIndex() {
       setStatuses(desktopView)
     }
   }, [width])
+
+
+  const handleDeleteJob = async () => {
+    try {
+      await deleteJob(jobToDelete)
+      setDeleteModalOpen(false)
+    } catch (err) {
+      console.log(err)
+    }
+    getData()
+  }
+
+  const handleDeleteConfirmModal = e => {
+    e.preventDefault()
+    setJobToDelete(e.currentTarget.value)
+    setDeleteModalOpen(true)
+  }
+
+  const handleCloseDeleteConfirm = () => {
+    setDeleteModalOpen(false)
+  }
 
   const handleBoardChangeMobile = e => {
     e.preventDefault()
@@ -173,7 +197,12 @@ function JobIndex() {
   return (
 
     <>
-
+      <DeleteConfirmModal
+        deleteModalOpen={deleteModalOpen}
+        handleCloseDeleteConfirm={handleCloseDeleteConfirm}
+        nameOfThingToDelete='Job'
+        handleDelete={handleDeleteJob}
+      />
       <div className="JobIndex">
         <div className="button-container-small-tablet right">
           <button
@@ -210,6 +239,7 @@ function JobIndex() {
                 key={status.name}
                 jobData={jobs}
                 status={status}
+                handleDeleteConfirmModal={handleDeleteConfirmModal}
                 handleBoardChangeMobile={handleBoardChangeMobile}
                 drop={drop}
               />

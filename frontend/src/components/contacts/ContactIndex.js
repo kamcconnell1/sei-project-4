@@ -6,12 +6,15 @@ import { getAllContacts, addNewContact, deleteContact, getAllJobs } from '../../
 import useForm from '../../utils/useForm'
 import ContactCard from './ContactCard'
 import ContactNewModal from './ContactNewModal'
+import DeleteConfirmModal from '../common/DeleteConfirmModal'
 
 
 function ContactIndex() {
   const [contacts, setContacts] = useState(null)
   const [jobs, setJobs] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+  const [contactToDelete, setContactToDelete] = useState(null)
   const [search, setSearch] = useState('')
   const history = useHistory()
 
@@ -56,10 +59,21 @@ function ContactIndex() {
     setModalOpen(false)
   }
 
+  const handleDeleteConfirmModal = e => {
+    e.preventDefault()
+    setContactToDelete(e.currentTarget.value)
+    setDeleteModalOpen(true)
+  }
+
+  const handleCloseDeleteConfirm = () => {
+    setDeleteModalOpen(false)
+  }
+
   const handleDeleteContact = async e => {
     e.preventDefault()
     try {
-      await deleteContact(e.currentTarget.value)
+      await deleteContact(contactToDelete)
+      setDeleteModalOpen(false)
     } catch (err) {
       console.log(err)
     }
@@ -86,6 +100,12 @@ function ContactIndex() {
   return (
     <>
       <Header id="header-font-contacts" as='h1' >Contacts</Header>
+      <DeleteConfirmModal
+        deleteModalOpen={deleteModalOpen}
+        handleCloseDeleteConfirm={handleCloseDeleteConfirm}
+        nameOfThingToDelete='Contact'
+        handleDelete={handleDeleteContact}
+      />
       <ContactNewModal
         jobs={jobs}
         modalOpen={modalOpen}
@@ -106,7 +126,7 @@ function ContactIndex() {
         {filteredContacts().map((contact => (
           <ContactCard
             key={contact.id}
-            handleDeleteContact={handleDeleteContact}
+            handleDeleteConfirmModal={handleDeleteConfirmModal}
             {...contact}
           />
         )))}
