@@ -21,7 +21,6 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
   //* HandleChange event for inputting values on form & sets them to state 
   const selectDropdown = (event, result ) => {
     const { name, value } = result   
-    // console.log(name, value)
     setFormData({ ...formData, [name]: value })
   }
 
@@ -51,7 +50,6 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
       onSubmitSuccess(response)
     } catch (err) {
       console.log(err)
-      
       setFormErrors(err.response.data)
     }
   }

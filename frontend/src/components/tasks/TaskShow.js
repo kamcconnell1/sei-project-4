@@ -2,7 +2,7 @@
 import React from 'react'
 
 import GetDate from '../common/GetDate'
-import TaskShowMobile from '../tasks/TaskShowMobile'
+import TaskShowCard from '../tasks/TaskShowCard'
 
 function TaskShow({ task, toggleCheckbox, toggleForm }) {
 
@@ -11,8 +11,7 @@ function TaskShow({ task, toggleCheckbox, toggleForm }) {
 
   return (
     <div className="TaskShow">
-
-      <TaskShowMobile
+      <TaskShowCard
         id={id}
         completed={completed}
         toggleCheckbox={toggleCheckbox}
