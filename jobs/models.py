@@ -17,7 +17,7 @@ class Job(models.Model):
         null=True,
         blank=True
         )
-    interview_date = models.DateTimeField(
+    interview_date = models.DateField(
         auto_now=False, 
         auto_now_add=False,
         null=True,
