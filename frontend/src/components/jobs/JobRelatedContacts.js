@@ -19,7 +19,7 @@ function JobRelatedContacts ({ job }) {
         </Item>
       ))}
       <Link to={'/contacts/'}>
-        <Button content='Go to contacts page' className='button orange-button' fluid />
+        <Button content='Go to contacts page' className='teal-button' fluid />
       </Link>
     </Item.Group>
   )

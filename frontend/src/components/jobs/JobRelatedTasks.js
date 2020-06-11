@@ -19,7 +19,7 @@ function JobRelatedTasks({ job }) {
         </Item>
       ))}
       <Link to={'/tasks/'}>
-        <Button content='Go to tasks page' className='button orange-button' fluid />
+        <Button content='Go to tasks page' className='teal-button' fluid />
       </Link>
     </Item.Group>
   )
