@@ -135,7 +135,7 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
                     clearable
                     format='DD MMMM YYYY'
                     name='job_offer_date'
-                    value={data.job_offer_date ? new Date(data.job_offer_date) : ''}
+                    value={data.job_offer_date ? new Date(data.job_offer_date) : null}
                     onChange={handleDateChange}
                   />
                 </Form.Field>
@@ -176,8 +176,8 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
                     datePickerOnly
                     clearable
                     format='DD MMMM YYYY'
-                    name='offer_accepted'
-                    value={data.offer_accepted ? new Date(data.offer_accepted) : null}
+                    name='offer_acceptance_date'
+                    value={data.offer_acceptance_date ? new Date(data.offer_acceptance_date) : null}
                     onChange={handleDateChange}
                   />
                 </Form.Field>
