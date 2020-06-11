@@ -16,7 +16,8 @@ import JobEdit from './components/jobs/JobEdit'
 
 // Task imports
 import TaskIndex from './components/tasks/TaskIndex'
-import TaskEdit from './components/tasks/TaskEdit'
+import TaskEditMobile from './components/tasks/TaskEditMobile'
+import TaskAddMobile from './components/tasks/TaskAddMobile'
 
 // Contact imports
 import ContactIndex from './components/contacts/ContactIndex'
@@ -37,7 +38,8 @@ const App = () => {
         <Route path='/jobs/:id/edit' component={JobEdit} />
         <Route path='/jobs/:id' component={JobShow} />
         <Route path='/jobs' component={JobIndex} />
-        <Route path='/tasks/:id' component={TaskEdit} />
+        <Route path='/tasks/new' component={TaskAddMobile} />
+        <Route path='/tasks/:id' component={TaskEditMobile} />
         <Route path='/tasks' component={TaskIndex} />
         <Route path='/contacts/:id' component={ContactShow} />
         <Route path='/contacts' component={ContactIndex} />

@@ -48,6 +48,10 @@ export const getSingleTask = id => {
   return axios.get(`${baseUrl}/tasks/${id}`, withHeaders())
 }
 
+export const addNewTask = data => {
+  return axios.post(`${baseUrl}/tasks/`, data, withHeaders())
+}
+
 export const editTask =  (data, id) => {
   return axios.put(`${baseUrl}/tasks/${id}/`, data, withHeaders())
 }
