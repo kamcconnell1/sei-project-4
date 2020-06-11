@@ -10,9 +10,9 @@ const Home = () => {
     <PageContainer>
       <div className='hero'>
         <Header as='h1'>Take the work out of the job search</Header>
-        <Image src={exampleImage} size='massive'/>
       </div>
       <p>Finding a job can be a stressful and time-consuming process. JOBR helps make it just a bit easier by providing one platform to organise, prioritise and track your job search. Use JOBR to create your own job board to store and update applications as they progress through various stages, from your initial search to when you finally land the offer.</p>
+      <Image src={exampleImage} size='massive'/>
     </PageContainer>
   )
 }
