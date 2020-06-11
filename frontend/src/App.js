@@ -21,7 +21,6 @@ import TaskAddMobile from './components/tasks/TaskAddMobile'
 
 // Contact imports
 import ContactIndex from './components/contacts/ContactIndex'
-import ContactShow from './components/contacts/ContactShow'
 
 // Resources imports
 import ResourceIndex from './components/resources/ResourceIndex'
@@ -41,7 +40,6 @@ const App = () => {
         <Route path='/tasks/new' component={TaskAddMobile} />
         <Route path='/tasks/:id' component={TaskEditMobile} />
         <Route path='/tasks' component={TaskIndex} />
-        <Route path='/contacts/:id' component={ContactShow} />
         <Route path='/contacts' component={ContactIndex} />
         <Route path='/resources' component={ResourceIndex} />
         <Route path="/*" component={ErrorPage} />
