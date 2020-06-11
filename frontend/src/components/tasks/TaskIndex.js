@@ -79,8 +79,7 @@ function TaskIndex() {
   }
 
   //* Function to toggle the edit form & set the task to state
-  const toggleForm =  (id) => {   
-    // event.preventDefault()
+  const toggleForm =  (id) => {
     showForm(!formVisible)
     showAddForm(false)
     const task = filterTasks(tasks, id)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Grid, Icon, Header, Segment, Dropdown } from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Dropdown } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import useForm from '../../utils/useForm'
@@ -13,6 +13,7 @@ import useWindowSize from '../../utils/useWindowSize'
 
 
 function TaskAddMobile() {
+
   const history = useHistory()
   const [jobs, setJobs] = React.useState(null)
   const { width } = useWindowSize()
@@ -22,7 +23,7 @@ function TaskAddMobile() {
     history.push('/tasks')
   }
 
-  const { formData, handleChange, selectDropdown, handleDateChange, handleSubmit } = useForm({
+  const { formData, formErrors, handleChange, selectDropdown, handleDateChange, handleSubmit } = useForm({
     title: '',
     completed: false,
     notes: '',
@@ -55,6 +56,8 @@ function TaskAddMobile() {
       }
     )
   }))
+  console.log(formErrors.task_category.length)
+  
 
   return (
     <Segment.Group className='TaskFormMobile'>
@@ -71,6 +74,7 @@ function TaskAddMobile() {
                 <Header size='small'>Task Category</Header>
                 <Form.Field >
                   <Dropdown
+                    error={formErrors.task_categorylength >= 1 ? true : false}
                     search
                     clearable
                     selection
@@ -106,7 +110,6 @@ function TaskAddMobile() {
                 <Form.Field >
                   <FormInput
                   // error={formErrors.first_name}
-                    size='big'
                     fluidIcon='pencil alternate'
                     iconPosition='left'
                     placeholder='Notes'
