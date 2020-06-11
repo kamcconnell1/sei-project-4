@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 import { editTask, deleteTask, getAllJobs } from '../../lib/api'
 
-import TaskComputerForm from './TaskComputerForm'
+import TaskFormComputer from './TaskFormComputer'
+import useWindowSize from '../../utils/useWindowSize'
 
 function TaskEditComputer({ closeForm, data, getData }) {
   const history = useHistory()
@@ -43,13 +44,11 @@ function TaskEditComputer({ closeForm, data, getData }) {
     }
   }, [data])
 
-  
+  //* useForm not used at taskId not set from params
   const handleChange = ({ target: { name, value, type, completed } }) => {
     const newValue = (type === 'checkbox' ? completed : value) 
     const updatedFormData = { ...formData, [name]: newValue }
-    // const updatedErrors = { ...formErrors, [name]: '' }
     setFormData(updatedFormData)
-    // setFormErrors(updatedErrors)
   }
 
   const selectDropdown = (event, result ) => {
@@ -67,8 +66,6 @@ function TaskEditComputer({ closeForm, data, getData }) {
       }
     }
     const date = formattedDate(value)
-    console.log(date)
-    
     setFormData({ ...formData, [name]: date })
   }
 
@@ -85,7 +82,7 @@ function TaskEditComputer({ closeForm, data, getData }) {
       console.log('updated') 
     } catch (err) {
       console.log(err)
-      // setFormErrors(err.response.data)
+      history.push('/notfound')
     }
   }
 
@@ -113,8 +110,7 @@ function TaskEditComputer({ closeForm, data, getData }) {
   }))
 
   return (
-
-    <TaskComputerForm
+    <TaskFormComputer
       task={task}
       jobOptions={jobOptions}
       // date={date}

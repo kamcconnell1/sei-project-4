@@ -10,13 +10,13 @@ import TaskLabel from '../common/TaskLabel'
 import { taskCategories } from './TaskCategories'
 
 
-function TaskComputerForm({ jobOptions, formData, task, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit, closeForm }) {
+
+function TaskFormComputer({ jobOptions, formData, task, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit, closeForm }) {
 
   if (!formData) return null
   const { notes, reminder_date, title } = formData
-  
-
   const taskPlaceholder = (<span><TaskLabel category={task.task_category.id} /></span>)
+  
 
   return (
 
@@ -26,12 +26,11 @@ function TaskComputerForm({ jobOptions, formData, task, selectDropdown, handleCh
           <Form size='large' onSubmit={handleSubmit}>
             <Grid >
               <Grid.Row only='tablet computer'>
-          
                 <Grid.Column width={1}>
                   <Button circular icon='close' type='button' size='small' onClick={closeForm} />
                 </Grid.Column>
                 <Grid.Column width={12}>
-                  <Header as='h1' textAlign='center'>{title ? title : 'Update Task'}</Header>
+                  <Header as='h1' textAlign='center'>Update Task</Header>
                 </Grid.Column>
                 <Grid.Column width={3} textAlign='right'>
                   <Form.Field>
@@ -44,6 +43,7 @@ function TaskComputerForm({ jobOptions, formData, task, selectDropdown, handleCh
                   <Form.Field>
                     <Header size='small'>Task Category</Header>
                     <Dropdown
+                    
                       search
                       clearable
                       selection
@@ -146,4 +146,4 @@ function TaskComputerForm({ jobOptions, formData, task, selectDropdown, handleCh
 
   )
 }
-export default TaskComputerForm
+export default TaskFormComputer

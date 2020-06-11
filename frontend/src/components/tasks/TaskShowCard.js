@@ -6,9 +6,8 @@ import { Grid, Card, Checkbox } from 'semantic-ui-react'
 import TaskLabel from '../common/TaskLabel'
 import useWindowSize from '../../utils/useWindowSize'
 
-function TaskShowMobile(
+function TaskShowCard(
   { id, completed, toggleCheckbox, toggleForm, task_category, job, date, title }) {
-
   const { width } = useWindowSize()
   const history = useHistory()
 
@@ -24,7 +23,7 @@ function TaskShowMobile(
   return (
     <Grid textAlign='left' verticalAlign='middle' >
       <Grid.Row  >
-        <button className='btn-not-displayed' onClick={handleClick} value={id} >
+        <button className='btn-not-displayed' type='button' onClick={handleClick} value={id} >
           <Card fluid>
             <div className='taskshow-mobile' >
               <Card.Content>
@@ -34,7 +33,7 @@ function TaskShowMobile(
                       <Checkbox
                         id={id}
                         checked={completed}
-                        onClick={toggleCheckbox} />
+                        onChange={toggleCheckbox} />
                     </div>
                     <div className='task-title'>
                       { title ? title : task_category.name }
@@ -62,4 +61,4 @@ function TaskShowMobile(
     </Grid>
   )
 }
-export default TaskShowMobile
+export default TaskShowCard

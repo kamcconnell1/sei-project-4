@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import { Form, Grid, Icon, Header, Segment, Dropdown, Button, GridColumn } from 'semantic-ui-react'
+import { Form, Grid, Icon, Header, Segment, Dropdown, Button } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import FormInput from '../common/FormInput'
@@ -9,7 +9,7 @@ import TaskLabel from '../common/TaskLabel'
 import { taskCategories } from './TaskCategories'
 
 
-function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit }) {
+function TaskFormMobile({ formData, task, date, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit }) {
   
   const taskPlaceholder = (<span><TaskLabel category={task.task_category.id} /></span>)
 
@@ -42,10 +42,10 @@ function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, ha
             <Grid.Row only='mobile' className='row2'>
               <Grid.Column >
                 <Header size='small'>Related Job</Header>
-                <Form.Field >
+                <Segment >
                   <p className={formData.completed === true ? 'completed-tasks' : ''}>
                     {task.job ? `${task.job.company}: ${task.job.job_title}` : ''}</p>
-                </Form.Field>
+                </Segment>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row only='mobile' className='row3'>
@@ -72,6 +72,7 @@ function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, ha
                   <SemanticDatepicker onChange={handleDateChange}
                     datePickerOnly
                     clearable
+                    iconPosition='left'
                     pointing='top right'
                     name='reminder_date'
                     format='DD-MM-YYYY'
@@ -101,4 +102,4 @@ function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, ha
     </Segment.Group>
   )
 }
-export default TaskMobileForm
+export default TaskFormMobile
