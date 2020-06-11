@@ -1,14 +1,13 @@
 import React from 'react'
-import { Segment, Form, Header, Grid, Dropdown, TextArea } from 'semantic-ui-react'
+import { Segment, Form, Button, Header, Grid, Dropdown, TextArea } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import FormInput from '../common/FormInput'
-import FormButton from '../common/FormButton'
 
 function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown, handleSubmit, formHeaderText, options, buttonText }) {
   return (
-    <Segment.Group>
-      <Segment textAlign='left'>
+    <Segment.Group as='div' className='job-form'>
+      <Segment>
         <Header as='h1' textAlign='center'> {formHeaderText}</Header>
         <Form onSubmit={handleSubmit}>
           <Grid stackable columns={2}>
@@ -267,12 +266,9 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
             <Grid.Column>
             </Grid.Column>
           </Grid>
-          <FormButton
-            fluidSize='large'
-            color='orange'
-            buttonText={buttonText}
-            type='submit'
-          />
+          <Button 
+            content={buttonText} className='teal-button' 
+            fluid />
         </Form>
       </Segment>
     </Segment.Group>
