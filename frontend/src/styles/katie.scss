@@ -113,8 +113,8 @@ $font-content: "IBM Plex Mono", monospace;
     outline: inherit;
     width:100%;
     display: flex;
-    // justify-content: flex-end;
     align-items: center;
+    margin-bottom: 2%;
     .task-label {
       width: 18%;
       display: flex;

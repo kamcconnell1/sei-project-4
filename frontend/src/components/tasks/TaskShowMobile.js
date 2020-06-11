@@ -1,12 +1,14 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import { Grid, Card, Checkbox } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 import TaskLabel from '../common/TaskLabel'
 
 function TaskShowMobile({ id, completed, toggleCheckbox, task_category, job, date, title }) {
   
   return (
+    
     <Grid textAlign='left' verticalAlign='middle' >
       <Grid.Row only='mobile' >
         <Card  href={`/tasks/${id}`} fluid>

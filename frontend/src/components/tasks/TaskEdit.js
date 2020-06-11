@@ -12,8 +12,7 @@ import TaskEditMobile from './TaskEditMobile'
 import TaskEditComputer from './TaskEditComputer'
 
 
-function TaskEdit(props) {
-  console.log('props', props)
+function TaskEdit() {
   
   const history = useHistory()
   const { id: taskId } = useParams()
@@ -28,6 +27,7 @@ function TaskEdit(props) {
   // * Values & functions taken from useForm & props passed to useForm
   const { formData, handleChange, setFormData, selectDropdown, handleDateChange, handleSubmit } = useForm({
     id: '',
+    completed: '',
     notes: '',
     added_date: '',
     reminder_date: '',
@@ -77,7 +77,9 @@ function TaskEdit(props) {
   if (!formData) return null
   const { added_date, reminder_date } = formData
   if (!task) return null
+  console.log(formData.completed)
   
+
   //! FUNCTION NOT WORKING NOW - COME BACK TO 
   const dateProvided = () => {
     if (reminder_date) {
@@ -90,17 +92,18 @@ function TaskEdit(props) {
   
   return (
     <div className='TaskEdit'>
-      <Form size='large' onSubmit={handleSubmit}>
-        <TaskEditMobile 
-          task={task}
-          formData={formData}
-          selectDropdown={selectDropdown}
-          handleChange={handleChange}
-          handleDateChange={handleDateChange}
-          deleteItem={deleteItem}
-        />
+      <TaskEditMobile 
+        task={task}
+        date={date}
+        formData={formData}
+        selectDropdown={selectDropdown}
+        handleChange={handleChange}
+        handleDateChange={handleDateChange}
+        deleteItem={deleteItem}
+        handleSubmit={handleSubmit}
+      />
 
-        <TaskEditComputer
+      {/* <TaskEditComputer
           task={task}
           formData={formData}
           selectDropdown={selectDropdown}
@@ -108,8 +111,8 @@ function TaskEdit(props) {
           handleDateChange={handleDateChange}
           deleteItem={deleteItem}
           toggleCheckbox={toggleCheckbox}
-        />
-      </Form>
+        /> */}
+      {/* </Form> */}
     </div>
   )
 }

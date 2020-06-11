@@ -11,29 +11,34 @@ import FormButton from '../common/FormButton'
 import TaskLabel from '../common/TaskLabel'
 import { taskCategories } from './TaskCategories'
 
-function TaskEditComputer(props) {
+function TaskEditComputer({ toggleForm, data }) {
   const [task, setTask] = React.useState(null)
   const [formData, setFormData] = React.useState(null)
   
+  console.log('outside use effect', data)
 
   React.useEffect(() => {
-    setTask(props)
-    if (Object.entries(props).length === 0) return 
-    if (!props.job) {
+    if (!data) return 
+    setTask(data)
+    console.log('inside use effect', data)
+    if (!data.job) {
       setFormData({
-        ...props,
-        task_category: props.task_category.id,
-        completed: !props.completed
+        ...data,
+        task_category: data.task_category.id,
+        completed: !data.completed
       })
     } else {
       setFormData({
-        ...props,
-        job: props.job.id,
-        task_category: props.task_category.id,
-        completed: !props.completed
+        ...data,
+        job: data.job.id,
+        task_category: data.task_category.id,
+        completed: !data.completed
       })
     }
-  }, [props])
+    // return () => {
+    //   console.log('This will be logged on unmount')
+    // }
+  }, [data])
 
   
   const handleChange = ({ target: { name, value, type, completed } }) => {
@@ -77,9 +82,14 @@ function TaskEditComputer(props) {
   }
 
   if (!formData) return null
-  const { notes, reminder_date, completed, title, id } = formData
   if (!task) return null
+  const { notes, reminder_date, completed, title, id } = formData
   const { job } = task
+
+  console.log(formData)
+  console.log(task)
+
+
 
   return (
     <div className='TaskEditComputer'>
@@ -91,7 +101,7 @@ function TaskEditComputer(props) {
                 <Header as='h1' textAlign='center'>{title ? title : 'Update Task'}</Header>
               </Grid.Column>
               <Grid.Column width={1}>
-                <Button circular icon='close' size='small'/>
+                <Button circular icon='close' size='small' onClick={toggleForm} />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row only='tablet computer' className='row1'>

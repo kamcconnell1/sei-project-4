@@ -13,9 +13,9 @@ function TaskIndex() {
   const history = useHistory()
 
   const [tasks, setTasks] = React.useState(null)
+  const [task, setTask] = React.useState(null)
   const [formVisible, showForm] = React.useState(false)
   const [formData, setFormData] = useState('')
-  const [task, setTask] = React.useState(null)
 
   const getData = async () => {
     try {
@@ -32,19 +32,34 @@ function TaskIndex() {
   }, [])
 
   //* Function to toggle the add/edit form & set the id to state if editing 
-  const toggleForm =  async (event) => {
-    event.preventDefault()
+  const toggleForm =  async (event) => {   
     showForm(!formVisible)
-    try {
-      const res = await getSingleTask(event.currentTarget.value)
-      setFormData(res.data)
-    } catch (err) {
-      history.push('/notfound')
+
+    // ! NEED A GUARD CLAUSE AGAINST THIS
+    if (formVisible ) {
+      try {
+        const res = await getSingleTask(event.currentTarget.value)
+        setTask(res.data)
+      } catch (err) {
+        history.push('/notfound')
+      }
     }
   }
+  console.log('formvisibkle', formVisible)
+
+  // const getSingleTask = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     const res = await getSingleTask(event.currentTarget.value)
+  //     setFormData(res.data)
+  //   } catch (err) {
+  //     history.push('/notfound')
+  //   }
+  // }
 
   //* Functions to allow the user to tick the task off as completed 
   const toggleCheckbox = async ({ target: { id } }) => {
+    console.log('clicked')
     try {
       const res = await getSingleTask(id)
       const task = res.data
@@ -103,10 +118,11 @@ function TaskIndex() {
               <Header id="header-font" as='h1' color='pink'>Tasks</Header>
               <AddButton color='red' buttonText='Add a new Task' toggleForm={toggleForm} />
             </div>
+
             <div className='task-edit-add' style={{ display: formVisible ? 'block' : 'none' }}>
               <TaskEditComputer
-                // toggleForm={toggleForm}
-                {...formData} 
+                toggleForm={toggleForm}
+                data={task} 
               />
             </div>
 
