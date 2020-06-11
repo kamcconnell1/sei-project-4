@@ -7,25 +7,107 @@ $color5: #e2bca1;
 $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
-// ? Home page
+// ? GLOBAL
+body {
+  min-height: 100vh;
+  height: 100%;
+}
+
+p {
+  font-family: $font-content;
+}
+
 section.section {
-  margin: 0;
-  div.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 65vh;
-    background-color: $color3;
-    h1.header {
-      padding-left: 5%; 
-      font-family: $font-title;
-      font-size: 3rem;
-      text-align: left;
-      color: #FFF;
+  margin: 0 auto 10vh;
+}
+
+// ? ---------- JOB SHOW PAGE ---------- ? //
+div.segments.job-show {
+  margin: 0 auto;
+  max-width: 700px;
+  color: $color1;
+  h1.header {
+    font-family: $font-title;
+    color: $color1;
+  }
+  div.ui.pointing.secondary.menu {
+    a.item {
+      font-family: $font-content;
+      color: $color1;
+      opacity: 0.95;
+    }
+    a.active.item {
+      border-color: $color1;
+    }
+    a.active.item:hover {
+      color: $color1;
     }
   }
-  p {
+  div.small.header {
     font-family: $font-content;
-    margin: 1rem auto;
+    color: $color1;
+  }
+  div.segment > a {
+    word-break: break-all;
+  }
+  button.orange-button {
+    font-family: $font-content;
+    color: $color1;
+    background-color: #FFF;
+    border: 2px solid $color1;
+  }
+}
+
+
+
+@media screen and (min-width: 160px) {
+  // ? ---------- HOME PAGE ---------- ? //
+  div.home {
+    div.hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 65vh;
+      background-color: $color3;
+      h1.header {
+        padding: 0 5%;
+        font-family: $font-title;
+        font-size: 3rem;
+        text-align: left;
+        color: #fff;
+      }
+    }
+    p {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+    }
+    div.image-desktop {
+      display: none;
+    }
+    div.image-mobile {
+      margin: 0 auto;
+      width: 95%;
+      background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 1));
+      img {
+        z-index: -1;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 480px) {
+  section.section {
+    div.image-desktop {
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      img {
+        margin: 0 auto;
+      }
+    }
+    div.image-mobile {
+      display: none;
+    }
   }
 }

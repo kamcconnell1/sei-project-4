@@ -71,7 +71,7 @@ function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, ha
           </Grid.Row>
           <Grid.Row only='mobile'>
             <Grid.Column >
-              <Header size='small'>Update Reminder</Header>
+              <Header size='small'>Update Reminder Date</Header>
               <Segment className='row4'>
                 <div className='date'>
                   {date ? date : formData.added_date}

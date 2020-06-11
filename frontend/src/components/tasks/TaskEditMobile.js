@@ -67,9 +67,9 @@ function TaskEditMobile() {
 
 
   //* Toggle form checkbox (doesn't update state until submit button pressed)
-  const toggleCheckbox = async () => {
-    setFormData({ ...formData, completed: !formData.completed })
-  }
+  // const toggleCheckbox = async () => {
+  //   setFormData({ ...formData, completed: !formData.completed })
+  // }
 
 
   if (!formData) return null
@@ -77,8 +77,10 @@ function TaskEditMobile() {
   if (!task) return null
   console.log(formData.completed)
   
-
-  //! FUNCTION NOT WORKING NOW - COME BACK TO 
+  console.log(reminder_date)
+  console.log(added_date)
+  
+  
   const dateProvided = () => {
     if (reminder_date) {
       return GetDate(reminder_date)
@@ -87,6 +89,7 @@ function TaskEditMobile() {
     }
   }
   const date = dateProvided(reminder_date, added_date)
+  console.log(date)
   
   
   return (

@@ -127,7 +127,9 @@ function JobDetails ({ job }) {
       </Grid.Column>
       <Grid.Column width={16}>
         <Link to={`/jobs/${job.id}/edit`}>
-          <Button content='Update' className='button orange-button' fluid />
+          <Button 
+            content='Update' className='orange-button' 
+            fluid />
         </Link>
       </Grid.Column>
     </Grid>
