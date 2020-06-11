@@ -21,7 +21,7 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
   //* HandleChange event for inputting values on form & sets them to state 
   const selectDropdown = (event, result ) => {
     const { name, value } = result   
-    console.log(name, value)
+    // console.log(name, value)
     setFormData({ ...formData, [name]: value })
   }
 
@@ -44,7 +44,7 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
 
   const handleSubmit = async event => {
     event.preventDefault()    
-    console.log(formData)
+    // console.log(formData)
     
     try {
       const response = await submitFunction(formData,submitParams)

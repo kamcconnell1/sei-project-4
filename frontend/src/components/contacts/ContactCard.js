@@ -2,7 +2,7 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react'
 
-function ContactCard({ id, email, job, job_title, name, phone, handleDeleteContact }) {
+function ContactCard({ id, email, job, job_title, name, phone, handleDeleteConfirmModal }) {
 
   return (
     <div className='contact-card'>
@@ -12,8 +12,8 @@ function ContactCard({ id, email, job, job_title, name, phone, handleDeleteConta
           {!job ? '' : <p>{job.company}</p>}
 
         </div>
-        <button value={id} onClick={handleDeleteContact} className='delete-contact-btn'>
-          <Icon size='large' name='delete' />
+        <button value={id} onClick={handleDeleteConfirmModal} className='delete-contact-btn'>
+          <Icon name='trash' />
         </button>
       </div>
       <div className='contact-card-content'>

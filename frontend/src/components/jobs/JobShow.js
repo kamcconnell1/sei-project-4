@@ -53,7 +53,7 @@ function JobShow() {
   return (
     <PageContainer>
       <Segment.Group as='div' className='job-show'>
-        <Segment textAlign='left'>
+        <Segment>
           <Header as='h1' textAlign='center'>{job.job_title}</Header>
           <Tab 
             menu={{ secondary: true, pointing: true }} 

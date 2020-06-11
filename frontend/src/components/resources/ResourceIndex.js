@@ -6,12 +6,14 @@ import { getAllResources, addNewResource, deleteResource } from '../../lib/api'
 import useForm from '../../utils/useForm'
 import ResourceCard from './ResourceCard'
 import ResourceNewModal from './ResourceNewModal'
-
+import DeleteConfirmModal from '../common/DeleteConfirmModal'
 
 
 function ResourceIndex() {
   const [resources, setResources] = useState(null)
   const [modalOpen, setModalOpen] = useState(false)
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+  const [resourceToDelete, setResourceToDelete] = useState(null)
   const history = useHistory()
 
 
@@ -48,10 +50,21 @@ function ResourceIndex() {
     setModalOpen(false)
   }
 
+  const handleDeleteConfirmModal = e => {
+    e.preventDefault()
+    setResourceToDelete(e.currentTarget.value)
+    setDeleteModalOpen(true)
+  }
+
+  const handleCloseDeleteConfirm = () => {
+    setDeleteModalOpen(false)
+  }
+
   const handleDeleteResource = async e => {
     e.preventDefault()
     try {
-      await deleteResource(e.currentTarget.value)
+      await deleteResource(resourceToDelete)
+      setDeleteModalOpen(false)
     } catch (err) {
       console.log(err)
     }
@@ -63,6 +76,12 @@ function ResourceIndex() {
   return (
     <>
       <Header id='header-font-resources' as='h1' >Resources</Header>
+      <DeleteConfirmModal
+        deleteModalOpen={deleteModalOpen}
+        handleCloseDeleteConfirm={handleCloseDeleteConfirm}
+        nameOfThingToDelete='Resource'
+        handleDelete={handleDeleteResource}
+      />
       <ResourceNewModal
         modalOpen={modalOpen}
         formData={formData}
@@ -76,7 +95,7 @@ function ResourceIndex() {
         {resources.map((resource => (
           <ResourceCard
             key={resource.id}
-            handleDeleteResource={handleDeleteResource}
+            handleDeleteConfirmModal={handleDeleteConfirmModal}
             {...resource}
           />
         )))}

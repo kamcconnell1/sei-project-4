@@ -21,15 +21,19 @@ section.section {
   margin: 0 auto 10vh;
 }
 
-// ? ---------- JOB SHOW PAGE ---------- ? //
+div.ui.segments:first-child {
+  margin-top: 40px;
+}
+
+// ? -------- JOB SHOW PAGE -------- ? //
 div.segments.job-show {
   margin: 0 auto;
-  max-width: 700px;
-  color: $color1;
+  max-width: 800px;
   h1.header {
     font-family: $font-title;
     color: $color1;
   }
+  // * Tabs
   div.ui.pointing.secondary.menu {
     a.item {
       font-family: $font-content;
@@ -43,22 +47,55 @@ div.segments.job-show {
       color: $color1;
     }
   }
+  // * Job details tab
   div.small.header {
+    margin: 0;
     font-family: $font-content;
-    color: $color1;
   }
   div.segment > a {
-    word-break: break-all;
+    word-wrap: break-word;
   }
-  button.orange-button {
+  button.teal-button {
     font-family: $font-content;
     color: $color1;
-    background-color: #FFF;
+    background-color: #fff;
     border: 2px solid $color1;
+  }
+  // * Tasks and contacts details tab
+  div.item {
+    font-family: $font-content;
+    div.content > h2.header {
+      font-family: $font-content;
+    }
   }
 }
 
-
+// ? ---- JOB NEW AND EDIT PAGES ---- ? //
+div.segments.job-form {
+  margin: 0 auto;
+  max-width: 800px;
+  color: $color1;
+  h1.header {
+    font-family: $font-title;
+    color: $color1;
+  }
+  div.grid {
+    margin-top: 1rem;
+    div.small.header {
+      font-family: $font-content;
+    }
+    input[type="text"], div.dropdown, textarea {
+      font-family: $font-content;
+      word-wrap: break-word;
+    }
+  }
+  button.teal-button {
+      font-family: $font-content;
+      color: $color1;
+      background-color: #fff;
+      border: 2px solid $color1;
+    }
+}
 
 @media screen and (min-width: 160px) {
   // ? ---------- HOME PAGE ---------- ? //

@@ -6,13 +6,13 @@ function JobDetails ({ job }) {
   return (
     <Grid stackable columns={2}>
       <Grid.Row stretched>
-        <Grid.Column width={12}>
+        <Grid.Column width={11}>
           <Header size='small'>Job title</Header>
           <Segment>
             <p>{job.job_title}</p>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={4} only='computer tablet'>
+        <Grid.Column width={5} only='computer tablet'>
           <Header size='small'>Application deadline</Header>
           <Segment>
             <p>{job.application_deadline ? job.application_deadline : 'No date'}</p>
@@ -20,13 +20,13 @@ function JobDetails ({ job }) {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column width={12}>
+        <Grid.Column width={11}>
           <Header size='small'>Company</Header>
           <Segment>
             <p>{job.company}</p>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={4} only='computer tablet'>
+        <Grid.Column width={5} only='computer tablet'>
           <Header size='small'>Application submitted</Header>
           <Segment>
             <p>{job.application_submitted ? job.application_submitted : 'No date'}</p>
@@ -40,13 +40,13 @@ function JobDetails ({ job }) {
             <p>{job.city}</p>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={8}>
+        <Grid.Column width={7}>
           <Header size='small'>Country</Header>
           <Segment>
             <p>{job.country}</p>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={4} only='computer tablet'>
+        <Grid.Column width={5} only='computer tablet'>
           <Header size='small'>Interview date</Header>
           <Segment>
             <p>{job.interview_date ? job.interview_date : 'No date'}</p>
@@ -54,13 +54,13 @@ function JobDetails ({ job }) {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row stretched>
-        <Grid.Column width={12}>
+        <Grid.Column width={11}>
           <Header size='small'>URL</Header>
           <Segment>
             <a href={job.job_url} target='_blank' rel='noopener noreferrer'><p>{job.job_url}</p></a>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={4} only='computer tablet'>
+        <Grid.Column width={5} only='computer tablet'>
           <Header size='small'>Job offer date</Header>
           <Segment>
             <p>{job.job_offer_date ? job.job_offer_date : 'No date'}</p>
@@ -68,7 +68,7 @@ function JobDetails ({ job }) {
         </Grid.Column>
       </Grid.Row>
       <Grid.Row stretched>
-        <Grid.Column width={6}>
+        <Grid.Column width={5}>
           <Header size='small'>Salary</Header>
           <Segment>
             <p>{job.salary ? job.salary : 'No salary'}</p>
@@ -80,7 +80,7 @@ function JobDetails ({ job }) {
             <p>{job.status.name}</p>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={4} only='computer tablet'>
+        <Grid.Column width={5} only='computer tablet'>
           <Header size='small'>Offer accepted</Header>
           <Segment>
             <p>{job.offer_acceptance_date ? job.offer_acceptance_date : 'No date'}</p>
@@ -128,7 +128,7 @@ function JobDetails ({ job }) {
       <Grid.Column width={16}>
         <Link to={`/jobs/${job.id}/edit`}>
           <Button 
-            content='Update' className='orange-button' 
+            content='Update this job' className='teal-button' 
             fluid />
         </Link>
       </Grid.Column>

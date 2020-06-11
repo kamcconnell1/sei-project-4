@@ -38,6 +38,10 @@ export const editJob = (data, id) => {
   return axios.put(`${baseUrl}/jobs/${id}/`, data, withHeaders())
 }
 
+export const deleteJob = id => {
+  return axios.delete(`${baseUrl}/jobs/${id}/`, withHeaders())
+}
+
 // * TASK REQUESTS
 
 export const getAllTasks = () => {

@@ -1,14 +1,14 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react'
 
-function ResourceCard({ id, title, url, handleDeleteResource }) {
+function ResourceCard({ id, title, url, handleDeleteConfirmModal }) {
 
   return (
     <div className='resource-card'>
       <div className='resource-card-header'>
         <p>{title}</p>
-        <button value={id} onClick={handleDeleteResource} className='delete-resource-btn'>
-          <Icon size='large' name='delete' />
+        <button value={id} onClick={handleDeleteConfirmModal} className='delete-resource-btn'>
+          <Icon name='trash' />
         </button>
       </div>
       <div className='resource-card-content'>
