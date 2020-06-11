@@ -83,7 +83,7 @@ function JobDetails ({ job }) {
         <Grid.Column width={4} only='computer tablet'>
           <Header size='small'>Offer accepted</Header>
           <Segment>
-            <p>{job.offer_accepted ? job.offer_accepted : 'No date'}</p>
+            <p>{job.offer_acceptance_date ? job.offer_acceptance_date : 'No date'}</p>
           </Segment>
         </Grid.Column>
       </Grid.Row>
