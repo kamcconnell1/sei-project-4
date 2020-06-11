@@ -1,6 +1,6 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
-import { Form, Grid, Icon, Header, Segment, Dropdown, Button } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom'
+import { Form, Grid, Icon, Header, Segment, Dropdown } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import useForm from '../../utils/useForm'
@@ -8,18 +8,17 @@ import { getAllJobs, addNewTask } from '../../lib/api'
 import FormInput from '../common/FormInput'
 import FormButton from '../common/FormButton'
 import { taskCategories } from './TaskCategories'
+import useWindowSize from '../../utils/useWindowSize'
 
-import GetDate from '../common/GetDate'
-import TaskMobileForm from './TaskMobileForm'
 
 
 function TaskAddMobile() {
   const history = useHistory()
   const [jobs, setJobs] = React.useState(null)
+  const { width } = useWindowSize()
 
-  const onSubmitSuccess = res => {
+  const onSubmitSuccess = () => {
     console.log('added')
-  
     history.push('/tasks')
   }
 
@@ -43,7 +42,8 @@ function TaskAddMobile() {
 
   React.useEffect(() => {
     getData()
-  }, [])
+    if (width > 767) history.push('/tasks/')
+  }, [width])
 
   if (!jobs) return null
   const jobOptions = jobs.map((job => {
@@ -124,13 +124,11 @@ function TaskAddMobile() {
             <Grid.Column >
               <Header size='small'>Update Reminder</Header>
               <Segment className='row4'>
-                <div className='date'>
-                  {/* {date ? date : formData.added_date} */}
-                </div>
                 <div className='date-picker'>
                   <SemanticDatepicker onChange={handleDateChange}
                     datePickerOnly
                     clearable
+                    iconPosition='left'
                     pointing='right'
                     name='reminder_date'
                     format='DD-MM-YYYY'

@@ -1,27 +1,32 @@
 /* eslint-disable camelcase */
-import React, { useState  } from 'react'
-import { Grid, Icon, Header, Checkbox, Dropdown, Button, Form } from 'semantic-ui-react'
-import SemanticDatepicker from 'react-semantic-ui-datepickers'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 
-import { editTask, deleteTask } from '../../lib/api'
+import { editTask, deleteTask, getAllJobs } from '../../lib/api'
 
-import PageContainer from '../common/PageContainer'
-import FormInput from '../common/FormInput'
-import FormButton from '../common/FormButton'
-import TaskLabel from '../common/TaskLabel'
-import { taskCategories } from './TaskCategories'
 import TaskComputerForm from './TaskComputerForm'
 
-function TaskEditComputer({ closeForm, data }) {
+function TaskEditComputer({ closeForm, data, getData }) {
+  const history = useHistory()
   const [task, setTask] = React.useState(null)
+  const [jobs, setJobs] = React.useState(null)
   const [formData, setFormData] = React.useState(null)
   
-  console.log('outside use effect', data)
+
+  const getJobsData = async () => {
+    try {
+      const res = await getAllJobs()
+      setJobs(res.data)
+    } catch (err) {
+      console.log(err)
+      history.push('/notfound')
+    }
+  }
 
   React.useEffect(() => {
     if (!data) return 
     setTask(data)
-    console.log('inside use effect', data)
+    getJobsData()
     if (!data.job) {
       setFormData({
         ...data,
@@ -36,9 +41,6 @@ function TaskEditComputer({ closeForm, data }) {
         completed: !data.completed
       })
     }
-    // return () => {
-    //   console.log('This will be logged on unmount')
-    // }
   }, [data])
 
   
@@ -70,11 +72,16 @@ function TaskEditComputer({ closeForm, data }) {
     setFormData({ ...formData, [name]: date })
   }
 
+  const toggleCheckbox = async () => {
+    setFormData({ ...formData, completed: !formData.completed })
+  }
+
   const handleSubmit = async event => {
-    event.preventDefault()    
-    console.log(formData)
+    event.preventDefault()  
     try {
       await editTask(formData, task.id)
+      closeForm()
+      getData()
       console.log('updated') 
     } catch (err) {
       console.log(err)
@@ -82,139 +89,44 @@ function TaskEditComputer({ closeForm, data }) {
     }
   }
 
-  console.log(formData)
-  console.log(task)
-  
-  
 
-  if (!formData) return null
-  if (!task) return null
-  const { notes, reminder_date, completed, title, id } = formData
-  const { job } = task
+  const deleteItem = async () => {
+    try {
+      await deleteTask(task.id)
+      console.log('deleted')
+      closeForm()
+      getData()
+    } catch (err) {
+      history.push('/notfound')
+    }
+  }
 
+  if (!jobs) return null
+  const jobOptions = jobs.map((job => {
+    return (
+      {
+        key: `${job.job_title} - ${job.company}`,
+        text: `${job.job_title} - ${job.company}`,
+        value: job.id
+      }
+    )
+  }))
 
   return (
 
     <TaskComputerForm
       task={task}
+      jobOptions={jobOptions}
       // date={date}
       closeForm={closeForm}
       formData={formData}
+      toggleCheckbox={toggleCheckbox}
       selectDropdown={selectDropdown}
       handleChange={handleChange}
       handleDateChange={handleDateChange}
-      // deleteItem={deleteItem}
+      deleteItem={deleteItem}
       handleSubmit={handleSubmit}
     />
-    // <div className='TaskEditComputer'>
-    //   <PageContainer>
-    //     <Form size='large' onSubmit={handleSubmit}>
-    //       <Grid textAlign='left' verticalAlign='middle' style={{ maxWidth: 900 }} className='edit-task-computer-tablet'>
-    //         <Grid.Row only='tablet computer'>
-    //           <Grid.Column width={15}>
-    //             <Header as='h1' textAlign='center'>{title ? title : 'Update Task'}</Header>
-    //           </Grid.Column>
-    //           <Grid.Column width={1}>
-    //             <Button circular icon='close' size='small' onClick={closeForm} />
-    //           </Grid.Column>
-    //         </Grid.Row>
-    //         <Grid.Row only='tablet computer' className='row1'>
-    //           <Grid.Column width={3}>
-    //             <TaskLabel category={task.task_category.id ? task.task_category.id : null} />
-    //           </Grid.Column>
-    //           <Grid.Column width={1}>
-    //             <Checkbox
-    //               id={id}
-    //               checked={completed}
-    //             // onChange={toggleCheckbox}
-    //             />
-    //           </Grid.Column>
-    //           <Grid.Column width={5}>
-    //             <FormInput
-    //               size='small'
-    //               placeholder={title ? title : task.task_category.name}
-    //               value={title || ''}
-    //               type='text'
-    //               name='title'
-    //               onChange={handleChange}
-    //             />
-    //           </Grid.Column>
-    //           <Grid.Column width={5} textAlign='right'>
-    //             {job ? `${job.company}: ${job.job_title}` : ''}
-    //           </Grid.Column>
-    //           <Grid.Column width={2} textAlign='right'>
-    //             {/* {date} */}
-    //           </Grid.Column>
-    //         </Grid.Row>
-    //         <Grid.Row only='tablet computer' className='row2'>
-    //           <Grid.Column width={14}>
-    //             <FormInput
-    //               label
-    //               // error={formErrors.first_name}
-    //               fluidIcon='pencil alternate'
-    //               iconPosition='left'
-    //               placeholder='Notes'
-    //               value={notes || ''}
-    //               type='text'
-    //               name='notes'
-    //               onChange={handleChange}
-    //             />
-    //           </Grid.Column>
-    //           <Grid.Column width={2} className='edit-btn'>
-    //             <FormButton
-    //               fluidSize='large'
-    //               color='pink'
-    //               buttonText='Update'
-    //               type='submit'
-    //             ></FormButton>
-    //           </Grid.Column>
-    //         </Grid.Row>
-    //         <Grid.Row only='tablet computer' className='row3'>
-    //           <Grid.Column width={4}>
-    //             <SemanticDatepicker 
-    //               onChange={handleDateChange}
-    //               datePickerOnly
-    //               clearable
-    //               pointing='left'
-    //               name='reminder_date'
-    //               format='DD-MM-YYYY'
-    //               value={reminder_date ? new Date(reminder_date) : null}
-    //             />
-    //           </Grid.Column>
-    //           <Grid.Column width={5}>
-    //             <Dropdown
-    //               clearable
-    //               search
-    //               selection
-    //               placeholder={task.task_category.name}
-    //               name='task_category'
-    //               options={taskCategories}
-    //               onChange={selectDropdown}
-    //             />
-    //           </Grid.Column>
-    //           {/* <Grid.Column width={5}>
-    //             <Dropdown
-    //               clearable
-    //               search
-    //               selection
-    //               placeholder={job ? `${job.company}: ${job.job_title}` : ''}
-    //               name='job'
-    //               options={taskCategories}
-    //               onChange={selectDropdown}
-    //             />
-    //           </Grid.Column> */}
-    //           <Grid.Column width={2}>
-    //             <Button type='button' icon inverted color='red' 
-    //             // onClick={deleteItem}
-    //             >
-    //               <Icon name='trash alternate' size='large' />
-    //             </Button>
-    //           </Grid.Column>
-    //         </Grid.Row>
-    //       </Grid>
-    //     </Form>
-    //   </PageContainer>
-    // </div>
   )
 }
 export default TaskEditComputer

@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
 import { Grid, Header } from 'semantic-ui-react'
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-import { getAllTasks, getSingleTask, editTask } from '../../lib/api'
+import { getAllTasks, editTask, deleteTask } from '../../lib/api'
 import PageContainer from '../common/PageContainer'
 import AddButton from '../common/AddButton'
 import TaskShow from '../tasks/TaskShow'
 import TaskEditComputer from './TaskEditComputer'
+import TaskAddComputer from '../tasks/TaskAddComputer'
+import useWindowSize from '../../utils/useWindowSize'
 
 
 function TaskIndex() {
   const history = useHistory()
-
+  const { width } = useWindowSize()
   const [tasks, setTasks] = React.useState(null)
   const [task, setTask] = React.useState(null)
   const [formVisible, showForm] = React.useState(false)
+  const [addFormVisible, showAddForm] = React.useState(false)
   const [  , setFormData] = useState('')
 
   const getData = async () => {
@@ -31,53 +34,35 @@ function TaskIndex() {
     getData()
   }, [])
 
-  const closeForm = () => {
-    setFormData(null)
-    showForm(false)
-  }
-
-
-  //* Function to toggle the add/edit form & set the id to state if editing 
-  const toggleForm =  (event) => {   
-    event.preventDefault()
-    showForm(!formVisible)
-    const filterTasks = (tasks, taskId) => {
-      return tasks.filter(item => {
-        if (item.id === parseInt(taskId)) {
-          return item
-        }
-      })
-    }
-    const task = filterTasks(tasks, event.currentTarget.value)
-    setTask(task[0])
+  const filterTasks = (tasks, taskId) => {
+    return tasks.filter(item => {
+      if (item.id === parseInt(taskId)) {
+        return item
+      }
+    })
   }
 
   //* Functions to allow the user to tick the task off as completed 
   const toggleCheckbox = async ({ target: { id } }) => {
-    console.log('clicked')
-    try {
-      const res = await getSingleTask(id)
-      const task = res.data
-      if (!task.job) {
-        const formData = {
-          ...task,
-          task_category: task.task_category.id,
-          completed: !task.completed
-        }
-        setFormData(formData)
-        handleSubmit(formData, id)
-      } else {
-        const formData = {
-          ...task,
-          job: task.job.id,
-          task_category: task.task_category.id,
-          completed: !task.completed
-        }
-        setFormData(formData)
-        handleSubmit(formData, id)
+    const filteredTasks = filterTasks(tasks, id)
+    const task = filteredTasks[0]
+    if (!task.job) {
+      const formData = {
+        ...task,
+        task_category: task.task_category.id,
+        completed: !task.completed
       }
-    } catch (err) {
-      history.push('/notfound')
+      setFormData(formData)
+      handleSubmit(formData, id)
+    } else {
+      const formData = {
+        ...task,
+        job: task.job.id,
+        task_category: task.task_category.id,
+        completed: !task.completed
+      }
+      setFormData(formData)
+      handleSubmit(formData, id)
     }
   }
 
@@ -91,8 +76,31 @@ function TaskIndex() {
     }
   }
 
+  //* Function to toggle the edit form & set the task to state
+  const toggleForm =  (event) => {   
+    event.preventDefault()
+    showForm(!formVisible)
+    showAddForm(false)
+    const task = filterTasks(tasks, event.currentTarget.value)
+    setTask(task[0])
+  }
+  
+  const closeForm = () => {
+    setFormData(null)
+    showForm(false)
+  }
+
+  //* Function to toggle the add form
   const onClickAdd = () => {
-    history.push('/tasks/new')
+    if (width < 768){
+      history.push('/tasks/new')
+    } else {
+      showForm(false)
+      showAddForm(!addFormVisible)
+    }
+  }
+  const closeAddForm = () => {
+    showAddForm(false)
   }
 
   //* Separate the tasks between completed & not completed & by most recent first
@@ -116,14 +124,20 @@ function TaskIndex() {
           <Grid.Column style={{ maxWidth: 900 }}>
             <div className='task-index-header'>
               <Header id="header-font" as='h1' color='pink'>Tasks</Header>
-              {/* <AddButton color='red' buttonText='Add a new Task' onClick={toggleForm} /> */}
-              <Link to='/tasks/new/'><AddButton color='red' buttonText='Add a new Task'/></Link>
+              <AddButton color='red' buttonText='Add a new Task' onClick={onClickAdd} />
             </div>
 
             <div className={formVisible ? 'task-form' : 'task-form-hidden'} >
               <TaskEditComputer
+                getData={getData}
                 closeForm={closeForm}
                 data={task} 
+              />
+            </div>
+            <div className={addFormVisible ? 'task-form' : 'task-form-hidden'} >
+              <TaskAddComputer
+                getData={getData}
+                closeForm={closeAddForm}
               />
             </div>
 
