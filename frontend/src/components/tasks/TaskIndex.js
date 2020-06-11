@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Header } from 'semantic-ui-react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 import { getAllTasks, getSingleTask, editTask } from '../../lib/api'
 import PageContainer from '../common/PageContainer'
@@ -15,7 +15,7 @@ function TaskIndex() {
   const [tasks, setTasks] = React.useState(null)
   const [task, setTask] = React.useState(null)
   const [formVisible, showForm] = React.useState(false)
-  const [formData, setFormData] = useState('')
+  const [  , setFormData] = useState('')
 
   const getData = async () => {
     try {
@@ -31,31 +31,26 @@ function TaskIndex() {
     getData()
   }, [])
 
-  //* Function to toggle the add/edit form & set the id to state if editing 
-  const toggleForm =  async (event) => {   
-    showForm(!formVisible)
-
-    // ! NEED A GUARD CLAUSE AGAINST THIS
-    if (formVisible ) {
-      try {
-        const res = await getSingleTask(event.currentTarget.value)
-        setTask(res.data)
-      } catch (err) {
-        history.push('/notfound')
-      }
-    }
+  const closeForm = () => {
+    setFormData(null)
+    showForm(false)
   }
-  console.log('formvisibkle', formVisible)
 
-  // const getSingleTask = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     const res = await getSingleTask(event.currentTarget.value)
-  //     setFormData(res.data)
-  //   } catch (err) {
-  //     history.push('/notfound')
-  //   }
-  // }
+
+  //* Function to toggle the add/edit form & set the id to state if editing 
+  const toggleForm =  (event) => {   
+    event.preventDefault()
+    showForm(!formVisible)
+    const filterTasks = (tasks, taskId) => {
+      return tasks.filter(item => {
+        if (item.id === parseInt(taskId)) {
+          return item
+        }
+      })
+    }
+    const task = filterTasks(tasks, event.currentTarget.value)
+    setTask(task[0])
+  }
 
   //* Functions to allow the user to tick the task off as completed 
   const toggleCheckbox = async ({ target: { id } }) => {
@@ -96,7 +91,12 @@ function TaskIndex() {
     }
   }
 
+  const onClickAdd = () => {
+    history.push('/tasks/new')
+  }
+
   //* Separate the tasks between completed & not completed & by most recent first
+
   if (!tasks) return null
   const sortedTasks = tasks.sort((a, b) => new Date(b.added_date) - new Date(a.added_date))
   const filteredTasks = (array, string) => {
@@ -116,12 +116,13 @@ function TaskIndex() {
           <Grid.Column style={{ maxWidth: 900 }}>
             <div className='task-index-header'>
               <Header id="header-font" as='h1' color='pink'>Tasks</Header>
-              <AddButton color='red' buttonText='Add a new Task' toggleForm={toggleForm} />
+              {/* <AddButton color='red' buttonText='Add a new Task' onClick={toggleForm} /> */}
+              <Link to='/tasks/new/'><AddButton color='red' buttonText='Add a new Task'/></Link>
             </div>
 
-            <div className='task-edit-add' style={{ display: formVisible ? 'block' : 'none' }}>
+            <div className={formVisible ? 'task-form' : 'task-form-hidden'} >
               <TaskEditComputer
-                toggleForm={toggleForm}
+                closeForm={closeForm}
                 data={task} 
               />
             </div>

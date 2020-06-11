@@ -62,12 +62,18 @@ $font-content: "IBM Plex Mono", monospace;
 .task-index-header{
   margin-bottom: 5%;
 }
-.edit-task-computer-tablet{
-  border: 1px solid grey;
-  border-radius: 10px;
-  margin-top: 10%;
+.task-form {
+  display: block;
+}
+.task-form-hidden {
+  display: none;
 }
 }
+  .edit-task-computer-tablet{
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-top: 10%;
+  }
 
 // ? Task Show Page 
 .TaskShow {

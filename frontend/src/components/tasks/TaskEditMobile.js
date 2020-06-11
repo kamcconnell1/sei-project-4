@@ -1,123 +1,109 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import { Form, Grid, Icon, Header, Segment, Dropdown, Button } from 'semantic-ui-react'
-import SemanticDatepicker from 'react-semantic-ui-datepickers'
+import { useHistory, useParams } from 'react-router-dom'
 
-import FormInput from '../common/FormInput'
-import FormButton from '../common/FormButton'
-import TaskLabel from '../common/TaskLabel'
-import { taskCategories } from './TaskCategories'
+import useForm from '../../utils/useForm'
+import useDelete from '../../utils/useDelete'
+import { getSingleTask, editTask, deleteTask } from '../../lib/api'
+
+import GetDate from '../common/GetDate'
+import TaskMobileForm from './TaskMobileForm'
 
 
-function TaskEditMobile({ formData, task, date, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit }) {
+function TaskEditMobile() {
   
+  const history = useHistory()
+  const { id: taskId } = useParams()
+  const { deleteItem } = useDelete(deleteTask, taskId, 'tasks')
+  const [task, setTask] = React.useState(null)
+
+  // * Function to occur if the page edit has gone through 
+  const onSubmitSuccess = () => {
+    history.push('/tasks/')
+  }
+
+  // * Values & functions taken from useForm & props passed to useForm
+  const { formData, handleChange, setFormData, selectDropdown, handleDateChange, handleSubmit } = useForm({
+    id: '',
+    completed: '',
+    notes: '',
+    added_date: '',
+    reminder_date: '',
+    task_category: '',
+    job: {
+      company: '',
+      job_title: ''
+    }
+  }, editTask, taskId, onSubmitSuccess)
+
+  const getData = async () => {
+    try {
+      const res = await getSingleTask(taskId)
+      const task = res.data
+      setTask(task)
+      if (!task.job) {
+        setFormData({
+          ...task,
+          task_category: task.task_category.id,
+          completed: !task.completed
+        })
+      } else {
+        setFormData({
+          ...task,
+          job: task.job.id,
+          task_category: task.task_category.id,
+          completed: !task.completed
+        })
+      }
+    } catch (err) {
+      console.log(err)
+      history.push('/notfound')
+    }
+  }
+
+  React.useEffect(() => {
+    getData()
+  }, [])
+
+
+  //* Toggle form checkbox (doesn't update state until submit button pressed)
+  const toggleCheckbox = async () => {
+    setFormData({ ...formData, completed: !formData.completed })
+  }
+
+
   if (!formData) return null
+  const { added_date, reminder_date } = formData
   if (!task) return null
-  const { added_date, notes, reminder_date, completed, title } = formData
-  const { job } = task
-  const task_category = task.task_category.id
-  const taskPlaceholder = ( <span><TaskLabel category={task_category} /></span> )
+  console.log(formData.completed)
+  
 
-  console.log(task)
-
+  //! FUNCTION NOT WORKING NOW - COME BACK TO 
+  const dateProvided = () => {
+    if (reminder_date) {
+      return GetDate(reminder_date)
+    } else {
+      return GetDate(added_date)
+    }
+  }
+  const date = dateProvided(reminder_date, added_date)
+  
+  
   return (
-    <div className='TaskEditMobile'>
-      <Form size='large' onSubmit={handleSubmit}>
-        <Grid stackable textAlign='left' verticalAlign='middle'  >
-          <Grid.Row only='mobile'>
-            <Grid.Column>
-              <Header as='h1' textAlign='center'>{title ? title : 'Update Task'}</Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Segment className='row1'>
-                <div className='task-title'>
-                  <Header as='small' textAlign='center'><Icon name='tag' color='grey' size='mini'/>Task</Header>
-                </div>
-                <div className='task-category'>
-                  <Dropdown
-                    search
-                    clearable
-                    selection
-                    placeholder={taskPlaceholder}
-                    name='task_category'
-                    options={taskCategories}
-                    onChange={selectDropdown}
-                  />
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Related Job</Header>
-              <Segment className='row2'>
-                <p className={completed === true ? 'completed-tasks' : ''}>
-                  {job ? `${job.company}: ${job.job_title}` : ''}</p>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Notes</Header>
-              <div className='row3'>
-                <FormInput
-                  // error={formErrors.first_name}
-                  size='big'
-                  fluidIcon='pencil alternate'
-                  iconPosition='left'
-                  placeholder='Notes'
-                  value={notes}
-                  type='text'
-                  name='notes'
-                  onChange={handleChange}
-                />
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Update Reminder</Header>
-              <Segment className='row4'>
-                <div className='date'>
-                  {date ? date : added_date}
-                </div>
-                <div className='date-picker'>
-                  <SemanticDatepicker onChange={handleDateChange}
-                    datePickerOnly
-                    clearable
-                    pointing='right'
-                    name='reminder_date'
-                    format='DD-MM-YYYY'
-                    value={reminder_date ? new Date(reminder_date) : null}
-                  />
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column>
-              <Segment className='row5'>
-                <div className='update-btn'>
-                  <FormButton
-                    // fluidSize='large'
-                    color='pink'
-                    buttonText='Update'
-                    type='submit'
-                  ></FormButton>
-                </div>
-                <div className='delete-btn'>
-                  <Button type='button' icon inverted color='red' onClick={deleteItem}>
-                    <Icon name='trash alternate' size='large' />
-                  </Button>
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row> 
-        </Grid>
-      </Form>
+    <div className='TaskEdit'>
+      <TaskMobileForm
+        task={task}
+        date={date}
+        formData={formData}
+        selectDropdown={selectDropdown}
+        handleChange={handleChange}
+        handleDateChange={handleDateChange}
+        deleteItem={deleteItem}
+        handleSubmit={handleSubmit}
+      />
+
     </div>
   )
 }
+
 export default TaskEditMobile
