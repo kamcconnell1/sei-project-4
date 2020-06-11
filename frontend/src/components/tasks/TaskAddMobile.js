@@ -57,74 +57,71 @@ function TaskAddMobile() {
   }))
 
   return (
-    <div className='TaskAddMobile'>
-      <Form size='large' onSubmit={handleSubmit}>
-        <Grid stackable textAlign='left' verticalAlign='middle'  >
-          <Grid.Row only='mobile'>
-            <Grid.Column>
-              <Header as='h1' textAlign='center'>Add Task</Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Segment className='row1'>
-                <div className='task-title'>
-                  <Header as='small' textAlign='center'><Icon name='tag' color='grey' size='mini'/>Task</Header>
-                </div>
-                <div className='task-category'>
+    <Segment.Group className='TaskFormMobile'>
+      <Segment>
+        <Form size='large' onSubmit={handleSubmit}>
+          <Grid stackable textAlign='left' verticalAlign='middle'  >
+            <Grid.Row only='mobile'>
+              <Grid.Column>
+                <Header as='h1' id='header-font-tasks' textAlign='center'>Add Task</Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row1'>
+              <Grid.Column >
+                <Header size='small'>Task Category</Header>
+                <Form.Field >
                   <Dropdown
                     search
                     clearable
                     selection
-                    placeholder={formData.task_category}
+                    placeholder='Task Category'
                     name='task_category'
                     options={taskCategories}
                     onChange={selectDropdown}
                   />
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Related Job</Header>
-              <Segment className='row2'>
-                <Dropdown
-                  search
-                  placeholder='Select applicable job...'
-                  value={formData.job || ''}
-                  name='job'
-                  className='fluid'
-                  selection
-                  options={jobOptions}
-                  onChange={selectDropdown}
-                />
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Notes</Header>
-              <div className='row3'>
-                <FormInput
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row2'>
+              <Grid.Column >
+                <Header size='small'>Related Job</Header>
+                <Form.Field >
+                  <Dropdown
+                    search
+                    clearable
+                    placeholder='Select applicable job...'
+                    value={formData.job || ''}
+                    name='job'
+                    className='fluid'
+                    selection
+                    options={jobOptions}
+                    onChange={selectDropdown}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row3'>
+              <Grid.Column >
+                <Header size='small'>Notes</Header>
+                <Form.Field >
+                  <FormInput
                   // error={formErrors.first_name}
-                  size='big'
-                  fluidIcon='pencil alternate'
-                  iconPosition='left'
-                  placeholder='Notes'
-                  value={formData.notes}
-                  type='text'
-                  name='notes'
-                  onChange={handleChange}
-                />
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Update Reminder</Header>
-              <Segment className='row4'>
-                <div className='date-picker'>
+                    size='big'
+                    fluidIcon='pencil alternate'
+                    iconPosition='left'
+                    placeholder='Notes'
+                    value={formData.notes}
+                    type='text'
+                    name='notes'
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row4'>
+              <Grid.Column >
+                <Header size='small'>Update Reminder</Header>
+                <Form.Field >
                   <SemanticDatepicker onChange={handleDateChange}
                     datePickerOnly
                     clearable
@@ -134,27 +131,22 @@ function TaskAddMobile() {
                     format='DD-MM-YYYY'
                     value={formData.reminder_date ? new Date(formData.reminder_date) : null}
                   />
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column>
-              <Segment className='row5'>
-                <div className='update-btn'>
-                  <FormButton
-                    // fluidSize='large'
-                    color='pink'
-                    buttonText='Add Task'
-                    type='submit'
-                  ></FormButton>
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row> 
-        </Grid>
-      </Form>
-    </div>
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile'>
+              <Grid.Column>
+                <FormButton
+                  fluidSize='large'
+                  buttonText='Add Task'
+                  type='submit'
+                ></FormButton>
+              </Grid.Column>
+            </Grid.Row> 
+          </Grid>
+        </Form>
+      </Segment>
+    </Segment.Group>
   )
 }
 export default TaskAddMobile

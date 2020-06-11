@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { Grid, Header } from 'semantic-ui-react'
+import { Grid, Header, Segment } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 
-import { getAllTasks, editTask, deleteTask } from '../../lib/api'
-import PageContainer from '../common/PageContainer'
+import { getAllTasks, editTask } from '../../lib/api'
 import AddButton from '../common/AddButton'
+import PageContainer from '../common/PageContainer'
 import TaskShow from '../tasks/TaskShow'
 import TaskEditComputer from './TaskEditComputer'
 import TaskAddComputer from '../tasks/TaskAddComputer'
 import useWindowSize from '../../utils/useWindowSize'
+
 
 
 function TaskIndex() {
@@ -20,6 +21,8 @@ function TaskIndex() {
   const [addFormVisible, showAddForm] = React.useState(false)
   const [  , setFormData] = useState('')
 
+
+
   const getData = async () => {
     try {
       const res = await getAllTasks()
@@ -29,7 +32,6 @@ function TaskIndex() {
       history.push('/notfound')
     }
   }
-
   React.useEffect(() => {
     getData()
   }, [])
@@ -77,11 +79,11 @@ function TaskIndex() {
   }
 
   //* Function to toggle the edit form & set the task to state
-  const toggleForm =  (event) => {   
-    event.preventDefault()
+  const toggleForm =  (id) => {   
+    // event.preventDefault()
     showForm(!formVisible)
     showAddForm(false)
-    const task = filterTasks(tasks, event.currentTarget.value)
+    const task = filterTasks(tasks, id)
     setTask(task[0])
   }
   
@@ -119,56 +121,58 @@ function TaskIndex() {
   
   return (
     <PageContainer>
-      <div className='TaskIndex'>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='top' padded={true}>
-          <Grid.Column style={{ maxWidth: 900 }}>
-            <div className='task-index-header'>
-              <Header id="header-font" as='h1' color='pink'>Tasks</Header>
-              <AddButton color='red' buttonText='Add a new Task' onClick={onClickAdd} />
-            </div>
+      <Segment.Group className='TaskIndex'>
+        <Segment >
 
-            <div className={formVisible ? 'task-form' : 'task-form-hidden'} >
-              <TaskEditComputer
-                getData={getData}
-                closeForm={closeForm}
-                data={task} 
-              />
-            </div>
-            <div className={addFormVisible ? 'task-form' : 'task-form-hidden'} >
-              <TaskAddComputer
-                getData={getData}
-                closeForm={closeAddForm}
-              />
-            </div>
+          <Grid >
+            <Grid.Column >
+              <div className='task-index-header'>
+                <Header id='header-font-tasks' as='h1'>Tasks</Header>
+                <AddButton color='red' buttonText='Add a new Task' onClick={onClickAdd} />
+              </div>
+              <div className={formVisible ? 'task-form' : 'task-form-hidden'} >
+                <TaskEditComputer
+                  getData={getData}
+                  closeForm={closeForm}
+                  data={task} 
+                />
+              </div>
+              <div className={addFormVisible ? 'task-form' : 'task-form-hidden'} >
+                <TaskAddComputer
+                  getData={getData}
+                  closeForm={closeAddForm}
+                />
+              </div>
 
 
-            <Header textAlign='left' as='h5'>Still To Complete</Header>
-            <hr />
-            <div className='uncompleted-tasks'>
-              {uncompletedTasks ?
-                uncompletedTasks.map(task => (
-                  <TaskShow
-                    key={task.id}
-                    toggleCheckbox={toggleCheckbox}
-                    toggleForm={toggleForm}
-                    task={task} />
-                )) : '' }
-            </div>
-            <br />
-            <Header textAlign='left' as='h5' color='grey'>Completed</Header>
-            <hr />
-            <div className='completed-tasks'>
-              {completedTasks ?
-                completedTasks.map(task => (
-                  <TaskShow
-                    key={task.id}
-                    toggleCheckbox={toggleCheckbox}
-                    toggleForm={toggleForm}
-                    task={task} /> )) : '' }
-            </div>
-          </Grid.Column>
-        </Grid>
-      </div>
+              <Header textAlign='left' as='h5'>Still To Complete</Header>
+              <hr />
+              <div className='uncompleted-tasks'>
+                {uncompletedTasks ?
+                  uncompletedTasks.map(task => (
+                    <TaskShow
+                      key={task.id}
+                      toggleCheckbox={toggleCheckbox}
+                      toggleForm={toggleForm}
+                      task={task} />
+                  )) : '' }
+              </div>
+              <br />
+              <Header textAlign='left' as='h5' color='grey'>Completed</Header>
+              <hr />
+              <div className='completed-tasks'>
+                {completedTasks ?
+                  completedTasks.map(task => (
+                    <TaskShow
+                      key={task.id}
+                      toggleCheckbox={toggleCheckbox}
+                      toggleForm={toggleForm}
+                      task={task} /> )) : '' }
+              </div>
+            </Grid.Column>
+          </Grid>
+        </Segment>
+      </Segment.Group>
     </PageContainer>
   )
 }

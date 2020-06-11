@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import { Form, Grid, Icon, Header, Segment, Dropdown, Button } from 'semantic-ui-react'
+import { Form, Grid, Icon, Header, Segment, Dropdown, Button, GridColumn } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import FormInput from '../common/FormInput'
@@ -14,21 +14,19 @@ function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, ha
   const taskPlaceholder = (<span><TaskLabel category={task.task_category.id} /></span>)
 
   return (
-    <div className='TaskEditMobile'>
-      <Form size='large' onSubmit={handleSubmit}>
-        <Grid stackable textAlign='left' verticalAlign='middle'  >
-          <Grid.Row only='mobile'>
-            <Grid.Column>
-              <Header as='h1' textAlign='center'>{formData.title ? formData.title : 'Update Task'}</Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Segment className='row1'>
-                <div className='task-title'>
-                  <Header as='small' textAlign='center'><Icon name='tag' color='grey' size='mini'/>Task</Header>
-                </div>
-                <div className='task-category'>
+    <Segment.Group className="TaskFormMobile">
+      <Segment>
+        <Form size='large' onSubmit={handleSubmit}>
+          <Grid textAlign='left' verticalAlign='middle'  >
+            <Grid.Row only='mobile'>
+              <Grid.Column>
+                <Header as='h1' id='header-font-tasks' textAlign='center'>{formData.title ? formData.title : 'Update Task'}</Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row1'>
+              <Grid.Column >
+                <Header size='small'>Task Category</Header>
+                <Form.Field >
                   <Dropdown
                     search
                     clearable
@@ -38,79 +36,69 @@ function TaskMobileForm({ formData, task, date, selectDropdown, handleChange, ha
                     options={taskCategories}
                     onChange={selectDropdown}
                   />
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Related Job</Header>
-              <Segment className='row2'>
-                <p className={formData.completed === true ? 'completed-tasks' : ''}>
-                  {task.job ? `${task.job.company}: ${task.job.job_title}` : ''}</p>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Notes</Header>
-              <div className='row3'>
-                <FormInput
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row2'>
+              <Grid.Column >
+                <Header size='small'>Related Job</Header>
+                <Form.Field >
+                  <p className={formData.completed === true ? 'completed-tasks' : ''}>
+                    {task.job ? `${task.job.company}: ${task.job.job_title}` : ''}</p>
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row3'>
+              <Grid.Column >
+                <Header size='small'>Notes</Header>
+                <Form.Field>
+                  <FormInput
                   // error={formErrors.first_name}
-                  size='big'
-                  fluidIcon='pencil alternate'
-                  iconPosition='left'
-                  placeholder='Notes'
-                  value={formData.notes}
-                  type='text'
-                  name='notes'
-                  onChange={handleChange}
-                />
-              </div>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column >
-              <Header size='small'>Update Reminder Date</Header>
-              <Segment className='row4'>
-                <div className='date'>
-                  {date ? date : formData.added_date}
-                </div>
-                <div className='date-picker'>
+                    fluidIcon='pencil alternate'
+                    iconPosition='left'
+                    placeholder='Notes'
+                    value={formData.notes}
+                    type='text'
+                    name='notes'
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row4'>
+              <Grid.Column >
+                <Header size='small' textAlign='left'>Update Reminder Date</Header>
+                <Form.Field >
                   <SemanticDatepicker onChange={handleDateChange}
                     datePickerOnly
                     clearable
-                    pointing='right'
+                    pointing='top right'
                     name='reminder_date'
                     format='DD-MM-YYYY'
                     value={formData.reminder_date ? new Date(formData.reminder_date) : null}
                   />
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row only='mobile'>
-            <Grid.Column>
-              <Segment className='row5'>
-                <div className='update-btn'>
-                  <FormButton
-                    // fluidSize='large'
-                    color='pink'
-                    buttonText='Update'
-                    type='submit'
-                  ></FormButton>
-                </div>
-                <div className='delete-btn'>
-                  <Button type='button' icon inverted color='red' onClick={deleteItem}>
-                    <Icon name='trash alternate' size='large' />
-                  </Button>
-                </div>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row> 
-        </Grid>
-      </Form>
-    </div>
+                  {date ? date : formData.added_date}
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row5'>
+              <Grid.Column width={12}>
+                <FormButton
+                  fluidSize='large'
+                  buttonText='Update'
+                  type='submit'
+                ></FormButton>
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Button type='button' icon inverted color='red' onClick={deleteItem}>
+                  <Icon name='trash alternate' size='large' />
+                </Button>
+              </Grid.Column>
+            </Grid.Row> 
+          </Grid>
+        </Form>
+      </Segment>
+    </Segment.Group>
   )
 }
 export default TaskMobileForm

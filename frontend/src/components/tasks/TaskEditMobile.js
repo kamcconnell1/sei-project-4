@@ -104,7 +104,6 @@ function TaskEditMobile() {
         deleteItem={deleteItem}
         handleSubmit={handleSubmit}
       />
-
     </div>
   )
 }
