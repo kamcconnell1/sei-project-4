@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react'
 
 import JobIndexCard from './JobIndexCard'
 
-function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardChangeMobile, drop }) {
+function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardChangeMobile, handleNewJobModal, drop }) {
 
   const allowDrop = e => {
     e.preventDefault()
@@ -13,6 +13,7 @@ function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardC
   const drag = dragEvent => {
     dragEvent.dataTransfer.setData('jobId', dragEvent.target.id)
   }
+
 
   return (
 
@@ -34,18 +35,19 @@ function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardC
         >&gt;</button>
       </div>
 
-      <Link to='/jobs/new/' className='job-add-btn'>
-        <Button
-          basic
-          color='grey'
-          animated='fade'
-          className='fluid'
-          value={status}
-        >
-          <Button.Content visible>+</Button.Content>
-          <Button.Content hidden>Add a new Job</Button.Content>
-        </Button>
-      </Link>
+      {/* <Link to='/jobs/new/' className='job-add-btn' > */}
+      <Button
+        basic
+        color='grey'
+        animated='fade'
+        className='fluid'
+        onClick={handleNewJobModal}
+        value={status.name}
+      >
+        <Button.Content visible>+</Button.Content>
+        <Button.Content hidden>Add a new Job</Button.Content>
+      </Button>
+      {/* </Link> */}
 
       <div className="job-board-content" onDrop={drop} onDragOver={allowDrop} id={status.id}>
         {jobData.map(job => {
@@ -63,9 +65,9 @@ function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardC
           }
         })}
       </div>
+
     </section>
   )
-  
 }
 
 

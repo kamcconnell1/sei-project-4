@@ -8,6 +8,7 @@ import { largeTabletViewTwo, largeTabletViewThree, largeTabletViewFour, largeTab
 import useWindowSize from '../../utils/useWindowSize'
 import JobIndexBoard from './JobIndexBoard'
 import DeleteConfirmModal from '../common/DeleteConfirmModal'
+import JobNewModal from './JobNewModal'
 
 
 
@@ -19,6 +20,8 @@ function JobIndex() {
   const [currentLargeTabletView, setCurrentLargeTabletView] = useState(largeTabletView)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [jobToDelete, setJobToDelete] = useState(null)
+  const [addNewModalOpen, setAddNewModalOpen] = useState(false)
+  const [newJobCategory, setNewJobCategory] = useState(null)
 
 
   const getData = async () => {
@@ -27,7 +30,6 @@ function JobIndex() {
       setJobs(res.data)
     } catch (err) {
       console.log(err)
-
     }
   }
 
@@ -46,6 +48,17 @@ function JobIndex() {
       setStatuses(desktopView)
     }
   }, [width])
+
+  const handleNewJobModal = e => {
+    e.preventDefault()
+    setAddNewModalOpen(true)
+    setNewJobCategory(e.currentTarget.value)
+  }
+
+  const handleNewJobModalClose = () => {
+    setAddNewModalOpen(false)
+    getData()
+  }
 
 
   const handleDeleteJob = async () => {
@@ -203,6 +216,10 @@ function JobIndex() {
         nameOfThingToDelete='Job'
         handleDelete={handleDeleteJob}
       />
+      <JobNewModal
+        addNewModalOpen={addNewModalOpen}
+        handleNewJobModalClose={handleNewJobModalClose}
+      />
       <div className="JobIndex">
         <div className="button-container-small-tablet right">
           <button
@@ -241,6 +258,7 @@ function JobIndex() {
                 status={status}
                 handleDeleteConfirmModal={handleDeleteConfirmModal}
                 handleBoardChangeMobile={handleBoardChangeMobile}
+                handleNewJobModal={handleNewJobModal}
                 drop={drop}
               />
             )

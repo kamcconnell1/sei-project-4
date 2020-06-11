@@ -8,11 +8,12 @@ import useForm from '../../utils/useForm'
 import PageContainer from '../common/PageContainer'
 import JobForm from './JobForm'
 
-function JobNew () {
+function JobNew ({ handleNewJobModalClose }) {
 
   const history = useHistory()
 
   const onSubmitSuccess = () => {
+    handleNewJobModalClose()
     history.push('/jobs/')
   }
 
