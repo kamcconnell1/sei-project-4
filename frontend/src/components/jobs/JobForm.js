@@ -4,7 +4,21 @@ import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import FormInput from '../common/FormInput'
 
-function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown, handleSubmit, formHeaderText, options, buttonText }) {
+function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown, handleSubmit, formHeaderText, options, newJobStatus, buttonText }) {
+
+  console.log(newJobStatus)
+
+  const jobStatus = (options, newJobStatus) => {
+    options.find(option => {
+      console.log(option.value === parseInt(newJobStatus))
+      if (option.value === parseInt(newJobStatus)) {
+        return option.text
+      }
+    })
+  }
+
+  console.log(jobStatus(options, newJobStatus))
+
   return (
     <Segment.Group as='div' className='job-form'>
       <Segment>
@@ -27,7 +41,7 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
                   />
                 </Form.Field>
               </Grid.Column>
-              <Grid.Column width={5} only='computer tablet'>
+              <Grid.Column width={5} only='computer'>
                 <Form.Field>
                   <Header size='small'>Application deadline</Header>
                   <SemanticDatepicker
@@ -163,6 +177,7 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
                     error={errors.status}
                     name='status'
                     value={data.status}
+                    placeholder={newJobStatus}
                     options={options}
                     onChange={selectDropdown}
                   />
@@ -197,7 +212,7 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Column width={16} only='mobile'>
+            <Grid.Column width={16} only=' tablet mobile'>
               <Form.Field>
                 <Header size='small'>Application deadline</Header>
                 <SemanticDatepicker
@@ -273,6 +288,7 @@ function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown,
       </Segment>
     </Segment.Group>
   )
+  
 }
 
 export default JobForm

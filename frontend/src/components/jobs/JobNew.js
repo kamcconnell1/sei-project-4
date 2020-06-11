@@ -8,7 +8,7 @@ import useForm from '../../utils/useForm'
 import PageContainer from '../common/PageContainer'
 import JobForm from './JobForm'
 
-function JobNew ({ handleNewJobModalClose }) {
+function JobNew ({ handleNewJobModalClose, newJobStatus }) {
 
   const history = useHistory()
 
@@ -32,6 +32,9 @@ function JobNew ({ handleNewJobModalClose }) {
     status: ''
   }, addNewJob, null, onSubmitSuccess)
 
+  console.log(newJobStatus)
+  // console.log(formData)
+
   return (
     <PageContainer>
       <JobForm 
@@ -43,6 +46,7 @@ function JobNew ({ handleNewJobModalClose }) {
         handleSubmit={handleSubmit}
         formHeaderText='Add new job'
         options={statusOptions}
+        newJobStatus={newJobStatus}
         buttonText='Add'
       />
     </PageContainer>

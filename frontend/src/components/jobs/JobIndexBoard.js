@@ -42,7 +42,7 @@ function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardC
         animated='fade'
         className='fluid'
         onClick={handleNewJobModal}
-        value={status.name}
+        value={status.id}
       >
         <Button.Content visible>+</Button.Content>
         <Button.Content hidden>Add a new Job</Button.Content>
