@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 
 import JobIndexCard from './JobIndexCard'
@@ -34,20 +33,17 @@ function JobIndexBoard({ jobData, status, handleDeleteConfirmModal, handleBoardC
           className="arrow-right"
         >&gt;</button>
       </div>
-
-      {/* <Link to='/jobs/new/' className='job-add-btn' > */}
-      <Button
-        basic
-        color='grey'
-        animated='fade'
-        className='fluid'
-        onClick={handleNewJobModal}
-        value={status.name}
-      >
-        <Button.Content visible>+</Button.Content>
-        <Button.Content hidden>Add a new Job</Button.Content>
-      </Button>
-      {/* </Link> */}
+      <div className='job-board-btn'>
+        <Button
+          animated='fade'
+          className='fluid job-index-add-btn'
+          onClick={handleNewJobModal}
+          value={status.name}
+        >
+          <Button.Content visible>+</Button.Content>
+          <Button.Content hidden>Add a new Job</Button.Content>
+        </Button>
+      </div>
 
       <div className="job-board-content" onDrop={drop} onDragOver={allowDrop} id={status.id}>
         {jobData.map(job => {

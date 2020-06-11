@@ -4,7 +4,7 @@ import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 function DeleteConfirmModal({ deleteModalOpen, nameOfThingToDelete, handleCloseDeleteConfirm, handleDelete }) {
 
   return (
-    <Modal open={deleteModalOpen} basic size='small'>
+    <Modal size='mini' open={deleteModalOpen} basic>
       <Header icon='archive' content='Delete?' />
       <Modal.Content>
         <p>
@@ -12,7 +12,7 @@ function DeleteConfirmModal({ deleteModalOpen, nameOfThingToDelete, handleCloseD
         </p>
       </Modal.Content>
       <Modal.Actions>
-        <Button basic color='pink' inverted onClick={handleCloseDeleteConfirm}>
+        <Button basic color='blue' inverted onClick={handleCloseDeleteConfirm}>
           <Icon name='ban' /> cancel
         </Button>
         <Button color='red' inverted onClick={handleDelete}>

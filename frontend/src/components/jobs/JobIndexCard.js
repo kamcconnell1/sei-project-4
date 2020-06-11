@@ -8,7 +8,8 @@ function JobIndexCard({ handleDeleteConfirmModal, job_title: jobTitle, company, 
     <Link to={`/jobs/${id}`} >
       <div className="JobIndexCard" id={id} draggable='true' onDragStart={drag}>
         <div>
-          <h3>{jobTitle}</h3>
+          <h3><strong>{jobTitle}</strong></h3>
+          <hr/>
           <h3>{company}</h3>
           <h3>{city} - {country}</h3>
         </div>

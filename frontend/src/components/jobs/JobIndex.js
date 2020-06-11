@@ -42,7 +42,7 @@ function JobIndex() {
       setStatuses(mobileView)
     } else if (width <= 768) {
       setStatuses(smallTabletView)
-    } else if (width <= 1200) {
+    } else if (width <= 1120) {
       setStatuses(largeTabletView)
     } else {
       setStatuses(desktopView)

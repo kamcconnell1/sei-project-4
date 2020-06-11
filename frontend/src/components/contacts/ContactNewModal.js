@@ -33,7 +33,7 @@ function ContactNewModal({
             basic
             color='pink'
             animated='fade'
-            className='fluid'
+            className='fluid add-btn'
             onClick={handleModalOpen}
           >
             <Button.Content visible>+</Button.Content>

@@ -99,7 +99,7 @@ function ContactIndex() {
 
   return (
     <>
-      <Header id="header-font-contacts" as='h1' >Contacts</Header>
+      <Header id='header-font-contacts' as='h1' >Contacts</Header>
       <DeleteConfirmModal
         deleteModalOpen={deleteModalOpen}
         handleCloseDeleteConfirm={handleCloseDeleteConfirm}
@@ -116,6 +116,7 @@ function ContactIndex() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
+
       <div className='search-box'>
         <div className='ui fluid icon input'>
           <input type='text' placeholder='Search contacts...' name='search' value={search} onChange={handleSearch} />

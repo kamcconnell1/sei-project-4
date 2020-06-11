@@ -55,10 +55,15 @@ $font-content: "IBM Plex Mono", monospace;
   color: $color2;
 }
 
+
+
 @media screen and (min-width: 160px) {
   // * Job Index
 
   .JobIndex {
+    hr {
+      border: 1px solid $color1
+    }
     width: 100%;
     .button-container-small-tablet,
     .button-container-large-tablet {
@@ -98,16 +103,14 @@ $font-content: "IBM Plex Mono", monospace;
             background-color: transparent;
             border: none;
           }
+          
         }
-        .job-add-btn {
-          display: flex;
-          justify-content: center;
-          margin: 4vw 5vw;
-          padding: 5px;
-          background-color: white;
-          border-radius: 10px;
-          box-shadow: 0 0 5px #999999;
-          font-family: $font-content;
+        .job-board-btn {
+          margin: 5vw;
+          button.job-index-add-btn {
+            font-family: $font-content;
+            background-color: #fff;
+          }
         }
         .job-board-content {
           height: 57vh;
@@ -142,6 +145,7 @@ $font-content: "IBM Plex Mono", monospace;
       border-radius: 10px;
       box-shadow: 0 0 5px #999999;
       h3 {
+        font-weight: normal;
         color: black;
         font-family: $font-content;
         font-size: 12px;
@@ -316,8 +320,8 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-        .job-add-btn {
-          margin: 1vh 3vw;
+        .job-board-btn {
+          margin: 1.5vh 3vw;
         }
       }
     }
@@ -395,7 +399,7 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-        .job-add-btn {
+        .job-board-btn {
           margin: 1vh 2vw;
         }
       }
@@ -439,7 +443,7 @@ $font-content: "IBM Plex Mono", monospace;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1120px) {
   .JobIndex {
     .button-container-small-tablet,
     .button-container-large-tablet {
@@ -467,8 +471,8 @@ $font-content: "IBM Plex Mono", monospace;
             display: none;
           }
         }
-        .job-add-btn {
-          margin: 0.5vh 1vw;
+        .job-board-btn {
+          margin: .5vh 1vw;
         }
         .job-board-content {
           height: 60vh;
