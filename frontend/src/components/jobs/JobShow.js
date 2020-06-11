@@ -52,7 +52,7 @@ function JobShow() {
 
   return (
     <PageContainer>
-      <Segment.Group>
+      <Segment.Group as='div' className='job-show'>
         <Segment textAlign='left'>
           <Header as='h1' textAlign='center'>{job.job_title}</Header>
           <Tab 
