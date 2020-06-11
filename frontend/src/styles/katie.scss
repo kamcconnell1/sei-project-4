@@ -8,9 +8,7 @@ $font-title: "Permanent Marker", cursive;
 $font-content: "IBM Plex Mono", monospace;
 
 //? Universal styling 
-#header-font {
-  font-family: $font-title;
-}  
+
 #form-button {
   font-family: $font-content;
 }
@@ -20,7 +18,7 @@ $font-content: "IBM Plex Mono", monospace;
   background-color: #f94144;
   opacity: 90%;
   color: #ffffff;
-  padding: .5833em .833em;
+  padding: .4833em .833em;
   border-radius: .28571429rem;
   font-weight: 700;
   font-size: .85714286rem;
@@ -30,7 +28,7 @@ $font-content: "IBM Plex Mono", monospace;
   background-color: #16db65;
   opacity: 80%;
   color: #ffffff;
-  padding: .5833em .833em;
+  padding: .4833em .833em;
   border-radius: .28571429rem;
   font-weight: 700;
   font-size: .85714286rem;
@@ -41,73 +39,193 @@ $font-content: "IBM Plex Mono", monospace;
   background-color: #9b5de5;
   opacity: 90%;
   color: #ffffff;
-  padding: .5833em .833em;
+  padding: .4833em .833em;
   border-radius: .28571429rem;
   font-weight: 700;
   font-size: .85714286rem;
+  text-align: center;
 }
 
 
 
 // ? Task Index Page
-.TaskIndex {
-  .uncompleted-tasks {
-    margin-top:  5% ;
-  }
-  .completed-tasks{
-    margin-top:  5% ;
-    color: grey;
-    text-decoration: line-through;
-}
-.task-index-header{
-  margin-bottom: 5%;
-}
-.task-form {
-  display: block;
-}
-.task-form-hidden {
-  display: none;
-}
-}
-  .edit-task-computer-tablet{
-    border: 1px solid grey;
-    border-radius: 10px;
-    margin-top: 10%;
-  }
+div.segments.TaskIndex {
+  margin: 0 auto;
+  max-width: 800px;
+  div.ui.segment{
+    div.column{
+      h1#header-font-tasks {
+        font-family: $font-title;
+        color: $color2;
+        text-align: center;
+      }  
+      button.ui.basic.fade.animated.button.fluid {
+        color: $color2
+      }
+      h5.ui.left.aligned.header{
+        font-family: $font-content;
+        color: $color2;
+      }
+      .uncompleted-tasks {
+        margin-top:  5% ;
+          ui.grey.header{
+            color: $color2;
+          }
+      }
+      .completed-tasks{
+        margin-top:  5% ;
+        color: grey;
+        text-decoration: line-through;
+    }
+    // ? Task Edit form computer
+    .task-form {
+      display: block;
+      margin-top: 3vh;
+      div.ui.segments{
+        width: 700px;
+        margin: 0 auto;
+        border-radius: 10px;
+        div.ui.segment.taskedit-computer{
+          font-family: $font-content;
+          color: $color2;
+          border-radius: 20px;
+          
+          h1.ui.center.aligned.header{
+            font-family: $font-title;
+            color: $color2;
+          }
+          div.ui.small.header{
+            font-family: $font-content;
+            color: $color2;
+            font-size: 1.07142857em;
+          }
+          input{
+          font-family: $font-content;
+          color: $color2;
+          font-size: 1rem;
+          }
+          div.ui.search.selection.dropdown{
+          color: $color2;
+          font-size: 1rem;
+          height: 9.5px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          
+          }
+          div.ui.header{
+            margin-bottom: 0.3rem;
+          }
+          div.tablet.only.computer.only.row.row{
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 0.5rem;
+            div.tablet.only.computer.only.row.row1{
+              display: flex;
+              div.eleven.wide.column{
+                display: flex;
+                flex-direction: column;
+                align-content: space-between;
+              }
+            }
+            div.tablet.only.computer.only.row.row4{
+              button.ui.large.basic.fluid.button{
+                color: $color2;
+              } 
+            }
+          }
+      }
+    }
 
-// ? Task Show Page 
-.TaskShow {
+    //? Task Add for computer view
+    div.TaskAddComputer{
+      div.ui.segments{
+        border-radius: 20px;
+        // font-family: $font-content;
+        max-width: 700px;
+        margin: 0 auto;
+        border-radius: 50px;
+        div.ui.segment{
+          font-family: $font-content;
+          // color: $color2;
+          h1.ui.center.aligned.header{
+            color: $color2;
+            font-family: $font-content;
+          }
+          div.ui.small.header{
+            font-family: $font-content;
+            color: $color2;
+            font-size: 1.07142857em;
+          }
+          input{
+            font-family: $font-content;
+            color: $color2;
+            font-size: 1rem;
+            }
+            div.ui.search.selection.dropdown{
+              font-size: 1rem;
+            color: $color2;
+            }
+            div.tablet.only.computer.only.row.row2{
+              display: flex;
+              align-items: flex-end;
+              div.three.wide.column.edit-btn{
+                button#form-button{
+                  font-size: 1rem;
+                  font-family: $font-content;
+                }
+              }
+            }
+        }
+      }
+    }
+  }
+    .task-form-hidden {
+      display: none;
+    }
 
-  //?  TASK SHOW MOBILE VIEW 
-  .taskshow-mobile{
-      padding: 3vw;
+    // ? Task Show Cards
+    div.ui.fluid.card{
+      padding: 2vw;
+      max-width: 700px;
       border-radius: 10px;
+      font-family: $font-content;
+      color: $color2;
+      margin: 0 auto;
+    .task-checkbox {
+      margin-right: 5%;
+      }
     .task-header {
       display: flex;
-      margin-bottom: .833em;
+      justify-content: space-between;
+      margin-bottom: .233em;
       .task-title {
+        display: flex;
+        justify-content: flex-start;
         margin-left: 2%;
+        width:100%;
       }
-      .task-category {
-        margin-left: auto;
+      div.label {
+        min-width: 110px;
       }
     }
     .task-content {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       .task-job {
         text-align: left;
+        width: 75%;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .task-date{
+        min-width: 110px;
+        
       }
     }
   }
-
-  //? TASK SHOW COMPUTER TABLET VIEW 
-  .is-show {
-    margin-top: 1rem ;
   }
-  .is-edit {
-    margin-top: 1rem ;
-    // outline: grey 1px solid;
   }
   .btn-not-displayed {
     background: none;
@@ -121,68 +239,30 @@ $font-content: "IBM Plex Mono", monospace;
     display: flex;
     align-items: center;
     margin-bottom: 2%;
-    .task-label {
-      width: 18%;
-      display: flex;
-      justify-content: flex-start;
-    }
-    .task-checkbox {
-      margin-right: 5%;
-    }
-    .task-title {
-      width: 25%;
-      display: flex;
-      justify-content: flex-start;
-    }
-    .tak-job {
-      width: 25%;
-      display: flex;
-      justify-content: flex-start;
-    }
-    .task-date{
-      margin-left: auto;
-    }
   }
 }
 
-
-// ? Task Edit Page 
-.TaskEdit {
-  .row1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+// ? Task Add for mobile view
+div.ui.segments.TaskFormMobile{
+  font-family: $font-content;
+  color: $color2;
+  margin: 10px;
+  // height: 92vh;
+  overflow-y: none;
+  h1#header-font-tasks{
+    font-family: $font-title;
+    color: $color2;
   }
-  .row2{
-    p {
-      font-size: 1rem;
-    }
+  div.ui.small.header{
+    font-family: $font-content;
+    color: $color2;
   }
-  .row3{
-    font-size: 1rem;
-  }
-  .row4 {
-    display: flex;
-    flex-direction: row;
-    // justify-content: space-between;
-    align-items: center;
-    .date {
-      max-width: 40%;
-    }
-    .date-picker {
-      max-width: 40%;
-      padding-left: 20%;
-    }
-  }
-  .row5 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    .update-btn {
-    width: 80%;
-    }
+  input{
+    font-size: 1em;
+    font-family: $font-content;
+    color: $color2;
+    height: 43.6px;
   }
 }
+
 
