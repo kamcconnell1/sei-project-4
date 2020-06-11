@@ -8,7 +8,7 @@ function ResourceCard({ id, title, url, handleDeleteConfirmModal }) {
       <div className='resource-card-header'>
         <p>{title}</p>
         <button value={id} onClick={handleDeleteConfirmModal} className='delete-resource-btn'>
-          <Icon size='large' name='delete' />
+          <Icon name='trash' />
         </button>
       </div>
       <div className='resource-card-content'>

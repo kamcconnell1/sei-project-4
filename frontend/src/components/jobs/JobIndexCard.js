@@ -14,7 +14,7 @@ function JobIndexCard({ handleDeleteConfirmModal, job_title: jobTitle, company, 
         </div>
         <div>
           <button value={id} onClick={handleDeleteConfirmModal} className='delete-job-btn'>
-            <Icon size='small' name='delete' />
+            <Icon size='small' name='trash' />
           </button>
         </div>
       </div>

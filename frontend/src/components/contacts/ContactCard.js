@@ -13,7 +13,7 @@ function ContactCard({ id, email, job, job_title, name, phone, handleDeleteConfi
 
         </div>
         <button value={id} onClick={handleDeleteConfirmModal} className='delete-contact-btn'>
-          <Icon size='large' name='delete' />
+          <Icon name='trash' />
         </button>
       </div>
       <div className='contact-card-content'>
