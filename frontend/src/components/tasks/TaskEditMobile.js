@@ -7,7 +7,7 @@ import useDelete from '../../utils/useDelete'
 import { getSingleTask, editTask, deleteTask } from '../../lib/api'
 
 import GetDate from '../common/GetDate'
-import TaskMobileForm from './TaskMobileForm'
+import TaskFormMobile from './TaskFormMobile'
 
 
 function TaskEditMobile() {
@@ -30,10 +30,7 @@ function TaskEditMobile() {
     added_date: '',
     reminder_date: '',
     task_category: '',
-    job: {
-      company: '',
-      job_title: ''
-    }
+    job: ''
   }, editTask, taskId, onSubmitSuccess)
 
   const getData = async () => {
@@ -75,11 +72,6 @@ function TaskEditMobile() {
   if (!formData) return null
   const { added_date, reminder_date } = formData
   if (!task) return null
-  console.log(formData.completed)
-  
-  console.log(reminder_date)
-  console.log(added_date)
-  
   
   const dateProvided = () => {
     if (reminder_date) {
@@ -89,12 +81,11 @@ function TaskEditMobile() {
     }
   }
   const date = dateProvided(reminder_date, added_date)
-  console.log(date)
   
   
   return (
     <div className='TaskEdit'>
-      <TaskMobileForm
+      <TaskFormMobile
         task={task}
         date={date}
         formData={formData}

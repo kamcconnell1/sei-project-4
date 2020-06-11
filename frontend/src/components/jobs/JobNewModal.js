@@ -3,13 +3,13 @@ import { Button, Icon, Modal } from 'semantic-ui-react'
 
 import JobNew from './JobNew'
 
-function JobNewModal({ addNewModalOpen, handleNewJobModalClose }) {
+function JobNewModal({ addNewModalOpen, handleNewJobModalClose, newJobStatus }) {
   return (
     <Modal open={addNewModalOpen}>
-      <Modal.Header>Add a new Job</Modal.Header>
       <Modal.Content>
         <JobNew
           handleNewJobModalClose={handleNewJobModalClose}
+          newJobStatus={newJobStatus}
         />
       </Modal.Content>
       <Modal.Actions>

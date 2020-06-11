@@ -18,7 +18,16 @@ p {
 }
 
 section.section {
-  margin: 0 auto 10vh;
+  margin: 0 auto;
+}
+
+section > footer.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color3;
+    color: white;
+    height: 5vh;
 }
 
 div.ui.segments:first-child {
@@ -31,6 +40,7 @@ div.segments.job-show {
   max-width: 800px;
   h1.header {
     font-family: $font-title;
+    font-size: 100px;
     color: $color1;
   }
   // * Tabs
@@ -84,17 +94,19 @@ div.segments.job-form {
     div.small.header {
       font-family: $font-content;
     }
-    input[type="text"], div.dropdown, textarea {
+    input[type="text"],
+    div.dropdown,
+    textarea {
       font-family: $font-content;
       word-wrap: break-word;
     }
   }
   button.teal-button {
-      font-family: $font-content;
-      color: $color1;
-      background-color: #fff;
-      border: 2px solid $color1;
-    }
+    font-family: $font-content;
+    color: $color1;
+    background-color: #fff;
+    border: 2px solid $color1;
+  }
 }
 
 @media screen and (min-width: 160px) {
@@ -104,14 +116,25 @@ div.segments.job-form {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      height: 65vh;
-      background-color: $color3;
+      height: 40vh;
+      background: linear-gradient(
+        90deg,
+        rgba(16, 125, 126, 1) 11%,
+        rgba(226, 80, 104, 1) 30%,
+        rgba(238, 89, 150, 1) 51%,
+        rgba(236, 106, 50, 1) 71%,
+        rgba(226, 188, 161, 1) 91%
+      );
       h1.header {
-        padding: 0 5%;
         font-family: $font-title;
-        font-size: 3rem;
-        text-align: left;
+        font-size: 6rem;
+        text-align: center;
         color: #fff;
+      }
+      h2.header {
+        font-family: $font-content;
+        text-align: center;
+        color: #FFF;
       }
     }
     p {
@@ -132,6 +155,7 @@ div.segments.job-form {
     }
   }
 }
+
 
 @media screen and (min-width: 480px) {
   section.section {

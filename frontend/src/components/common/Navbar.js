@@ -4,7 +4,7 @@ import {
   Container,
   Menu,
   Dropdown,
-  Image
+  Image, Sticky
 } from 'semantic-ui-react'
 import logo from '../../assets/jobr-logo.png'
 import { logout, isAuthenticated } from '../../lib/auth'
@@ -22,7 +22,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div>
+      <Sticky>
         <Menu size='small' position='right' borderless >
           <Container >
             <Dropdown item simple text='Menu' >
@@ -77,7 +77,7 @@ class Navbar extends React.Component {
             </Menu.Item>
           </Container>
         </Menu>
-      </div >
+      </Sticky >
     )
   }
 }

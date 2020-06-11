@@ -1,5 +1,4 @@
 // import { Label } from 'semantic-ui-react'
-// import React from 'react'
 
 
 export const taskCategories = [

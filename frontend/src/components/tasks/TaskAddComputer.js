@@ -1,12 +1,11 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Grid,  Header, Dropdown, Button, Segment, GridColumn } from 'semantic-ui-react'
+import { Form, Grid,  Header, Dropdown, Button, Segment } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 
 import useForm from '../../utils/useForm'
 import { getAllJobs, addNewTask } from '../../lib/api'
-import PageContainer from '../common/PageContainer'
 import FormInput from '../common/FormInput'
 import FormButton from '../common/FormButton'
 import { taskCategories } from './TaskCategories'
@@ -14,7 +13,6 @@ import { taskCategories } from './TaskCategories'
 
 function TaskAddComputer({ closeForm, getData }) {
   
-
   const history = useHistory()
   const [jobs, setJobs] = React.useState(null)
 

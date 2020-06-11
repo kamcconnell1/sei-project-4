@@ -21,7 +21,7 @@ function JobIndex() {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [jobToDelete, setJobToDelete] = useState(null)
   const [addNewModalOpen, setAddNewModalOpen] = useState(false)
-  const [newJobCategory, setNewJobCategory] = useState(null)
+  const [newJobStatus, setNewJobStatus] = useState(null)
 
 
   const getData = async () => {
@@ -52,7 +52,7 @@ function JobIndex() {
   const handleNewJobModal = e => {
     e.preventDefault()
     setAddNewModalOpen(true)
-    setNewJobCategory(e.currentTarget.value)
+    setNewJobStatus(e.currentTarget.value)
   }
 
   const handleNewJobModalClose = () => {
@@ -219,6 +219,7 @@ function JobIndex() {
       <JobNewModal
         addNewModalOpen={addNewModalOpen}
         handleNewJobModalClose={handleNewJobModalClose}
+        newJobStatus={newJobStatus}
       />
       <div className="JobIndex">
         <div className="button-container-small-tablet right">
