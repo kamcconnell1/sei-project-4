@@ -10,7 +10,7 @@ function JobRelatedTasks({ job }) {
       {job.related_tasks.map(task => (
         <Item key={task.id}>
           <Item.Content>
-            <Item.Header>{task.title ? task.title : 'No title'}</Item.Header>
+            <Item.Header as='h2'>{task.title ? task.title : 'No title'}</Item.Header>
             <Item.Meta>{task.task_category.name}</Item.Meta>
             <Item.Description>
               <p>{task.notes ? task.notes : 'No notes'}</p>

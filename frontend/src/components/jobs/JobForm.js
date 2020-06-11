@@ -7,8 +7,8 @@ import FormButton from '../common/FormButton'
 
 function JobForm({ data, errors, handleChange, handleDateChange, selectDropdown, handleSubmit, formHeaderText, options, buttonText }) {
   return (
-    <Segment.Group>
-      <Segment textAlign='left'>
+    <Segment.Group as='div' className='job-form'>
+      <Segment>
         <Header as='h1' textAlign='center'> {formHeaderText}</Header>
         <Form onSubmit={handleSubmit}>
           <Grid stackable columns={2}>

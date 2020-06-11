@@ -9,7 +9,7 @@ function JobRelatedContacts ({ job }) {
       {job.related_contacts.map(contact => (
         <Item key={contact.id}>
           <Item.Content>
-            <Item.Header>{contact.name}</Item.Header>
+            <Item.Header as='h2'>{contact.name}</Item.Header>
             <Item.Meta>{contact.job_title ? contact.job_title : '-'} at {contact.company ? contact.company : '-'}</Item.Meta>
             <Item.Description>
               <p>Email: {contact.email ? contact.email : ''}</p>
