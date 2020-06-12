@@ -10,6 +10,10 @@ $font-content: "IBM Plex Mono", monospace;
 // !GLOBAL STYLE
 
 // * Navbar
+#root > div > div.ui.sticky > div > div > div.ui.item.simple.dropdown {
+  font-family: $font-content;
+}
+
 #navbar-logo {
   padding: 5px;
 }
@@ -198,7 +202,7 @@ $font-content: "IBM Plex Mono", monospace;
 
   div.search-box {
     margin: 3vh 7vw;
-    input[type=text] {
+    input[type="text"] {
       font-family: $font-content;
     }
   }
@@ -255,6 +259,33 @@ $font-content: "IBM Plex Mono", monospace;
         word-wrap: break-word;
         padding: 3vw;
       }
+    }
+  }
+
+  // * Contact and resources add
+  body > div.ui.page.modals.dimmer.transition.visible.active > div {
+    input[type="text"] {
+      font-family: $font-content;
+    }
+    h3.header.add-contact {
+      font-family: $font-title;
+      font-size: 1.75rem;
+      color: $color3;
+    }
+    h3.header.add-resource {
+      font-family: $font-title;
+      font-size: 1.75rem;
+      color: $color4;
+    }
+    button.add-contact {
+      background-color: #FFF;
+      color: $color3;
+      border: 2px solid $color3;
+    }
+    button.add-resource {
+      background-color: #FFF;
+      color: $color4;
+      border: 2px solid $color4;
     }
   }
 

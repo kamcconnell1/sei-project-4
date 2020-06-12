@@ -2,9 +2,9 @@ import React from 'react'
 import { Button, Modal, Header, Form, Icon } from 'semantic-ui-react'
 import FormInput from '../common/FormInput'
 
-function ResourceNewModal({ 
-  modalOpen, 
-  formData, 
+function ResourceNewModal({
+  modalOpen,
+  formData,
   handleModalOpen,
   handleModalClose,
   handleChange,
@@ -26,7 +26,7 @@ function ResourceNewModal({
           </Button>
         </div>
       } closeIcon>
-        <Header icon='at' content='add resource' />
+        <Header as='h3' className='add-resource' icon='at' content='add resource' />
         <Modal.Content>
           <Form onSubmit={handleSubmit}>
             <FormInput
@@ -49,11 +49,10 @@ function ResourceNewModal({
             />
             <Button
               fluid
-              basic
-              color='orange'
+              className='add-resource'
               type='submit'
             >
-              <Icon name='add circle' /> Add
+              Add
             </Button>
           </Form>
         </Modal.Content>

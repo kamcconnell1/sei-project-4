@@ -180,7 +180,8 @@ div.segments.TaskIndex {
             }
             div.ui.search.selection.dropdown{
               font-size: 1rem;
-            color: $color2;
+              color: $color2;
+              height: 9.5px;
             }
             div.tablet.only.computer.only.row.row2{
               display: flex;
@@ -311,11 +312,15 @@ div.ui.segments.TaskFormMobile{
     font-family: $font-content;
     color: $color2;
   }
+  div.ui.search.selection.dropdown{
+    min-height: 50px;
+    align-items: center;
+  }
   input{
     font-size: 1em;
     font-family: $font-content;
     color: $color2;
-    height: 43.6px;
+    height: 50px;
   }
 }
 

@@ -24,7 +24,7 @@ function ContactNewModal({
       }
     )
   }))
-  
+
   return (
     <div>
       <Modal open={modalOpen} onClose={handleModalClose} trigger={
@@ -41,72 +41,83 @@ function ContactNewModal({
           </Button>
         </div>
       } closeIcon>
-        <Header icon='at' content='add contact' />
+        <Header as='h3' className='add-contact' icon='user' size='small' content='Add contact' />
         <Modal.Content>
           <Form onSubmit={handleSubmit}>
-            <FormInput
-              className='fluid'
-              focus
-              placeholder='Name'
-              value={formData.name || ''}
-              type='text'
-              name='name'
-              onChange={handleChange}
-            />
-            <FormInput
-              className='fluid'
-              focus
-              placeholder='Job title'
-              value={formData.job_title || ''}
-              type='text'
-              name='job_title'
-              onChange={handleChange}
-            />
-            <FormInput
-              className='fluid'
-              focus
-              placeholder='Company'
-              value={formData.company || ''}
-              type='text'
-              name='company'
-              onChange={handleChange}
-            />
-            <FormInput
-              className='fluid'
-              focus
-              placeholder='Email'
-              value={formData.email || ''}
-              type='text'
-              name='email'
-              onChange={handleChange}
-            />
-            <FormInput
-              className='fluid'
-              focus
-              placeholder='Phone'
-              value={formData.phone || ''}
-              type='text'
-              name='phone'
-              onChange={handleChange}
-            />
-            <Dropdown
-              search
-              placeholder='Select applicable job...'
-              value={formData.job || ''}
-              name='job'
-              className='fluid'
-              selection
-              options={jobOptions}
-              onChange={selectDropdown}
-            />
-            <br/>
+            <Form.Field>
+              <FormInput
+                className='fluid'
+                focus
+                placeholder='Name'
+                value={formData.name || ''}
+                type='text'
+                name='name'
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <FormInput
+                className='fluid'
+                focus
+                placeholder='Job title'
+                value={formData.job_title || ''}
+                type='text'
+                name='job_title'
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <FormInput
+                className='fluid'
+                focus
+                placeholder='Company'
+                value={formData.company || ''}
+                type='text'
+                name='company'
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <FormInput
+                className='fluid'
+                focus
+                placeholder='Email'
+                value={formData.email || ''}
+                type='text'
+                name='email'
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <FormInput
+                className='fluid'
+                focus
+                placeholder='Phone'
+                value={formData.phone || ''}
+                type='text'
+                name='phone'
+                onChange={handleChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Dropdown
+                search
+                placeholder='Select applicable job...'
+                value={formData.job || ''}
+                name='job'
+                className='fluid'
+                selection
+                options={jobOptions}
+                onChange={selectDropdown}
+              />
+            </Form.Field>
+            <br />
             <Button
               fluid
-              basic
-              color='orange'
+              className='add-contact'
               type='submit'
             >
-              <Icon name='add circle' /> Add
+            Add
             </Button>
           </Form>
         </Modal.Content>
