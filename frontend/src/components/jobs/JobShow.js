@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { getSingleJob } from '../../lib/api'
 import { Header, Segment, Tab } from 'semantic-ui-react'
 
@@ -11,6 +11,7 @@ import JobRelatedContacts from './JobRelatedContacts'
 function JobShow() {
   const [job, setJob] = React.useState(null)
   const { id } = useParams()
+  const history = useHistory()
 
   const panes = [
     {
@@ -42,11 +43,11 @@ function JobShow() {
         const { data } = await getSingleJob(id)
         setJob(data)
       } catch (err) {
-        console.log(err)
+        history.push('/notfound')
       }
     }
     getJobData()
-  }, [id])
+  }, [id, history])
 
   if (!job) return null
 

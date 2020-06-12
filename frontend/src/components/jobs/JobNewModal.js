@@ -1,9 +1,11 @@
 import React from 'react'
-import { Button, Icon, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 
 import JobNew from './JobNew'
 
 function JobNewModal({ addNewModalOpen, handleNewJobModalClose, newJobStatus }) {
+
+  console.log(newJobStatus, typeof(newJobStatus))
   return (
     <Modal open={addNewModalOpen}>
       <Modal.Content>
@@ -11,12 +13,14 @@ function JobNewModal({ addNewModalOpen, handleNewJobModalClose, newJobStatus }) 
           handleNewJobModalClose={handleNewJobModalClose}
           newJobStatus={newJobStatus}
         />
+        <Button
+          fluid
+          className='cancel-button'
+          icon='ban'
+          content='Cancel'
+          onClick={handleNewJobModalClose}
+        />
       </Modal.Content>
-      <Modal.Actions>
-        <Button basic color='pink' onClick={handleNewJobModalClose}>
-          <Icon name='ban' /> cancel
-        </Button>
-      </Modal.Actions>
     </Modal>
   )
 }
