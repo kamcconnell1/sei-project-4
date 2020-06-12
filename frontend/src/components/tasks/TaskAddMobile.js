@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Grid, Header, Segment, Dropdown } from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Dropdown, Icon } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 import useForm from '../../utils/useForm'
@@ -28,7 +28,8 @@ function TaskAddMobile() {
     completed: false,
     notes: '',
     task_category: '',
-    job: ''
+    job: '',
+    reminder_date: ''
   }, addNewTask, null, onSubmitSuccess)
 
   const getData = async () => {
@@ -46,6 +47,10 @@ function TaskAddMobile() {
     if (width > 767) history.push('/tasks/')
   }, [width])
 
+  const closeForm = () => {
+    history.push('/tasks')
+  }
+
   if (!jobs) return null
   const jobOptions = jobs.map((job => {
     return (
@@ -56,7 +61,6 @@ function TaskAddMobile() {
       }
     )
   }))
-  console.log(formErrors.task_category.length)
   
 
   return (
@@ -65,16 +69,35 @@ function TaskAddMobile() {
         <Form size='large' onSubmit={handleSubmit}>
           <Grid stackable textAlign='left' verticalAlign='middle'  >
             <Grid.Row only='mobile'>
-              <Grid.Column>
+              <Grid.Column className='top-row-mobile'>
+                <button className='btn-not-displayed'  onClick={closeForm}>
+                  <Icon name='close'  />
+                </button>
                 <Header as='h1' id='header-font-tasks' textAlign='center'>Add Task</Header>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row only='mobile' className='row1'>
               <Grid.Column >
+                <Header size='small'>Task Title</Header>
+                <Form.Field >
+                  <FormInput
+                    fluidIcon='pencil alternate'
+                    iconPosition='left'
+                    placeholder='Title'
+                    value={formData.title}
+                    type='text'
+                    name='title'
+                    onChange={handleChange}
+                  />
+                </Form.Field>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row only='mobile' className='row2'>
+              <Grid.Column >
                 <Header size='small'>Task Category</Header>
                 <Form.Field >
                   <Dropdown
-                    error={formErrors.task_categorylength >= 1 ? true : false}
+                    error={formErrors.task_category}
                     search
                     clearable
                     selection
@@ -86,7 +109,7 @@ function TaskAddMobile() {
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row only='mobile' className='row2'>
+            <Grid.Row only='mobile' className='row3'>
               <Grid.Column >
                 <Header size='small'>Related Job</Header>
                 <Form.Field >
@@ -94,7 +117,7 @@ function TaskAddMobile() {
                     search
                     clearable
                     placeholder='Select applicable job...'
-                    value={formData.job || ''}
+                    value={formData.job}
                     name='job'
                     className='fluid'
                     selection
@@ -104,7 +127,7 @@ function TaskAddMobile() {
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row only='mobile' className='row3'>
+            <Grid.Row only='mobile' className='row4'>
               <Grid.Column >
                 <Header size='small'>Notes</Header>
                 <Form.Field >
@@ -121,9 +144,9 @@ function TaskAddMobile() {
                 </Form.Field>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row only='mobile' className='row4'>
+            <Grid.Row only='mobile' className='row5'>
               <Grid.Column >
-                <Header size='small'>Update Reminder</Header>
+                <Header size='small'>Date Due</Header>
                 <Form.Field >
                   <SemanticDatepicker onChange={handleDateChange}
                     datePickerOnly
@@ -140,6 +163,7 @@ function TaskAddMobile() {
             <Grid.Row only='mobile'>
               <Grid.Column>
                 <FormButton
+                  color='red'
                   fluidSize='large'
                   buttonText='Add Task'
                   type='submit'

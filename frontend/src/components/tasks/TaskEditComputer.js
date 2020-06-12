@@ -2,12 +2,12 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { editTask, deleteTask, getAllJobs } from '../../lib/api'
+import { editTask, getAllJobs } from '../../lib/api'
 
+import GetDate from '../common/GetDate'
 import TaskFormComputer from './TaskFormComputer'
-import useWindowSize from '../../utils/useWindowSize'
 
-function TaskEditComputer({ closeForm, data, getData }) {
+function TaskEditComputer({ closeForm, data, getData, handleDeleteConfirmModal }) {
   const history = useHistory()
   const [task, setTask] = React.useState(null)
   const [jobs, setJobs] = React.useState(null)
@@ -86,17 +86,18 @@ function TaskEditComputer({ closeForm, data, getData }) {
     }
   }
 
-
-  const deleteItem = async () => {
-    try {
-      await deleteTask(task.id)
-      console.log('deleted')
-      closeForm()
-      getData()
-    } catch (err) {
-      history.push('/notfound')
+  if (!formData) return null
+  const { added_date, reminder_date } = formData
+  if (!task) return null
+  
+  const dateProvided = () => {
+    if (reminder_date) {
+      return GetDate(reminder_date)
+    } else {
+      return GetDate(added_date)
     }
   }
+  const date = dateProvided(reminder_date, added_date)
 
   if (!jobs) return null
   const jobOptions = jobs.map((job => {
@@ -109,18 +110,19 @@ function TaskEditComputer({ closeForm, data, getData }) {
     )
   }))
 
+
   return (
     <TaskFormComputer
       task={task}
       jobOptions={jobOptions}
-      // date={date}
+      date={date}
       closeForm={closeForm}
       formData={formData}
       toggleCheckbox={toggleCheckbox}
       selectDropdown={selectDropdown}
       handleChange={handleChange}
       handleDateChange={handleDateChange}
-      deleteItem={deleteItem}
+      deleteItem={handleDeleteConfirmModal}
       handleSubmit={handleSubmit}
     />
   )

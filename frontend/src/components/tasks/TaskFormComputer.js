@@ -11,12 +11,11 @@ import { taskCategories } from './TaskCategories'
 
 
 
-function TaskFormComputer({ jobOptions, formData, task, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit, closeForm }) {
+function TaskFormComputer({ date, jobOptions, formData, task, selectDropdown, handleChange, handleDateChange, deleteItem, handleSubmit, closeForm }) {
 
   if (!formData) return null
   const { notes, reminder_date, title } = formData
   const taskPlaceholder = (<span><TaskLabel category={task.task_category.id} /></span>)
-  
 
   return (
 
@@ -27,14 +26,19 @@ function TaskFormComputer({ jobOptions, formData, task, selectDropdown, handleCh
             <Grid >
               <Grid.Row only='tablet computer'>
                 <Grid.Column width={1}>
-                  <Button circular icon='close' type='button' size='small' onClick={closeForm} />
+                  <button className='btn-not-displayed'
+                    type ='button' onClick={closeForm} >
+                    <Icon name='close'  />
+                  </button>
                 </Grid.Column>
                 <Grid.Column width={12}>
                   <Header as='h1' textAlign='center'>Update Task</Header>
                 </Grid.Column>
                 <Grid.Column width={3} textAlign='right'>
                   <Form.Field>
-                    <p className='due-today'>Date</p>
+                    {/* <p className='due-today'>Date</p>
+                     */}
+                    {date}
                   </Form.Field>
                 </Grid.Column>
               </Grid.Row>
@@ -43,7 +47,6 @@ function TaskFormComputer({ jobOptions, formData, task, selectDropdown, handleCh
                   <Form.Field>
                     <Header size='small'>Task Category</Header>
                     <Dropdown
-                    
                       search
                       clearable
                       selection
@@ -76,7 +79,6 @@ function TaskFormComputer({ jobOptions, formData, task, selectDropdown, handleCh
                     <Header size='small'>Notes</Header>
                     <FormInput
                       label
-                      // error={formErrors.first_name}
                       fluidIcon='pencil alternate'
                       iconPosition='left'
                       placeholder='Notes'
@@ -125,14 +127,13 @@ function TaskFormComputer({ jobOptions, formData, task, selectDropdown, handleCh
               <Grid.Row only='tablet computer' reverse className='row4'>
                 <Grid.Column textAlign='right' width={14} className='edit-btn'>
                   <FormButton
-                    id='tasks-form-button'
-                    fluidSize='large'
+                    color='red'
                     buttonText='Update'
                     type='submit'
                   ></FormButton>
                 </Grid.Column>
                 <Grid.Column width={2}>
-                  <Button type='button' icon inverted color='red' size='small'
+                  <Button type='button' icon inverted color='red' size='small' value={task.id}
                     onClick={deleteItem}>
                     <Icon name='trash alternate' size='large' />
                   </Button>

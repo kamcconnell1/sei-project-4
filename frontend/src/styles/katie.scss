@@ -46,21 +46,32 @@ $font-content: "IBM Plex Mono", monospace;
   text-align: center;
 }
 
-
+.task-add-btn {
+  button.add-btn {
+    font-family: $font-content;
+  }
+}
 
 // ? Task Index Page
 div.segments.TaskIndex {
   margin: 0 auto;
   max-width: 800px;
   div.ui.segment{
+    div.search{
+      padding-top: 2vh;
+    }
     div.column{
       h1#header-font-tasks {
         font-family: $font-title;
         color: $color2;
         text-align: center;
       }  
-      button.ui.basic.fade.animated.button.fluid {
-        color: $color2
+      button.ui.red.basic.fade.animated.button.fluid {
+        color: $color2;
+        div.hidden.content{
+          font-family: $font-content;
+
+        }
       }
       h5.ui.left.aligned.header{
         font-family: $font-content;
@@ -72,10 +83,17 @@ div.segments.TaskIndex {
             color: $color2;
           }
       }
-      .completed-tasks{
+      div.completed-tasks{
         margin-top:  5% ;
-        color: grey;
-        text-decoration: line-through;
+        div.ui.fluid.card{
+          color: lightgray;
+        }
+        .task-title{
+          text-decoration: line-through;
+        }
+        div.label, div.task-date{
+          opacity: 50%;
+        }
     }
     // ? Task Edit form computer
     .task-form {
@@ -84,7 +102,7 @@ div.segments.TaskIndex {
       div.ui.segments{
         width: 700px;
         margin: 0 auto;
-        border-radius: 10px;
+        // border-radius: 10px;
         div.ui.segment.taskedit-computer{
           font-family: $font-content;
           color: $color2;
@@ -118,7 +136,6 @@ div.segments.TaskIndex {
           }
           div.tablet.only.computer.only.row.row{
             display: flex;
-            align-items: flex-end;
             padding-bottom: 0.5rem;
             div.tablet.only.computer.only.row.row1{
               display: flex;
@@ -140,11 +157,10 @@ div.segments.TaskIndex {
     //? Task Add for computer view
     div.TaskAddComputer{
       div.ui.segments{
-        border-radius: 20px;
         // font-family: $font-content;
         max-width: 700px;
         margin: 0 auto;
-        border-radius: 50px;
+        border-radius: 10px;
         div.ui.segment{
           font-family: $font-content;
           // color: $color2;
@@ -207,11 +223,11 @@ div.segments.TaskIndex {
       }
       div.label {
         min-width: 110px;
+        text-align: center;
       }
     }
     .task-content {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       .task-job {
         text-align: left;
@@ -235,11 +251,14 @@ div.segments.TaskIndex {
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    width:100%;
     display: flex;
     align-items: center;
-    margin-bottom: 2%;
+    width: 9%;
+    color: lightgray;
   }
+}
+div.task-checkbox{
+  z-index: 10;
 }
 
 // ? Task Add for mobile view
@@ -247,11 +266,46 @@ div.ui.segments.TaskFormMobile{
   font-family: $font-content;
   color: $color2;
   margin: 10px;
-  // height: 92vh;
   overflow-y: none;
-  h1#header-font-tasks{
-    font-family: $font-title;
-    color: $color2;
+  div.mobile.only.row{
+    div.column.top-row{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      button.btn-not-displayed {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        margin-bottom: 35px;
+        color: lightgray;
+      }
+    }
+    div.column.top-row-mobile{
+      display: flex;
+      flex-direction: row;
+      h1#header-font-tasks{
+        margin-left: 25%;
+      }
+      button.btn-not-displayed {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
+        margin-bottom: 35px;
+        color: lightgray;
+      }
+    }
+    h1#header-font-tasks{
+      font-family: $font-title;
+      color: $color2;
+    }
   }
   div.ui.small.header{
     font-family: $font-content;

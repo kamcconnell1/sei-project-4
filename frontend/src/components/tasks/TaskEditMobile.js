@@ -2,24 +2,28 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 
+import useWindowSize from '../../utils/useWindowSize'
 import useForm from '../../utils/useForm'
 import useDelete from '../../utils/useDelete'
-import { getSingleTask, editTask, deleteTask } from '../../lib/api'
+import { getSingleTask, editTask, deleteTask, getAllJobs } from '../../lib/api'
 
 import GetDate from '../common/GetDate'
 import TaskFormMobile from './TaskFormMobile'
 
 
 function TaskEditMobile() {
-  
   const history = useHistory()
   const { id: taskId } = useParams()
+  const { width } = useWindowSize()
   const { deleteItem } = useDelete(deleteTask, taskId, 'tasks')
   const [task, setTask] = React.useState(null)
+  const [jobs, setJobs] = React.useState(null)
 
   // * Function to occur if the page edit has gone through 
   const onSubmitSuccess = () => {
     history.push('/tasks/')
+    console.log('success')
+    
   }
 
   // * Values & functions taken from useForm & props passed to useForm
@@ -41,15 +45,13 @@ function TaskEditMobile() {
       if (!task.job) {
         setFormData({
           ...task,
-          task_category: task.task_category.id,
-          completed: !task.completed
+          task_category: task.task_category.id
         })
       } else {
         setFormData({
           ...task,
           job: task.job.id,
-          task_category: task.task_category.id,
-          completed: !task.completed
+          task_category: task.task_category.id
         })
       }
     } catch (err) {
@@ -58,19 +60,37 @@ function TaskEditMobile() {
     }
   }
 
+  const getJobsData = async () => {
+    try {
+      const res = await getAllJobs()
+      setJobs(res.data)
+    } catch (err) {
+      console.log(err)
+      history.push('/notfound')
+    }
+  }
+
   React.useEffect(() => {
     getData()
-  }, [])
+    getJobsData()
+    if (width > 767) {
+      history.push('/tasks')
+    }
+  }, [width])
 
 
-  //* Toggle form checkbox (doesn't update state until submit button pressed)
-  // const toggleCheckbox = async () => {
-  //   setFormData({ ...formData, completed: !formData.completed })
-  // }
 
+  const toggleCheckbox = async () => {
+    setFormData({ ...formData, completed: !formData.completed })
+  }
+
+  const closeForm = () => {
+    history.push('/tasks')
+  }
 
   if (!formData) return null
   const { added_date, reminder_date } = formData
+  
   if (!task) return null
   
   const dateProvided = () => {
@@ -82,6 +102,16 @@ function TaskEditMobile() {
   }
   const date = dateProvided(reminder_date, added_date)
   
+  if (!jobs) return null
+  const jobOptions = jobs.map((job => {
+    return (
+      {
+        key: `${job.job_title} - ${job.company}`,
+        text: `${job.job_title} - ${job.company}`,
+        value: job.id
+      }
+    )
+  }))
   
   return (
     <div className='TaskEdit'>
@@ -89,6 +119,9 @@ function TaskEditMobile() {
         task={task}
         date={date}
         formData={formData}
+        closeForm={closeForm}
+        toggleCheckbox={toggleCheckbox}
+        jobOptions={jobOptions}
         selectDropdown={selectDropdown}
         handleChange={handleChange}
         handleDateChange={handleDateChange}
