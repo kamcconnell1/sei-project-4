@@ -65,6 +65,15 @@ function ContactNewModal({
             <FormInput
               className='fluid'
               focus
+              placeholder='Company'
+              value={formData.company || ''}
+              type='text'
+              name='company'
+              onChange={handleChange}
+            />
+            <FormInput
+              className='fluid'
+              focus
               placeholder='Email'
               value={formData.email || ''}
               type='text'

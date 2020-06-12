@@ -37,6 +37,7 @@ function ContactIndex() {
   const onSubmitSuccess = () => {
     formData.name = ''
     formData.job_title = ''
+    formData.company = ''
     formData.email = ''
     formData.phone = ''
     formData.job = ''
@@ -47,6 +48,7 @@ function ContactIndex() {
   const { formData, handleChange, handleSubmit, selectDropdown } = useForm({
     name: '',
     job_title: '',
+    company: '',
     email: '',
     phone: '',
     job: ''

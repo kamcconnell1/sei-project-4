@@ -1,5 +1,6 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams, Link } from 'react-router-dom'
+import { Icon } from 'semantic-ui-react'
 
 import { getSingleJob, editJob } from '../../lib/api'
 import { statusOptions } from '../../lib/statusOptions'
@@ -19,7 +20,7 @@ function JobEdit() {
     history.push(`/jobs/${jobId}/`)
   }
 
-  const { formData, handleChange, handleDateChange,selectDropdown, setFormData, formErrors, handleSubmit } = useForm({
+  const { formData, handleChange, handleDateChange, selectDropdown, setFormData, formErrors, handleSubmit } = useForm({
     job_title: '',
     company: '',
     application_deadline: null,

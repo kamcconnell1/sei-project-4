@@ -196,8 +196,11 @@ $font-content: "IBM Plex Mono", monospace;
     text-align: center;
   }
 
-  .search-box {
+  div.search-box {
     margin: 3vh 7vw;
+    input[type=text] {
+      font-family: $font-content;
+    }
   }
 
   .contact-add-btn {
