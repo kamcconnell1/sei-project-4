@@ -21,12 +21,9 @@ section.section {
   margin: 0 auto;
 }
 
-section.section.task-show-mobile {
-  background-color: red;
-}
-
 #root > section > div.TaskIndex {
-  div.uncompleted-tasks, div.completed-tasks {
+  div.uncompleted-tasks,
+  div.completed-tasks {
     width: 95%;
     margin: 0 auto;
   }
@@ -191,5 +188,25 @@ body > div.ui.page.modals.dimmer.transition.visible.active > div > div {
     div.image-mobile {
       display: none;
     }
+  }
+}
+
+// ? ---- Login ----- ? //
+
+#root > div.Login > div > div {
+  #header-font {
+    font-family: $font-title;
+  }
+  input[type=text], input[type=password] {
+    font-family: $font-content;
+  }
+}
+
+#root > div.ui.center.aligned.middle.aligned.grid > div {
+  #header-font {
+    font-family: $font-title;
+  }
+  input[type=text], input[type=password] {
+    font-family: $font-content;
   }
 }
