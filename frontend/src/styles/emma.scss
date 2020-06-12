@@ -21,6 +21,17 @@ section.section {
   margin: 0 auto;
 }
 
+section.section.task-show-mobile {
+  background-color: red;
+}
+
+#root > section > div.TaskIndex {
+  div.uncompleted-tasks, div.completed-tasks {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
 section > footer.footer {
   display: flex;
   justify-content: center;

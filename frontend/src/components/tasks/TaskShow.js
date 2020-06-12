@@ -10,7 +10,7 @@ function TaskShow({ task, toggleCheckbox, toggleForm }) {
   const date = GetDate(reminder_date ? reminder_date : added_date)
 
   return (
-    <div className="TaskShow">
+    <div className="TaskShow section task-show-mobile">
       <TaskShowCard
         id={id}
         completed={completed}
