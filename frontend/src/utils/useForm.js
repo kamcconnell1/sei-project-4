@@ -26,7 +26,6 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
 
   const handleDateChange = (event, data) => {
     const { name, value } = data 
-
     const formattedDate = (value) => {
       if (!value) {
         return null
