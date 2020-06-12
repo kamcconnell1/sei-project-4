@@ -3,11 +3,6 @@ export const setToken = token => {
   window.localStorage.setItem('token', token)
 }
 
-const snakeToCamel = (str) => str.replace(
-  /([-_][a-z])/g
-)
-
-
 export const getToken = () => {
   return window.localStorage.getItem('token')
 }

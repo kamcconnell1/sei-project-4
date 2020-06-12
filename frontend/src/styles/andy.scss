@@ -55,6 +55,28 @@ $font-content: "IBM Plex Mono", monospace;
   color: $color2;
 }
 
+.ErrorPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 125, 126, 1) 11%,
+    rgba(226, 80, 104, 1) 30%,
+    rgba(238, 89, 150, 1) 51%,
+    rgba(236, 106, 50, 1) 71%,
+    rgba(226, 188, 161, 1) 91%
+  );
+  height: 96vh;
+  width: 100vw;
+  .error-message {
+    font-family: $font-title;
+    font-size: 50px;
+    color: white;
+    text-shadow: 0 0 3px #888888;
+  }
+}
+
 @media screen and (min-width: 160px) {
   // * Job Index
 
@@ -174,8 +196,11 @@ $font-content: "IBM Plex Mono", monospace;
     text-align: center;
   }
 
-  .search-box {
+  div.search-box {
     margin: 3vh 7vw;
+    input[type=text] {
+      font-family: $font-content;
+    }
   }
 
   .contact-add-btn {

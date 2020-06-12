@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { getAllJobs, getSingleJob, editJob, deleteJob } from '../../lib/api'
 import { mobileView, smallTabletView, largeTabletView, desktopView } from '../../lib/boardViews'
@@ -22,6 +23,7 @@ function JobIndex() {
   const [jobToDelete, setJobToDelete] = useState(null)
   const [addNewModalOpen, setAddNewModalOpen] = useState(false)
   const [newJobStatus, setNewJobStatus] = useState(null)
+  const history = useHistory()
 
 
   const getData = async () => {
@@ -29,7 +31,7 @@ function JobIndex() {
       const res = await getAllJobs()
       setJobs(res.data)
     } catch (err) {
-      console.log(err)
+      history.push('/notfound')
     }
   }
 
