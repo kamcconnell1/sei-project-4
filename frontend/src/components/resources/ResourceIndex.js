@@ -14,6 +14,7 @@ function ResourceIndex() {
   const [modalOpen, setModalOpen] = useState(false)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   const [resourceToDelete, setResourceToDelete] = useState(null)
+  const [search, setSearch] = useState('')
   const history = useHistory()
 
 
@@ -71,6 +72,17 @@ function ResourceIndex() {
     getData()
   }
 
+  const handleSearch = e => {
+    setSearch(e.target.value)
+  }
+
+  const filteredResources = () => {
+    const regexp = new RegExp(search, 'i')
+    return resources.filter(resource => {
+      return regexp.test(resource.title) || regexp.test(resource.link)
+    })
+  }
+
   if (!resources) return null
 
   return (
@@ -90,9 +102,14 @@ function ResourceIndex() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-
+      <div className='search-box'>
+        <div className='ui fluid icon input'>
+          <input type='text' placeholder='Search resources...' name='search' value={search} onChange={handleSearch} />
+          <i aria-hidden='true' className='search icon'></i>
+        </div>
+      </div>
       <section className='ResourceIndex'>
-        {resources.map((resource => (
+        {filteredResources().map((resource => (
           <ResourceCard
             key={resource.id}
             handleDeleteConfirmModal={handleDeleteConfirmModal}
