@@ -9,16 +9,15 @@ function JobNewModal({ addNewModalOpen, handleNewJobModalClose, newJobStatus }) 
   return (
     <Modal open={addNewModalOpen}>
       <Modal.Content>
+        <Button
+          size='large'
+          className='cancel-button'
+          icon='close'
+          onClick={handleNewJobModalClose}
+        />
         <JobNew
           handleNewJobModalClose={handleNewJobModalClose}
           newJobStatus={newJobStatus}
-        />
-        <Button
-          fluid
-          className='cancel-button'
-          icon='ban'
-          content='Cancel'
-          onClick={handleNewJobModalClose}
         />
       </Modal.Content>
     </Modal>

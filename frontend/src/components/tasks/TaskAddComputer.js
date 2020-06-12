@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { Form, Grid,  Header, Dropdown, Button, Segment } from 'semantic-ui-react'
+import { Form, Grid,  Header, Dropdown, Segment, Icon } from 'semantic-ui-react'
 import SemanticDatepicker from 'react-semantic-ui-datepickers'
 
 
@@ -22,7 +22,7 @@ function TaskAddComputer({ closeForm, getData }) {
     getData()
   }
 
-  const { formData, handleChange, selectDropdown, handleDateChange, handleSubmit } = useForm({
+  const { formData, handleChange, formErrors, selectDropdown, handleDateChange, handleSubmit } = useForm({
     title: '',
     completed: false,
     notes: '',
@@ -55,6 +55,7 @@ function TaskAddComputer({ closeForm, getData }) {
     )
   }))
 
+  
   return (
     <div className='TaskAddComputer'>
       <Segment.Group>
@@ -63,9 +64,10 @@ function TaskAddComputer({ closeForm, getData }) {
             <Grid className='edit-task-computer-tablet'>
               <Grid.Row only='tablet computer'>
                 <Grid.Column width={1}>
-                  <Button circular icon='close' size='small' 
-                    type ='button' onClick={closeForm} 
-                  />
+                  <button className='btn-not-displayed'
+                    type ='button' onClick={closeForm} >
+                    <Icon name='close'  />
+                  </button>
                 </Grid.Column>
                 <Grid.Column width={15}>
                   <Header as='h1' id='header-font-tasks'textAlign='center'>Add Task</Header>
@@ -104,6 +106,7 @@ function TaskAddComputer({ closeForm, getData }) {
                   <Form.Field>
                     <Header size='small'>Task Category</Header>
                     <Dropdown
+                      error={formErrors.task_category}
                       clearable
                       search
                       selection
@@ -151,7 +154,7 @@ function TaskAddComputer({ closeForm, getData }) {
                   <Form.Field>
                     <FormButton
                       fluidSize='large'
-                      color='pink'
+                      color='red'
                       buttonText='Add'
                       type='submit'
                     ></FormButton>

@@ -2,7 +2,6 @@
 import React from 'react'
 
 
-// !! NOT WORKING PROPERLY NEED TO COME BACK TO
 function GetDate(date) {
 
   const today_date = new Date().getTime()
