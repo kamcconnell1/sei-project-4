@@ -29,11 +29,11 @@ function JobNew ({ handleNewJobModalClose, newJobStatus }) {
     salary: null,
     city: '',
     country: '',
-    status: ''
+    status: parseInt(newJobStatus)
   }, addNewJob, null, onSubmitSuccess)
 
   console.log(newJobStatus)
-  // console.log(formData)
+  console.log(formData)
 
   return (
     <PageContainer>
