@@ -79,6 +79,8 @@ function TaskAddComputer({ closeForm, getData }) {
                     <Header size='small'>Task Title</Header>
                     <FormInput
                       size='small'
+                      fluidIcon='pencil alternate'
+                      iconPosition='left'
                       placeholder='Add a task title'
                       value={formData.title}
                       type='text'
@@ -123,9 +125,7 @@ function TaskAddComputer({ closeForm, getData }) {
                   <Form.Field>
                     <Header size='small'>Notes</Header>
                     <FormInput
-                      label
-                      // error={formErrors.first_name}
-                      fluidIcon='pencil alternate'
+                      fluidIcon='sticky note'
                       iconPosition='left'
                       placeholder='Notes'
                       value={formData.notes}
@@ -142,6 +142,7 @@ function TaskAddComputer({ closeForm, getData }) {
                       onChange={handleDateChange}
                       datePickerOnly
                       clearable
+                      iconPosition='left'
                       pointing='left'
                       name='reminder_date'
                       format='DD-MM-YYYY'

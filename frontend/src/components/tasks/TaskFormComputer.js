@@ -36,8 +36,6 @@ function TaskFormComputer({ date, jobOptions, formData, task, selectDropdown, ha
                 </Grid.Column>
                 <Grid.Column width={3} textAlign='right'>
                   <Form.Field>
-                    {/* <p className='due-today'>Date</p>
-                     */}
                     {date}
                   </Form.Field>
                 </Grid.Column>
@@ -62,6 +60,8 @@ function TaskFormComputer({ date, jobOptions, formData, task, selectDropdown, ha
                   <Form.Field>
                     <Header size='small'>Task Title</Header>
                     <FormInput
+                      fluidIcon='pencil alternate'
+                      iconPosition='left'
                       placeholder={title ? title : 'Add Task Title'}
                       value={title || ''}
                       type='text'
@@ -78,8 +78,7 @@ function TaskFormComputer({ date, jobOptions, formData, task, selectDropdown, ha
                   <Form.Field>
                     <Header size='small'>Notes</Header>
                     <FormInput
-                      label
-                      fluidIcon='pencil alternate'
+                      fluidIcon='sticky note'
                       iconPosition='left'
                       placeholder='Notes'
                       value={notes || ''}
@@ -98,7 +97,7 @@ function TaskFormComputer({ date, jobOptions, formData, task, selectDropdown, ha
                     <SemanticDatepicker 
                       size='large'
                       onChange={handleDateChange}
-                      iconPosition='right'
+                      iconPosition='left'
                       datePickerOnly
                       clearable
                       pointing='left'

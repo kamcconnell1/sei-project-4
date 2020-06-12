@@ -132,8 +132,7 @@ function TaskAddMobile() {
                 <Header size='small'>Notes</Header>
                 <Form.Field >
                   <FormInput
-                  // error={formErrors.first_name}
-                    fluidIcon='pencil alternate'
+                    fluidIcon='sticky note'
                     iconPosition='left'
                     placeholder='Notes'
                     value={formData.notes}
