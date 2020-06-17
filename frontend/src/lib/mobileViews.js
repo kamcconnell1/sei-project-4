@@ -2,7 +2,8 @@
 export const wishlistView = [
   { 
     name: 'wishlist',
-    isHidden: false 
+    isHidden: false,
+    id: 1 
   }, 
   { 
     name: 'applied',
@@ -29,7 +30,8 @@ export const appliedView = [
   }, 
   { 
     name: 'applied',
-    isHidden: false
+    isHidden: false,
+    id: 2
   }, 
   { 
     name: 'interview',
@@ -56,7 +58,8 @@ export const interviewView = [
   }, 
   { 
     name: 'interview',
-    isHidden: false 
+    isHidden: false,
+    id: 3 
   }, 
   { 
     name: 'offer',
@@ -83,7 +86,8 @@ export const offerView = [
   }, 
   { 
     name: 'offer',
-    isHidden: false
+    isHidden: false,
+    id: 4
   }, 
   { 
     name: 'rejected',
@@ -110,6 +114,7 @@ export const rejectedView = [
   }, 
   { 
     name: 'rejected',
-    isHidden: false 
+    isHidden: false,
+    id: 5
   } 
 ]
