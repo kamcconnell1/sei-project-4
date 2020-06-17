@@ -1,11 +1,13 @@
 export const smallTabletViewOne = [
   { 
     name: 'wishlist',
-    isHidden: false 
+    isHidden: false,
+    id: 1
   }, 
   { 
     name: 'applied',
-    isHidden: false
+    isHidden: false,
+    id: 2
   }, 
   { 
     name: 'interview',
@@ -24,15 +26,17 @@ export const smallTabletViewOne = [
 export const smallTabletViewTwo = [
   { 
     name: 'wishlist',
-    isHidden: true 
+    isHidden: true
   }, 
   { 
     name: 'applied',
-    isHidden: false
+    isHidden: false,
+    id: 2
   }, 
   { 
     name: 'interview',
-    isHidden: false
+    isHidden: false,
+    id: 3
   }, 
   { 
     name: 'offer',
@@ -40,14 +44,14 @@ export const smallTabletViewTwo = [
   }, 
   { 
     name: 'rejected',
-    isHidden: true 
+    isHidden: true
   } 
 ]
 
 export const smallTabletViewThree = [
   { 
     name: 'wishlist',
-    isHidden: true 
+    isHidden: true
   }, 
   { 
     name: 'applied',
@@ -55,15 +59,17 @@ export const smallTabletViewThree = [
   }, 
   { 
     name: 'interview',
-    isHidden: false 
+    isHidden: false,
+    id: 3
   }, 
   { 
     name: 'offer',
-    isHidden: false
+    isHidden: false,
+    id: 4
   }, 
   { 
     name: 'rejected',
-    isHidden: true 
+    isHidden: true
   } 
 ]
 
@@ -82,11 +88,14 @@ export const smallTabletViewFour = [
   }, 
   { 
     name: 'offer',
-    isHidden: false
+    isHidden: false,
+    id: 4
   }, 
   { 
     name: 'rejected',
-    isHidden: false 
+    isHidden: false
+    ,
+    id: 5
   } 
 ]
 
@@ -105,10 +114,12 @@ export const smallTabletViewFive = [
   }, 
   { 
     name: 'rejected',
-    isHidden: false 
+    isHidden: false,
+    id: 5
   },
   { 
     name: 'wishlist',
-    isHidden: false 
+    isHidden: false,
+    id: 1
   }
 ]
