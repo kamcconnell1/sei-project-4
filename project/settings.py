@@ -63,7 +63,9 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'frontend')
+            ]  # Look, we have added the root folder of frontend here
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +84,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = { # added this to use postgres as the databse instead of the default sqlite. do this before running the initali migrations or you will need to do it again
+DATABASES = {  # added this to use postgres as the databse instead of the default sqlite. do this before running the initali migrations or you will need to do it again
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'jobr',
@@ -124,7 +126,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-REST_FRAMEWORK = { 
+REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         # 'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
         # 'djangorestframework_camel_case.render.CamelCaseBrowsableAPIRenderer',
@@ -140,12 +142,16 @@ REST_FRAMEWORK = {
 }
 
 
-
 AUTH_USER_MODEL = 'jwt_auth.User'
-
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+ROOT_URLCONF = 'project.urls' #check if you have this already, if not add it in
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static'), 
+)
