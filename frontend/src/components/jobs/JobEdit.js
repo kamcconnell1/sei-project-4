@@ -1,7 +1,5 @@
 import React from 'react'
-import { useHistory, useParams, Link } from 'react-router-dom'
-import { Icon } from 'semantic-ui-react'
-
+import { useHistory, useParams } from 'react-router-dom'
 import { getSingleJob, editJob } from '../../lib/api'
 import { statusOptions } from '../../lib/statusOptions'
 import useFetch from '../../utils/useFetch'

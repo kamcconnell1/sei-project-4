@@ -44,6 +44,8 @@ function TaskIndex() {
     return tasks.filter(item => {
       if (item.id === parseInt(taskId)) {
         return item
+      } else {
+        return null 
       }
     })
   }

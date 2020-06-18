@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, useParams, useHistory } from 'react-router-dom'
 import { getSingleJob } from '../../lib/api'
-import { Header, Segment, Tab, Icon } from 'semantic-ui-react'
+import { Header, Segment, Tab } from 'semantic-ui-react'
 
 import PageContainer from '../common/PageContainer'
 import JobDetails from './JobDetails'

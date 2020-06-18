@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Modal, Header, Form, Icon, Dropdown } from 'semantic-ui-react'
+import { Button, Modal, Header, Form, Dropdown } from 'semantic-ui-react'
 import FormInput from '../common/FormInput'
 
 function ContactNewModal({
