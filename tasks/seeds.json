@@ -8,7 +8,8 @@
     "reminder_date": "2020-06-06",
     "task_category": 2,
     "owner": 3,
-    "job": 1
+    "job": 1,
+    "completed": "False"
   }
 },
 {
@@ -20,7 +21,8 @@
     "reminder_date": null,
     "task_category": 6,
     "owner": 2,
-    "job": 2
+    "job": 2,
+    "completed": "False"
   }
 },
 {
@@ -32,7 +34,8 @@
     "reminder_date": "2020-06-06",
     "task_category": 11,
     "owner": 4,
-    "job": 3
+    "job": 3,
+    "completed": "False"
   }
 }
 ]

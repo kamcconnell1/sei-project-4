@@ -32,14 +32,12 @@ function TaskEditComputer({ closeForm, data, getData, handleDeleteConfirmModal }
       setFormData({
         ...data,
         task_category: data.task_category.id,
-        completed: !data.completed
       })
     } else {
       setFormData({
         ...data,
         job: data.job.id,
-        task_category: data.task_category.id,
-        completed: !data.completed
+        task_category: data.task_category.id
       })
     }
   }, [data])

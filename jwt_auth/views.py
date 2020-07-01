@@ -63,16 +63,7 @@ class ProfileDetailView(APIView):
         if profile.id != user.id:
             raise PermissionDenied()
 
-    # def put(self, request, pk):
-    #     user_to_update = User.objects.get(pk=pk)
-    #     self.is_user_owner(user_to_update, request.user)
-    #     request.data['password'] = request.user.password
-    #     request.data['password_confirmation'] = request.user.password_confirmation
-    #     updated_user = UserSerializer(user_to_update, data=request.data)
-    #     if updated_user.is_valid():
-    #         updated_user.save()
-    #         return Response(updated_user.data, status=status.HTTP_202_ACCEPTED)
-    #     return Response(updated_user.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
 
 
 

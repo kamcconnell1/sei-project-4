@@ -1,7 +1,7 @@
 [
 {
   "model": "contacts.contact",
-  "pk": 3,
+  "pk": 1,
   "fields": {
     "name": "James Smith",
     "job_title": "Software Engineer",
@@ -14,7 +14,7 @@
 },
 {
   "model": "contacts.contact",
-  "pk": 4,
+  "pk": 2,
   "fields": {
     "name": "Jane Smith",
     "job_title": "Software Engineer",
@@ -27,7 +27,7 @@
 },
 {
   "model": "contacts.contact",
-  "pk": 6,
+  "pk": 3,
   "fields": {
     "name": "Jenny Smith",
     "job_title": "Software Engineer",

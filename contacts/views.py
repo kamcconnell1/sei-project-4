@@ -29,9 +29,6 @@ class ContactListView(APIView):
         return Response(new_contact.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 
-
-
-
 class ContactDetailView(APIView):
 
     permission_classes = (IsAuthenticated, )
