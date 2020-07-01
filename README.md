@@ -36,48 +36,48 @@ Please see the hosted version here: jobrrrr.herokuapp.com
 
 1. Home Page 
 
-![Home Page](../frontend/src/assets/readme/home.png)
+![Home Page](./frontend/src/assets/readme/home.png)
 
 2. Register Page - users are required to be registered / logged in in order to use the app. Users recieve their token on registration so they do not need to Log In immediately after registering.
 
-![Register](../frontend/src/assets/readme/register.png)
+![Register](./frontend/src/assets/readme/register.png)
 
 3. User Dashboard - the dashboard allows users to easily see a snapshot of each job they have uploaded and the assigned status. You can drag and drop these cards onto the other columns to update the status of the job easily or you can click on a job to view/edit all of the associated information. You can also click on any column to add a job and the status will be automatically be pre-populated.
 
-![Dashboard](../frontend/src/assets/readme/jobindex.png) 
+![Dashboard](./frontend/src/assets/readme/jobindex.png) 
 
 
 4. Job Show Page - this page allows the user to see all the information attached to the job, including all the key dates in order to easily keep track of things. The tabs along the top of the page allow users to see any tasks and contacts they have assigned to this job.
 
-![Job Show](../frontend/src/assets/readme/jobshow.png) 
+![Job Show](./frontend/src/assets/readme/jobshow.png) 
 
 5. Tasks Show Page - this page allows you to see all the tasks you have set yourself and tick them off as they are completed. 
 
-![Task Show](../frontend/src/assets/readme/taskindex.png) 
+![Task Show](./frontend/src/assets/readme/taskindex.png) 
 
 6. Task Add / Edit (Mobile)  - on a mobile if you choose to add or edit a task you are navigated onto a separate page.  When you upload a task there are 21 categories to choose from. You can elect to attach a task to a specific job or leave it as a general task.
 
-![Task Edit Mobile](../frontend/src/assets/readme/taskeditmob.png) 
+![Task Edit Mobile](./frontend/src/assets/readme/taskeditmob.png) 
 
 8. Task Add / Edit (all other Devices) - if you select to add or edit a task on any other device you stay on the same page and the form drops down from the top of the page. 
 
-![Task Edit](../frontend/src/assets/readme/taskedit.png) 
+![Task Edit](./frontend/src/assets/readme/taskedit.png) 
 
 9. Contacts Show Page - users can upload information for contacts they have met.
 
-![Contacts Show](../frontend/src/assets/readme/contacts.png) 
+![Contacts Show](./frontend/src/assets/readme/contacts.png) 
 
 10. Contacts Add Modal
 
-![Contacts Add](../frontend/src/assets/readme/contactadd.png) 
+![Contacts Add](./frontend/src/assets/readme/contactadd.png) 
 
 10. Resources Show Page - users can upload urls to resources they have found whilst in the process of job hunting that they want to revisit later.
 
-![Resources Show](../frontend/src/assets/readme/resources.png) 
+![Resources Show](./frontend/src/assets/readme/resources.png) 
 
 11. Resources Add Modal 
 
-![Resource Add](../frontend/src/assets/readme/resourceadd.png) 
+![Resource Add](./frontend/src/assets/readme/resourceadd.png) 
 
 -----
 
@@ -95,9 +95,9 @@ Users can do the following:
 
 Given we were given a few days notice of the upcoming project our group had already spent some time discussing briefs and had agreed to build a job search tracker. We spent the first day drawing up the layout for the project on MIRO, particularly thinking about how they would look on both mobile and desktop, and thinking about the models and the relationships between them. 
 
-![Miro Board](../frontend/src/assets/readme/miro1.png) 
-![Miro Board](../frontend/src/assets/readme/miro2.png) 
-![Miro Board](../frontend/src/assets/readme/miro3.png) 
+![Miro Board](./frontend/src/assets/readme/miro1.png) 
+![Miro Board](./frontend/src/assets/readme/miro2.png) 
+![Miro Board](./frontend/src/assets/readme/miro3.png) 
 
 
 #### Division of Work
@@ -109,17 +109,17 @@ On completion of the backend we moved onto the frontend, where we primarily cont
 
 Task Model - on the backend I worked on creating the models for the tasks and the contacts. We created tasks and task categories as seperate models with a many to one relationship, each task could only be assigned one category, but one category could be assigned many tasks. I really enjoyed using Django and found it quite straight forward as long as you followed the steps carefully.
 
-![Task Model](../frontend/src/assets/readme/code1.png)
+![Task Model](./frontend/src/assets/readme/code1.png)
 
 #### Featured Piece of Code 2
 This was the first real opportunity we had to try out using React Hooks and agreed as a team that we would try to do so throughout. I built the useForm Hook which was really beneficial in this case as the majority of the app is based on forms so it was re-used multiple times. 
 
-![useForm Hook](../frontend/src/assets/readme/code2.png)
+![useForm Hook](./frontend/src/assets/readme/code2.png)
 
 #### Featured Piece of Code 3
 We wanted to make the app fully mobile responsive. As the device size reduced the number of status panels showing on the user dashboard reduced, requiring the user to scroll through them. In order to achieve this we needed to determine what size device the using the useWindowSize hook.
 
-![useWindowSize Hook](../frontend/src/assets/readme/code3.png)
+![useWindowSize Hook](./frontend/src/assets/readme/code3.png)
 
 #### Styling
 For this project we wanted to try a new styling framework and imported React Semantic UI. Previously we had only worked with one other framework before so this was a really good opportunity to experience something new. I found Semantic much more customisable and easier to understand than the previous framework. 
