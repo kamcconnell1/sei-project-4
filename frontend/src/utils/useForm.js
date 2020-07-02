@@ -42,11 +42,11 @@ function useForm(initialFormState = {}, submitFunction, submitParams = null, onS
 
   const handleSubmit = async event => {
     event.preventDefault()    
-    // console.log(formData)
-    
+ 
     try {
       const response = await submitFunction(formData,submitParams)
       onSubmitSuccess(response)
+      setFormData({...initialFormState})
     } catch (err) {
       console.log(err)
       setFormErrors(err.response.data)
