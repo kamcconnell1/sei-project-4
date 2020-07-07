@@ -6,7 +6,7 @@ JOBR is a full stack app created in 8 days. It the first time the group had buil
 JOBR is an app designed to help you stay on track of your job search. It allows users to sign up and upload jobs to their dashboard, write out tasks to keep track of their ‘to-do’ list, upload resources they find useful or want to refer back to later and contact information for relevant assosciates. 
 Recognising users would likely use this app on their mobiles, we have made sure it is fully mobile responsive.
 
-Please see the hosted version here: jobrrrr.herokuapp.com
+Please see the hosted version here:  [JOBR](http://jobrrrr.herokuapp.com)
 
 - - - - 
 
